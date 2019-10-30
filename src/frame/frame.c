@@ -16,7 +16,8 @@
 *
 --------------------------------------------------------------------------------------------------------------------
 */
-static struct frame_crc CRC16(unsigned char *puchMsg, unsigned short usDataLen);
+static struct frame_rtu_crc CRC16(const unsigned char *puchMsg, unsigned short usDataLen);
+static struct frame_asc_lrc   LRC(const unsigned char *auchMsg, unsigned short usDataLen);
 
 
 /*
@@ -85,23 +86,53 @@ CRC_FLS_P1 static unsigned char CRC_FLS_P2 auchCRCLo CRC_FLS_P3 [] = {
 */
 
 /**
- *	@brief	    Modbus CRC calculation 
- *	@param[in]  puchMsg	  - a pointer to the message buffer containing binary data to be used for generating the CRC
- *	@param[in]	usDataLen - the quantity of bytes in the message buffer
+ *	@brief	    Set modbus RTU frame 
+ *	@param[in]  address
+ *	@param[in]  funCode
+ *	@param[in]  data   - data block
+ *	@param[in]  size   - size of data block 
  *	@param[out] None
- *	@return		CRC value	
- *	@note		Generating polynomial = 1 + x^2 + x^15 + x^16	
+ *	@return		RTU frame	
  **/
-
-struct frame_rtu mb_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, size_t size)
+struct frame_rtu_adu frame_rtu_set(unsigned char address, unsigned char funCode, const void *data, size_t size)
 {
-	struct frame_rtu rtu = {.address=address, .funCode=funCode};
+	struct frame_rtu_adu adu = {.chk.address=address, .chk.funCode=funCode};
 
-	rtu.crc =  CRC16(data, size);
+	memcpy(adu.chk.data, data, size); /*<  Pay attention to memory overlap **/
+	
+	adu.crc = CRC16((const unsigned char *)&adu.chk, size + 2);
 
-	memcpy(rtu.data, data, size); /*< Set data after CRC to prevent memory overlap **/
+	return adu;
+}
 
-	return rtu;
+/**
+ *	@brief	    Set modbus ASCII frame 
+ *	@param[in]  address
+ *	@param[in]  funCode
+ *	@param[in]  data   - data block
+ *	@param[in]  size   - size of data block 
+ *	@param[out] None
+ *	@return		RTU frame	
+ **/
+struct frame_asc_adu frame_asc_set(unsigned char address, unsigned char funCode, const void *data, size_t size)
+{
+	size_t i = 0;
+	struct frame_asc_adu adu = {.chk.address[0] = (address >> 4) + 48, .chk.address[1] = (address & 0X0F) + 48,
+								.chk.funCode[0] = (funCode >> 4) + 48, .chk.funCode[1] = (funCode & 0X0F) + 48};
+
+	size *= 2;
+
+	while(size--)
+	{
+		adu.chk.data[i  ] = ((*(unsigned char *)data) >> 4  ) + 48;
+		adu.chk.data[i+1] = ((*(unsigned char *)data) & 0X0F) + 48;
+
+		i += 2; data++;
+	}
+
+	adu.lrc = LRC((const unsigned char *)&adu.chk, size + 4);
+
+	return adu;
 }
 
 /**
@@ -112,7 +143,7 @@ struct frame_rtu mb_set_frame(unsigned char address, unsigned char funCode, unsi
  *	@return		CRC value	
  *	@note		Generating polynomial = 1 + x^2 + x^15 + x^16	
  **/
-static struct frame_crc CRC16(unsigned char *puchMsg, unsigned short usDataLen)
+static struct frame_rtu_crc CRC16(const unsigned char *puchMsg, unsigned short usDataLen)
 {
 	unsigned char uchCRCHi = 0xFF;
 	unsigned char uchCRCLo = 0xFF;
@@ -125,9 +156,33 @@ static struct frame_crc CRC16(unsigned char *puchMsg, unsigned short usDataLen)
 		uchCRCHi = CRC_ARR_LO(uchIndex);
 	}
 
-	struct frame_crc crc = {.crcLo=uchCRCLo, .crcHi=uchCRCHi};
+	struct frame_rtu_crc crc = {.crcLo=uchCRCLo, .crcHi=uchCRCHi};
 
 	return crc; 
 }
 
+/**
+ *	@brief	    Modbus LRC calculation 
+ *	@param[in]  auchMsg	  - message to calculate LRC upon
+ *	@param[in]	usDataLen - the quantity of bytes in the message buffer
+ *	@param[out] None
+ *	@return		LRC value	
+ **/
+static struct frame_asc_lrc LRC(const unsigned char *auchMsg, unsigned short usDataLen)
+{
+	unsigned char uchLRC = 0;
+
+	while (usDataLen--)
+	{
+		uchLRC += *auchMsg++; /*< add buffer byte without carry */
+	}
+
+	uchLRC = ((unsigned char)(-((char)uchLRC)));  /*< twos complement */
+
+	struct frame_asc_lrc lrc = {.lrcHi = (uchLRC >> 4) + 48, .lrcLo = (uchLRC & 0X0F) + 48};
+
+	return lrc;
+}
+
 int main(void){};
+
