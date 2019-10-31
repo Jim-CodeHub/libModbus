@@ -28,7 +28,7 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MODBUS/CRC CONFIGURE MACRO 
+ *												MODBUS/FRAME CONFIGURE MACRO 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
@@ -38,6 +38,33 @@ extern "C" {
 #define  CRC_FLS_P1
 #define  CRC_FLS_P2
 #define  CRC_FLS_P3
+
+/*------------------------------------------------------------------------------------------------------------------
+ * 
+ *												MODBUS/FRAME FUNCTION CODE
+ *
+ *------------------------------------------------------------------------------------------------------------------
+*/
+														/**<---------------------- Remarks -----------------------*/
+#define  FUNCODE_RD_COILS						0X01	/* Bit access											  */
+#define  FUNCODE_RD_DISCRETE_INPUT				0X02	/* Bit access											  */
+#define  FUNCODE_RD_HOLDING_REG					0X03	/* Word access											  */
+#define  FUNCODE_RD_INPUT_REG					0X04	/* Word access											  */
+#define  FUNCODE_WR_SINGLE_COIL					0X05	/* Bit access											  */
+#define  FUNCODE_WR_SINGLE_REG					0X06	/* Word access											  */
+#define  FUNCODE_RD_EXCEPTION_STATUS			0X07
+#define  FUNCODE_DIAGNOSTIC						0X08
+#define  FUNCODE_GET_COM_EVENT_COUNTER			0X0B
+#define  FUNCODE_GET_COM_EVENT_LOG				0X0C
+#define  FUNCODE_WR_MUL_COILS					0x0F	/* Bit access											  */
+#define  FUNCODE_WR_MUL_REGS					0x10	/* Word access											  */
+#define  FUNCODE_REPORT_SERVER_ID				0X11
+#define  FUNCODE_RD_FILE_RECORD					0X14
+#define  FUNCODE_WR_FILE_RECORD					0X15
+#define  FUNCODE_MASK_WR_REG					0X16
+#define  FUNCODE_RD_WR_MUL_REG					0x17
+#define  RUNCODE_RD_FIFO_QUEUE					0X18
+#define  RUNCODE_RD_DEVICE_IDENTIFICATION		0x2B
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -113,6 +140,7 @@ struct frame_asc_adu{
  *------------------------------------------------------------------------------------------------------------------
 */
 struct frame_rtu_adu frame_rtu_set(unsigned char address, unsigned char funCode, const void *data, size_t size);
+struct frame_asc_adu frame_asc_set(unsigned char address, unsigned char funCode, const void *data, size_t size);
 
 
 #if defined(__cplusplus)
