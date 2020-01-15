@@ -1,0 +1,308 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+--PREFIX	Makefile	12;"	m
+-exclude	Makefile	56;"	m
+ASCII	modbcd/modbuscd.h	31;"	e	enum:MBcdMode
+CRC16	modbcd/frame/ascii/mbascii.c	146;"	f	file:
+CRC16	modbcd/frame/frame.c	146;"	f	file:
+CRC16	modbcd/frame/rtu/mbcdrtu.c	146;"	f	file:
+CRC_ARR_HI	modbcd/frame/ascii/mbascii.h	36;"	d
+CRC_ARR_HI	modbcd/frame/frame.h	35;"	d
+CRC_ARR_HI	modbcd/frame/rtu/mbcdrtu.h	35;"	d
+CRC_ARR_LO	modbcd/frame/ascii/mbascii.h	37;"	d
+CRC_ARR_LO	modbcd/frame/frame.h	36;"	d
+CRC_ARR_LO	modbcd/frame/rtu/mbcdrtu.h	36;"	d
+CRC_FLS_P1	modbcd/frame/ascii/mbascii.h	39;"	d
+CRC_FLS_P1	modbcd/frame/frame.h	38;"	d
+CRC_FLS_P1	modbcd/frame/rtu/mbcdrtu.h	38;"	d
+CRC_FLS_P2	modbcd/frame/ascii/mbascii.h	40;"	d
+CRC_FLS_P2	modbcd/frame/frame.h	39;"	d
+CRC_FLS_P2	modbcd/frame/rtu/mbcdrtu.h	39;"	d
+CRC_FLS_P3	modbcd/frame/ascii/mbascii.c	34;"	v	file:
+CRC_FLS_P3	modbcd/frame/ascii/mbascii.c	58;"	v	file:
+CRC_FLS_P3	modbcd/frame/ascii/mbascii.h	41;"	d
+CRC_FLS_P3	modbcd/frame/frame.c	34;"	v	file:
+CRC_FLS_P3	modbcd/frame/frame.c	58;"	v	file:
+CRC_FLS_P3	modbcd/frame/frame.h	40;"	d
+CRC_FLS_P3	modbcd/frame/rtu/mbcdrtu.c	34;"	v	file:
+CRC_FLS_P3	modbcd/frame/rtu/mbcdrtu.c	58;"	v	file:
+CRC_FLS_P3	modbcd/frame/rtu/mbcdrtu.h	40;"	d
+CXX	Makefile	10;"	m
+CXXFLAGS	Makefile	14;"	m
+FUNCODE_CANOPEN_REFERENCE	modbcd/frame/ascii/mbascii.h	95;"	d
+FUNCODE_CANOPEN_REFERENCE	modbcd/frame/frame.h	94;"	d
+FUNCODE_CANOPEN_REFERENCE	modbcd/frame/rtu/mbcdrtu.h	94;"	d
+FUNCODE_DIAGNOSTIC	modbcd/frame/ascii/mbascii.h	67;"	d
+FUNCODE_DIAGNOSTIC	modbcd/frame/frame.h	66;"	d
+FUNCODE_DIAGNOSTIC	modbcd/frame/rtu/mbcdrtu.h	66;"	d
+FUNCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/ascii/mbascii.h	90;"	d
+FUNCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/frame.h	89;"	d
+FUNCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/rtu/mbcdrtu.h	89;"	d
+FUNCODE_GET_COM_EVENT_COUNTER	modbcd/frame/ascii/mbascii.h	85;"	d
+FUNCODE_GET_COM_EVENT_COUNTER	modbcd/frame/frame.h	84;"	d
+FUNCODE_GET_COM_EVENT_COUNTER	modbcd/frame/rtu/mbcdrtu.h	84;"	d
+FUNCODE_GET_COM_EVENT_LOG	modbcd/frame/ascii/mbascii.h	86;"	d
+FUNCODE_GET_COM_EVENT_LOG	modbcd/frame/frame.h	85;"	d
+FUNCODE_GET_COM_EVENT_LOG	modbcd/frame/rtu/mbcdrtu.h	85;"	d
+FUNCODE_MASK_WRITE_REGISTER	modbcd/frame/ascii/mbascii.h	60;"	d
+FUNCODE_MASK_WRITE_REGISTER	modbcd/frame/frame.h	59;"	d
+FUNCODE_MASK_WRITE_REGISTER	modbcd/frame/rtu/mbcdrtu.h	59;"	d
+FUNCODE_RD_COILS	modbcd/frame/ascii/mbascii.h	51;"	d
+FUNCODE_RD_COILS	modbcd/frame/frame.h	50;"	d
+FUNCODE_RD_COILS	modbcd/frame/rtu/mbcdrtu.h	50;"	d
+FUNCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/ascii/mbascii.h	88;"	d
+FUNCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/frame.h	87;"	d
+FUNCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/rtu/mbcdrtu.h	87;"	d
+FUNCODE_RD_DISCRETE_INPUT	modbcd/frame/ascii/mbascii.h	50;"	d
+FUNCODE_RD_DISCRETE_INPUT	modbcd/frame/frame.h	49;"	d
+FUNCODE_RD_DISCRETE_INPUT	modbcd/frame/rtu/mbcdrtu.h	49;"	d
+FUNCODE_RD_EXCEPTION_STATUS	modbcd/frame/ascii/mbascii.h	66;"	d
+FUNCODE_RD_EXCEPTION_STATUS	modbcd/frame/frame.h	65;"	d
+FUNCODE_RD_EXCEPTION_STATUS	modbcd/frame/rtu/mbcdrtu.h	65;"	d
+FUNCODE_RD_FIFO_QUEUE	modbcd/frame/ascii/mbascii.h	61;"	d
+FUNCODE_RD_FIFO_QUEUE	modbcd/frame/frame.h	60;"	d
+FUNCODE_RD_FIFO_QUEUE	modbcd/frame/rtu/mbcdrtu.h	60;"	d
+FUNCODE_RD_FILE_RECORD	modbcd/frame/ascii/mbascii.h	63;"	d
+FUNCODE_RD_FILE_RECORD	modbcd/frame/frame.h	62;"	d
+FUNCODE_RD_FILE_RECORD	modbcd/frame/rtu/mbcdrtu.h	62;"	d
+FUNCODE_RD_HOLDING_REGISTERS	modbcd/frame/ascii/mbascii.h	56;"	d
+FUNCODE_RD_HOLDING_REGISTERS	modbcd/frame/frame.h	55;"	d
+FUNCODE_RD_HOLDING_REGISTERS	modbcd/frame/rtu/mbcdrtu.h	55;"	d
+FUNCODE_RD_INPUT_REGISTER	modbcd/frame/ascii/mbascii.h	55;"	d
+FUNCODE_RD_INPUT_REGISTER	modbcd/frame/frame.h	54;"	d
+FUNCODE_RD_INPUT_REGISTER	modbcd/frame/rtu/mbcdrtu.h	54;"	d
+FUNCODE_REPORT_SERVER_ID	modbcd/frame/ascii/mbascii.h	87;"	d
+FUNCODE_REPORT_SERVER_ID	modbcd/frame/frame.h	86;"	d
+FUNCODE_REPORT_SERVER_ID	modbcd/frame/rtu/mbcdrtu.h	86;"	d
+FUNCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/ascii/mbascii.h	59;"	d
+FUNCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/frame.h	58;"	d
+FUNCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/rtu/mbcdrtu.h	58;"	d
+FUNCODE_S2B_CANOPEN_REFER_PDU	modbcd/frame/ascii/mbascii.h	92;"	d
+FUNCODE_S2B_CANOPEN_REFER_PDU	modbcd/frame/frame.h	91;"	d
+FUNCODE_S2B_CANOPEN_REFER_PDU	modbcd/frame/rtu/mbcdrtu.h	91;"	d
+FUNCODE_S2B_RD_DEVICE_ID	modbcd/frame/ascii/mbascii.h	93;"	d
+FUNCODE_S2B_RD_DEVICE_ID	modbcd/frame/frame.h	92;"	d
+FUNCODE_S2B_RD_DEVICE_ID	modbcd/frame/rtu/mbcdrtu.h	92;"	d
+FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	modbcd/frame/ascii/mbascii.h	72;"	d
+FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	modbcd/frame/frame.h	71;"	d
+FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	modbcd/frame/rtu/mbcdrtu.h	71;"	d
+FUNCODE_S8_CLR_CNT_DIG_REG	modbcd/frame/ascii/mbascii.h	74;"	d
+FUNCODE_S8_CLR_CNT_DIG_REG	modbcd/frame/frame.h	73;"	d
+FUNCODE_S8_CLR_CNT_DIG_REG	modbcd/frame/rtu/mbcdrtu.h	73;"	d
+FUNCODE_S8_CLR_OVERRUN_CNT_FLG	modbcd/frame/ascii/mbascii.h	83;"	d
+FUNCODE_S8_CLR_OVERRUN_CNT_FLG	modbcd/frame/frame.h	82;"	d
+FUNCODE_S8_CLR_OVERRUN_CNT_FLG	modbcd/frame/rtu/mbcdrtu.h	82;"	d
+FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	modbcd/frame/ascii/mbascii.h	73;"	d
+FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	modbcd/frame/frame.h	72;"	d
+FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	modbcd/frame/rtu/mbcdrtu.h	72;"	d
+FUNCODE_S8_RETURN_DIAGNOSTIC_REG	modbcd/frame/ascii/mbascii.h	71;"	d
+FUNCODE_S8_RETURN_DIAGNOSTIC_REG	modbcd/frame/frame.h	70;"	d
+FUNCODE_S8_RETURN_DIAGNOSTIC_REG	modbcd/frame/rtu/mbcdrtu.h	70;"	d
+FUNCODE_S8_RETURN_QUERY_DATA	modbcd/frame/ascii/mbascii.h	69;"	d
+FUNCODE_S8_RETURN_QUERY_DATA	modbcd/frame/frame.h	68;"	d
+FUNCODE_S8_RETURN_QUERY_DATA	modbcd/frame/rtu/mbcdrtu.h	68;"	d
+FUNCODE_S8_RETURN_RST_COMM_OPT	modbcd/frame/ascii/mbascii.h	70;"	d
+FUNCODE_S8_RETURN_RST_COMM_OPT	modbcd/frame/frame.h	69;"	d
+FUNCODE_S8_RETURN_RST_COMM_OPT	modbcd/frame/rtu/mbcdrtu.h	69;"	d
+FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/ascii/mbascii.h	82;"	d
+FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/frame.h	81;"	d
+FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/rtu/mbcdrtu.h	81;"	d
+FUNCODE_S8_RET_BUS_COMM_ERR_CNT	modbcd/frame/ascii/mbascii.h	76;"	d
+FUNCODE_S8_RET_BUS_COMM_ERR_CNT	modbcd/frame/frame.h	75;"	d
+FUNCODE_S8_RET_BUS_COMM_ERR_CNT	modbcd/frame/rtu/mbcdrtu.h	75;"	d
+FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/ascii/mbascii.h	77;"	d
+FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/frame.h	76;"	d
+FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/rtu/mbcdrtu.h	76;"	d
+FUNCODE_S8_RET_BUS_MSG_CNT	modbcd/frame/ascii/mbascii.h	75;"	d
+FUNCODE_S8_RET_BUS_MSG_CNT	modbcd/frame/frame.h	74;"	d
+FUNCODE_S8_RET_BUS_MSG_CNT	modbcd/frame/rtu/mbcdrtu.h	74;"	d
+FUNCODE_S8_RET_SERVER_BUSY_CNT	modbcd/frame/ascii/mbascii.h	81;"	d
+FUNCODE_S8_RET_SERVER_BUSY_CNT	modbcd/frame/frame.h	80;"	d
+FUNCODE_S8_RET_SERVER_BUSY_CNT	modbcd/frame/rtu/mbcdrtu.h	80;"	d
+FUNCODE_S8_RET_SERVER_MSG_CNT	modbcd/frame/ascii/mbascii.h	78;"	d
+FUNCODE_S8_RET_SERVER_MSG_CNT	modbcd/frame/frame.h	77;"	d
+FUNCODE_S8_RET_SERVER_MSG_CNT	modbcd/frame/rtu/mbcdrtu.h	77;"	d
+FUNCODE_S8_RET_SERVER_NAK_CNT	modbcd/frame/ascii/mbascii.h	80;"	d
+FUNCODE_S8_RET_SERVER_NAK_CNT	modbcd/frame/frame.h	79;"	d
+FUNCODE_S8_RET_SERVER_NAK_CNT	modbcd/frame/rtu/mbcdrtu.h	79;"	d
+FUNCODE_S8_RET_SERVER_NO_RSP_CNT	modbcd/frame/ascii/mbascii.h	79;"	d
+FUNCODE_S8_RET_SERVER_NO_RSP_CNT	modbcd/frame/frame.h	78;"	d
+FUNCODE_S8_RET_SERVER_NO_RSP_CNT	modbcd/frame/rtu/mbcdrtu.h	78;"	d
+FUNCODE_WR_FILE_RECORD	modbcd/frame/ascii/mbascii.h	64;"	d
+FUNCODE_WR_FILE_RECORD	modbcd/frame/frame.h	63;"	d
+FUNCODE_WR_FILE_RECORD	modbcd/frame/rtu/mbcdrtu.h	63;"	d
+FUNCODE_WR_MULTIPLE_COILS	modbcd/frame/ascii/mbascii.h	53;"	d
+FUNCODE_WR_MULTIPLE_COILS	modbcd/frame/frame.h	52;"	d
+FUNCODE_WR_MULTIPLE_COILS	modbcd/frame/rtu/mbcdrtu.h	52;"	d
+FUNCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/ascii/mbascii.h	58;"	d
+FUNCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/frame.h	57;"	d
+FUNCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/rtu/mbcdrtu.h	57;"	d
+FUNCODE_WR_SINGLE_COIL	modbcd/frame/ascii/mbascii.h	52;"	d
+FUNCODE_WR_SINGLE_COIL	modbcd/frame/frame.h	51;"	d
+FUNCODE_WR_SINGLE_COIL	modbcd/frame/rtu/mbcdrtu.h	51;"	d
+FUNCODE_WR_SINGLE_REGISTER	modbcd/frame/ascii/mbascii.h	57;"	d
+FUNCODE_WR_SINGLE_REGISTER	modbcd/frame/frame.h	56;"	d
+FUNCODE_WR_SINGLE_REGISTER	modbcd/frame/rtu/mbcdrtu.h	56;"	d
+ILLSTATE	modbcd/modbuscd.h	40;"	e	enum:MBcdErrCode
+INVAL	modbcd/modbuscd.h	36;"	e	enum:MBcdErrCode
+IO	modbcd/modbuscd.h	39;"	e	enum:MBcdErrCode
+LRC	modbcd/frame/ascii/mbascii.c	171;"	f	file:
+LRC	modbcd/frame/frame.c	171;"	f	file:
+LRC	modbcd/frame/rtu/mbcdrtu.c	171;"	f	file:
+MBCD_CFG_CRC_P1	modbcd/config.h	50;"	d
+MBCD_CFG_CRC_P2	modbcd/config.h	51;"	d
+MBCD_CFG_CRC_P3	modbcd/config.h	52;"	d
+MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	32;"	v	file:
+MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	56;"	v	file:
+MBCD_CFG_MOD_ASCII_EN	modbcd/config.h	63;"	d
+MBCD_CFG_MOD_RTU_EN	modbcd/config.h	64;"	d
+MBCD_CFG_MOD_TCP_EN	modbcd/config.h	65;"	d
+MBCD_CFG_MS_SEL	modbcd/config.h	61;"	d
+MB_ADDRESS_BROADCAST	modbcd/frame/frame.h	182;"	d
+MB_ADDRESS_MAX	modbcd/frame/frame.h	184;"	d
+MB_ADDRESS_MIN	modbcd/frame/frame.h	183;"	d
+MB_EX_ACKNOWLEDGE	modbcd/frame/frame.h	209;"	e	enum:__anon1
+MB_EX_GATEWAY_PATH_FAILED	modbcd/frame/frame.h	212;"	e	enum:__anon1
+MB_EX_GATEWAY_TGT_FAILED	modbcd/frame/frame.h	213;"	e	enum:__anon1
+MB_EX_ILLEGAL_DATA_ADDRESS	modbcd/frame/frame.h	206;"	e	enum:__anon1
+MB_EX_ILLEGAL_DATA_VALUE	modbcd/frame/frame.h	207;"	e	enum:__anon1
+MB_EX_ILLEGAL_FUNCTION	modbcd/frame/frame.h	205;"	e	enum:__anon1
+MB_EX_MEMORY_PARITY_ERROR	modbcd/frame/frame.h	211;"	e	enum:__anon1
+MB_EX_NONE	modbcd/frame/frame.h	204;"	e	enum:__anon1
+MB_EX_SLAVE_BUSY	modbcd/frame/frame.h	210;"	e	enum:__anon1
+MB_EX_SLAVE_DEVICE_FAILURE	modbcd/frame/frame.h	208;"	e	enum:__anon1
+MB_FUNC_DIAG_DIAGNOSTIC	modbcd/frame/frame.h	196;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_CNT	modbcd/frame/frame.h	197;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_LOG	modbcd/frame/frame.h	198;"	d
+MB_FUNC_DIAG_READ_EXCEPTION	modbcd/frame/frame.h	195;"	d
+MB_FUNC_ERROR	modbcd/frame/frame.h	200;"	d
+MB_FUNC_NONE	modbcd/frame/frame.h	185;"	d
+MB_FUNC_OTHER_REPORT_SLAVEID	modbcd/frame/frame.h	199;"	d
+MB_FUNC_READWRITE_MULTIPLE_REGISTERS	modbcd/frame/frame.h	194;"	d
+MB_FUNC_READ_COILS	modbcd/frame/frame.h	186;"	d
+MB_FUNC_READ_DISCRETE_INPUTS	modbcd/frame/frame.h	187;"	d
+MB_FUNC_READ_HOLDING_REGISTER	modbcd/frame/frame.h	190;"	d
+MB_FUNC_READ_INPUT_REGISTER	modbcd/frame/frame.h	191;"	d
+MB_FUNC_WRITE_MULTIPLE_COILS	modbcd/frame/frame.h	189;"	d
+MB_FUNC_WRITE_MULTIPLE_REGISTERS	modbcd/frame/frame.h	193;"	d
+MB_FUNC_WRITE_REGISTER	modbcd/frame/frame.h	192;"	d
+MB_FUNC_WRITE_SINGLE_COIL	modbcd/frame/frame.h	188;"	d
+MB_PAR_EVEN	modbcd/modbuscd.h	50;"	e	enum:__anon3
+MB_PAR_NONE	modbcd/modbuscd.h	48;"	e	enum:__anon3
+MB_PAR_ODD	modbcd/modbuscd.h	49;"	e	enum:__anon3
+MBcdErrCode	modbcd/modbuscd.h	33;"	g
+MBcdMode	modbcd/modbuscd.h	31;"	g
+NAMEDIR	tst/Makefile	4;"	m
+NOERR	modbcd/modbuscd.h	34;"	e	enum:MBcdErrCode
+NOREG	modbcd/modbuscd.h	35;"	e	enum:MBcdErrCode
+NORES	modbcd/modbuscd.h	38;"	e	enum:MBcdErrCode
+OBJS	modbcd/Makefile	8;"	m
+OBJS	modbcd/comm/Makefile	8;"	m
+OBJS	modbcd/frame/Makefile	8;"	m
+OBJS	modbcd/frame/rtu/Makefile	8;"	m
+OBJS	modbcd/util/Makefile	8;"	m
+OBJS	tst/Makefile	2;"	m
+PORTERR	modbcd/modbuscd.h	37;"	e	enum:MBcdErrCode
+PROJECT	Makefile	8;"	m
+RTU	modbcd/modbuscd.h	31;"	e	enum:MBcdMode
+SUBDIRS	Makefile	21;"	m
+SUBDIRS	modbcd/Makefile	10;"	m
+SUBDIRS	modbcd/comm/Makefile	9;"	m
+SUBDIRS	modbcd/frame/Makefile	9;"	m
+SUBDIRS	modbcd/frame/rtu/Makefile	9;"	m
+SUBDIRS	modbcd/util/Makefile	9;"	m
+SUBDIRS	tst/Makefile	3;"	m
+TARGET	Makefile	7;"	m
+TCP	modbcd/modbuscd.h	31;"	e	enum:MBcdMode
+TIMEDOUT	modbcd/modbuscd.h	41;"	e	enum:MBcdErrCode
+UINT16	modbcd/config.h	33;"	d
+__MBCD_MODBUSCD_H__	modbcd/modbuscd.h	10;"	d
+__MODBCD_CONFIG_H__	modbcd/config.h	10;"	d
+__MODBCD_MBCRC_H__	modbcd/util/mbcrc.h	11;"	d
+__MODBUSCD_FRAME_H__	modbcd/frame/ascii/mbascii.h	11;"	d
+__MODBUSCD_FRAME_H__	modbcd/frame/frame.h	11;"	d
+__MODBUSCD_FRAME_H__	modbcd/frame/rtu/mbcdrtu.h	11;"	d
+__MODEBUS_COMM_H__	modbcd/comm/comm.h	11;"	d
+address	modbcd/frame/ascii/mbascii.h	109;"	m	struct:mbascii_rtu_chk
+address	modbcd/frame/ascii/mbascii.h	142;"	m	struct:mbascii_asc_chk
+address	modbcd/frame/frame.h	108;"	m	struct:frame_rtu_chk
+address	modbcd/frame/frame.h	141;"	m	struct:frame_asc_chk
+address	modbcd/frame/rtu/mbcdrtu.h	108;"	m	struct:frame_rtu_chk
+address	modbcd/frame/rtu/mbcdrtu.h	141;"	m	struct:frame_asc_chk
+chk	modbcd/frame/ascii/mbascii.h	126;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_chk
+chk	modbcd/frame/ascii/mbascii.h	159;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_chk
+chk	modbcd/frame/frame.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
+chk	modbcd/frame/frame.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
+chk	modbcd/frame/rtu/mbcdrtu.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
+chk	modbcd/frame/rtu/mbcdrtu.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
+crc	modbcd/frame/ascii/mbascii.h	127;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_crc
+crc	modbcd/frame/frame.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
+crc	modbcd/frame/rtu/mbcdrtu.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
+crcHi	modbcd/frame/ascii/mbascii.h	119;"	m	struct:mbascii_rtu_crc
+crcHi	modbcd/frame/frame.h	118;"	m	struct:frame_rtu_crc
+crcHi	modbcd/frame/rtu/mbcdrtu.h	118;"	m	struct:frame_rtu_crc
+crcLo	modbcd/frame/ascii/mbascii.h	118;"	m	struct:mbascii_rtu_crc
+crcLo	modbcd/frame/frame.h	117;"	m	struct:frame_rtu_crc
+crcLo	modbcd/frame/rtu/mbcdrtu.h	117;"	m	struct:frame_rtu_crc
+data	modbcd/frame/ascii/mbascii.h	111;"	m	struct:mbascii_rtu_chk
+data	modbcd/frame/ascii/mbascii.h	144;"	m	struct:mbascii_asc_chk
+data	modbcd/frame/frame.h	110;"	m	struct:frame_rtu_chk
+data	modbcd/frame/frame.h	143;"	m	struct:frame_asc_chk
+data	modbcd/frame/rtu/mbcdrtu.h	110;"	m	struct:frame_rtu_chk
+data	modbcd/frame/rtu/mbcdrtu.h	143;"	m	struct:frame_asc_chk
+eMBException	modbcd/frame/frame.h	214;"	t	typeref:enum:__anon1
+eMBParity	modbcd/modbuscd.h	51;"	t	typeref:enum:__anon3
+frame_asc_adu	modbcd/frame/frame.h	157;"	s
+frame_asc_adu	modbcd/frame/rtu/mbcdrtu.h	157;"	s
+frame_asc_chk	modbcd/frame/frame.h	140;"	s
+frame_asc_chk	modbcd/frame/rtu/mbcdrtu.h	140;"	s
+frame_asc_lrc	modbcd/frame/frame.h	149;"	s
+frame_asc_lrc	modbcd/frame/rtu/mbcdrtu.h	149;"	s
+frame_asc_set	modbcd/frame/ascii/mbascii.c	117;"	f
+frame_asc_set	modbcd/frame/frame.c	117;"	f
+frame_asc_set	modbcd/frame/rtu/mbcdrtu.c	117;"	f
+frame_rtu_adu	modbcd/frame/frame.h	124;"	s
+frame_rtu_adu	modbcd/frame/rtu/mbcdrtu.h	124;"	s
+frame_rtu_chk	modbcd/frame/frame.h	107;"	s
+frame_rtu_chk	modbcd/frame/rtu/mbcdrtu.h	107;"	s
+frame_rtu_crc	modbcd/frame/frame.h	116;"	s
+frame_rtu_crc	modbcd/frame/rtu/mbcdrtu.h	116;"	s
+frame_rtu_set	modbcd/frame/ascii/mbascii.c	97;"	f
+frame_rtu_set	modbcd/frame/frame.c	97;"	f
+frame_rtu_set	modbcd/frame/rtu/mbcdrtu.c	97;"	f
+funCode	modbcd/frame/ascii/mbascii.h	110;"	m	struct:mbascii_rtu_chk
+funCode	modbcd/frame/ascii/mbascii.h	143;"	m	struct:mbascii_asc_chk
+funCode	modbcd/frame/frame.h	109;"	m	struct:frame_rtu_chk
+funCode	modbcd/frame/frame.h	142;"	m	struct:frame_asc_chk
+funCode	modbcd/frame/rtu/mbcdrtu.h	109;"	m	struct:frame_rtu_chk
+funCode	modbcd/frame/rtu/mbcdrtu.h	142;"	m	struct:frame_asc_chk
+lrc	modbcd/frame/ascii/mbascii.h	160;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_lrc
+lrc	modbcd/frame/frame.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
+lrc	modbcd/frame/rtu/mbcdrtu.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
+lrcHi	modbcd/frame/ascii/mbascii.h	151;"	m	struct:mbascii_asc_lrc
+lrcHi	modbcd/frame/frame.h	150;"	m	struct:frame_asc_lrc
+lrcHi	modbcd/frame/rtu/mbcdrtu.h	150;"	m	struct:frame_asc_lrc
+lrcLo	modbcd/frame/ascii/mbascii.h	152;"	m	struct:mbascii_asc_lrc
+lrcLo	modbcd/frame/frame.h	151;"	m	struct:frame_asc_lrc
+lrcLo	modbcd/frame/rtu/mbcdrtu.h	151;"	m	struct:frame_asc_lrc
+main	modbcd/comm/comm.c	50;"	f
+main	modbcd/frame/ascii/mbascii.c	187;"	f
+main	modbcd/frame/frame.c	187;"	f
+main	modbcd/frame/rtu/mbcdrtu.c	187;"	f
+main	modbcd/util/mbcrc.c	110;"	f
+main	tst/crc.c	3;"	f
+mbascii_asc_adu	modbcd/frame/ascii/mbascii.h	158;"	s
+mbascii_asc_chk	modbcd/frame/ascii/mbascii.h	141;"	s
+mbascii_asc_lrc	modbcd/frame/ascii/mbascii.h	150;"	s
+mbascii_rtu_adu	modbcd/frame/ascii/mbascii.h	125;"	s
+mbascii_rtu_chk	modbcd/frame/ascii/mbascii.h	108;"	s
+mbascii_rtu_crc	modbcd/frame/ascii/mbascii.h	117;"	s
+mbcrc	modbcd/util/mbcrc.c	94;"	f
+pxHandler	modbcd/frame/frame.h	221;"	m	struct:__anon2
+pxMBFunctionHandler	modbcd/frame/frame.h	216;"	t
+ucFunctionCode	modbcd/frame/frame.h	220;"	m	struct:__anon2
+xMBFunctionHandler	modbcd/frame/frame.h	222;"	t	typeref:struct:__anon2

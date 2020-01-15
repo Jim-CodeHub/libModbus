@@ -1,3 +1,9 @@
+# Modbus Client(Master) & Server(Slave) library for MCU with C language 
+
+## Feature
+
+Mode : ASCII / RTU / TCP (ONLY WITH POSIX API Wich relay on socketcd library)
+Comm : EIA/TIA-232 or EIA/TIA-485 
 
 # Knowledge Point (protocol layer: OSI/7 and OSI/2 OSI/1)
 	---
