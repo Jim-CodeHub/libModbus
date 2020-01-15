@@ -1,14 +1,13 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbrtu.h
- * @brief	packetize and depacketize Modbus RTU frame
+ * @file	trans.h
  *
  * Copyright (c) 2019-2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
 
-#ifndef __MODBCD_MBRTU_H__
-#define __MODBCD_MBRTU_H__
+#ifndef __MODBCD_TRANS_H__
+#define __MODBCD_TRANS_H__
 
 
 #if defined(__cplusplus)
@@ -18,28 +17,11 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBRTU INCLUDES 
+ *												TRANS INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <string.h>
-#include <modbcd/util/mbcrc.h>
 
-
-/*------------------------------------------------------------------------------------------------------------------
- * 
- *												MBRTU DATABLOCK 
- *
- *------------------------------------------------------------------------------------------------------------------
-*/
-struct mb_rtu_frame{
-	unsigned char	address;
-	unsigned char	funCode;
-	unsigned char  *pData  ;
-	UINT16			crc	   ;
-
-	unsigned short  _size  ; /**< pData size */
-};
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -47,8 +29,7 @@ struct mb_rtu_frame{
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-struct mb_rtu_frame mbrtu_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size);
-struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size);
+void hexToAscii(unsigned char Hex, char ascii[2]);
 
 
 #if defined(__cplusplus)
@@ -56,6 +37,6 @@ struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size);
 #endif
 
 
-#endif /*__MODBCD_MBRTU_H__*/
+#endif /*__MODBCD_TRANS_H__*/
 
 

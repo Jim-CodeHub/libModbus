@@ -1,5 +1,5 @@
 
-OBJS    = crc lrc
+OBJS    = crc lrc frame
 SUBDIRS = 
 NAMEDIR = $(shell dirname `pwd`)
  
