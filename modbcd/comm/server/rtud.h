@@ -1,9 +1,9 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	asciid.h
- * @brief	Modbus ASCII mode server/slave handler 
+ * @file	rtud.h
+ * @brief	Modbus RTU mode server/slave handler 
  * @note	Bit per Byte : 
  *					1     start  bit
- *					7	  data   bit, least significant bit (LSB) sent first
+ *					8	  data   bit, least significant bit (LSB) sent first
  *					1 / 0 parity bit (default EVEN)
  *					1 / 2 stop   bit
  *
@@ -12,8 +12,8 @@
 */
 
 
-#ifndef __MODBCD_ASCIID_H__
-#define __MODBCD_ASCIID_H__
+#ifndef __MODBCD_RTUD_H__
+#define __MODBCD_RTUD_H__
 
 
 #if defined(__cplusplus)
@@ -23,7 +23,7 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID INCLUDES 
+ *												RTUD INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
@@ -31,36 +31,35 @@ extern "C" {
 #include <modbcd/config.h>
 
 
-#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0)) //Slave and ascii mode enabled
+#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_RTU_EN > 0)) //Slave and ascii mode enabled
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID SHORT ALIAS 
+ *												RTUD SHORT ALIAS 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  ASCIID_STATE_0							0
-#define  ASCIID_STATE_1							1
-#define  ASCIID_STATE_2							2
-#define  ASCIID_STATE_3							3
-#define  ASCIID_STATE_4							4
-#define  ASCIID_STATE_IDLE					    255	
+#define  RTUD_STATE_0							0
+#define  RTUD_STATE_1							1
+#define  RTUD_STATE_2							2
+#define  RTUD_STATE_3							3
+#define  RTUD_STATE_4							4
+#define  RTUD_STATE_IDLE					    255	
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID DATABLOCK 
+ *												RTUD DATABLOCK 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
 	
-struct asciid_state; /**< Forward declaration */
+struct rtud_state; /**< Forward declaration */
 
 typedef unsigned char (*pFun_recv)(void); 
-typedef void		  (*pFun_send)(unsigned char); 
-typedef void		  (*pFun_exec)(const struct asciid_state *); 
+typedef void		  (*pFun_exec)(const struct rtud_state *); 
 
-struct asciid_state{
+struct rtud_state{
 	unsigned char   state;
 	unsigned char  *pInxt;
 	unsigned char  *pInit;
@@ -68,7 +67,6 @@ struct asciid_state{
 	unsigned short  _size;
 
 	pFun_recv serial_recv;
-	pFun_send serial_send;
 	pFun_exec serial_exec;
 };
 
@@ -79,18 +77,17 @@ struct asciid_state{
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-void asciid_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec);
-void asciid_recv(void);
-void asciid_emit(unsigned char *data, unsigned short size);
+void rtud_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_exec exec);
+void rtud_recv(void);
 
 
-#endif //((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0))
+#endif //((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_RTU_EN > 0))
 
 #if defined(__cplusplus)
 }
 #endif
 
 
-#endif /*__MODBCD_ASCIID_H__*/
+#endif /*__MODBCD_RTUD_H__*/
 
 

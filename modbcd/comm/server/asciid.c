@@ -4,7 +4,7 @@
  * @note	Bit per Byte : 
  *					1     start  bit
  *					7	  data   bit, least significant bit (LSB) sent first
- *					1 / 0 parity bit
+ *					1 / 0 parity bit (default EVEN)
  *					1 / 2 stop   bit
  *
  * Copyright (c) 2019-2019 Jim Zhang 303683086@qq.com
@@ -14,7 +14,7 @@
 #include <modbcd/comm/server/asciid.h>
 
 
-#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MODE_ASCII_EN > 0)) //Slave and ascii mode enabled
+#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0)) //Slave and ascii mode enabled
 
 /*
 --------------------------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ static struct asciid_state stat_s = {.state = ASCIID_STATE_IDLE};
  *					b). Execute action
  *					c). Do normal/exception response (asciid_emit() can be called)
  **/
-void asciid_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_exec exec)
+void asciid_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec)
 {
 	stat_s.pInit = buff;
 	stat_s.pInxt = buff;
@@ -57,6 +57,7 @@ void asciid_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_
 	stat_s._size = size;
 
 	stat_s.serial_recv = recv;
+	stat_s.serial_send = send;
 	stat_s.serial_exec = exec;
 
 	return;
@@ -119,5 +120,24 @@ void asciid_recv(void)
 	return;
 }
 
-#endif //((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MODE_ASCII_EN > 0))
+/**
+ *	@brief	    Response Modbus data to client
+ *	@param[in]  None 
+ *	@param[out] None
+ *	@return		None	
+ *	@note	    1. The data SHOULD HAD BE setted by ascii frame function		
+ *				2. ***Only loop mode is supported
+ **/
+void asciid_emit(unsigned char *data, unsigned short size)
+{
+	for (; size != 0; size--)
+	{
+		stat_s.serial_send(*data); data++;
+	}
+
+	return;
+}
+
+
+#endif //((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0))
 

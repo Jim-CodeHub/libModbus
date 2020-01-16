@@ -4,7 +4,7 @@
  * @note	Bit per Byte : 
  *					1     start  bit
  *					7	  data   bit, least significant bit (LSB) sent first
- *					1 / 0 parity bit
+ *					1 / 0 parity bit (default EVEN)
  *					1 / 2 stop   bit
  *
  * Copyright (c) 2019-2020 Jim Zhang 303683086@qq.com
@@ -31,7 +31,7 @@ extern "C" {
 #include <modbcd/config.h>
 
 
-#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MODE_ASCII_EN > 0)) //Master and ascii mode enabled
+#if  ((MBCD_CFG_MS_SEL == 1) && (MBCD_CFG_MOD_ASCII_EN > 0)) //Master and ascii mode enabled
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -57,6 +57,7 @@ extern "C" {
 struct asciic_state; /**< Forward declaration */
 
 typedef unsigned char (*pFun_recv)(void); 
+typedef void		  (*pFun_send)(unsigned char); 
 typedef void		  (*pFun_exec)(const struct asciic_state *); 
 
 struct asciic_state{
@@ -67,6 +68,7 @@ struct asciic_state{
 	unsigned short  _size;
 
 	pFun_recv serial_recv;
+	pFun_send serial_send;
 	pFun_exec serial_exec;
 };
 
@@ -77,11 +79,12 @@ struct asciic_state{
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-void asciic_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_exec exec);
+void asciic_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec);
 void asciic_recv(void);
+void asciic_emit(unsigned char *data, unsigned short size);
 
 
-#endif //((MBCD_CFG_MS_SEL == 1) && (MBCD_CFG_MODE_ASCII_EN > 0))
+#endif //((MBCD_CFG_MS_SEL == 1) && (MBCD_CFG_MOD_ASCII_EN > 0))
 
 #if defined(__cplusplus)
 }
