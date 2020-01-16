@@ -26,6 +26,8 @@ extern "C" {
 #include <modbcd/util/mbcrc.h>
 
 
+#if  MBCD_CFG_MOD_RTU_EN  >  0 
+
 /*------------------------------------------------------------------------------------------------------------------
  * 
  *												MBRTU DATABLOCK 
@@ -49,6 +51,9 @@ struct mb_rtu_frame{
 */
 struct mb_rtu_frame mbrtu_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size);
 struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size);
+
+
+#endif//  MBCD_CFG_MOD_RTU_EN  >  0 
 
 
 #if defined(__cplusplus)

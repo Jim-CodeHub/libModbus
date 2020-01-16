@@ -6,12 +6,18 @@ int main(void)
 {
 #if 0 //RTU Frame
 
-	unsigned char data[] = {1, 2, 3, 4};
+	unsigned char data[4] = {1, 2, 3, 4};
 
 	struct mb_rtu_frame frame = mbrtu_set_frame(0X01, 0X02, data, sizeof(data));
 
 	printf("address = %#X\n, funCode = %#X\n, crc = %#X\n, size = %d\n",
 			frame.address,   frame.funCode,   frame.crc,   frame._size);
+
+	for (unsigned char i = 0; i < sizeof(data); i++)
+	{
+		printf("%d ", data[i]);
+	}
+	putchar('\n');
 
 	puts("---------------------------------------------------");
 
@@ -24,13 +30,19 @@ int main(void)
 
 #else //ASCII Frame
 
-	unsigned char data[] = {1, 2, 3, 4};
+	unsigned char data[8] = {1, 2, 3, 4};
 
 	struct mb_ascii_frame_send frame = mbascii_set_frame(0X01, 0X02, data, sizeof(data));
 
 	printf("address[0] = %d\n, address[1] = %d\n, funCode[0] = %d\n, funCode[1] = %d\n, lrc[0] = %d\n, lrc[1] = %d\n , size = %d\n", 
 							
 			frame.address[0], frame.address[1], frame.funCode[0], frame.funCode[1], frame.lrc[0], frame.lrc[1], frame._size);
+
+	for (unsigned char i = 0; i < frame._size; i++)
+	{
+		printf("%d ", data[i]);
+	}
+	putchar('\n');
 
 	puts("---------------------------------------------------");
 

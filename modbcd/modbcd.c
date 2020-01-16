@@ -1,12 +1,11 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	comm.c
- * @brief   Modbus client and server communication
+ * @file	modbcd.c
  *
  * Copyright (c) 2019-2019 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
-#include "comm.h"
+#include <modbcd/modbcd.h>
 
 
 /*
@@ -21,31 +20,36 @@
 /*
 --------------------------------------------------------------------------------------------------------------------
 *
-*			                                    DATA DEFINATION 
-*
---------------------------------------------------------------------------------------------------------------------
-*/
-
-
-
-/*
---------------------------------------------------------------------------------------------------------------------
-*
 *			                                  FUNCTIONS IMPLEMENT
 *
 --------------------------------------------------------------------------------------------------------------------
 */
 
-
 /**
- *	@brief	    Modbus CRC calculation 
- *	@param[in]  puchMsg	  - a pointer to the message buffer containing binary data to be used for generating the CRC
- *	@param[in]	usDataLen - the quantity of bytes in the message buffer
- *	@param[out] None
- *	@return		CRC value	
- *	@note		Generating polynomial = 1 + x^2 + x^15 + x^16	
+ *	@brief	    
+ *	@param[in]  
+ *	@param[out]
+ *	@return		
+ *	@note		
  **/
 
+#if 0 //Modbus application layer define
 
-int main(void){};
+	mbcd_req_pdu(function_code, request_data)
+					1Byte			nByte
+	mbcd_rsp_pdu(function_code, response_data)
+					1Byte			nByte
+
+	mbcd_excep_rsp_pdu(exception-function_code, exception_code);
+						---------------------
+						1Byte:function_code + 0x08		
+												--------------
+												1Byte:01/02/03/04/05/06/08/0A/0B
+	关于响应：
+		1。 服务器连接正常，并且可以处理请求，则正常响应
+		2。 服务器连接错误，则无响应，客户端做超时处理
+		3。 服务器连接正常，但奇偶校验错误/LRC/CRC/。。等错误，无响应，客户端做超时处理
+		4。 服务器连接正常，但无法处理请求（如访问了一个不存在的寄存器,或不支持功能码等），则返回异常
+#endif
+
 

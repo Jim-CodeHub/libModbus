@@ -6,441 +6,98 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 --PREFIX	Makefile	12;"	m
 -exclude	Makefile	56;"	m
-ASCII	tmp/modbuscd.h	31;"	e	enum:MBcdMode
-CRC16	tmp/ascii/mbascii.c	146;"	f	file:
-CRC16	tmp/frame.c	146;"	f	file:
-CRC16	tmp/frame/ascii/mbascii.c	146;"	f	file:
-CRC16	tmp/frame/frame.c	146;"	f	file:
-CRC16	tmp/frame/rtu/mbcdrtu.c	146;"	f	file:
-CRC16	tmp/rtu/mbcdrtu.c	146;"	f	file:
-CRC_ARR_HI	tmp/ascii/mbascii.h	36;"	d
-CRC_ARR_HI	tmp/frame.h	35;"	d
-CRC_ARR_HI	tmp/frame/ascii/mbascii.h	36;"	d
-CRC_ARR_HI	tmp/frame/frame.h	35;"	d
-CRC_ARR_HI	tmp/frame/rtu/mbcdrtu.h	35;"	d
-CRC_ARR_HI	tmp/rtu/mbcdrtu.h	35;"	d
-CRC_ARR_LO	tmp/ascii/mbascii.h	37;"	d
-CRC_ARR_LO	tmp/frame.h	36;"	d
-CRC_ARR_LO	tmp/frame/ascii/mbascii.h	37;"	d
-CRC_ARR_LO	tmp/frame/frame.h	36;"	d
-CRC_ARR_LO	tmp/frame/rtu/mbcdrtu.h	36;"	d
-CRC_ARR_LO	tmp/rtu/mbcdrtu.h	36;"	d
-CRC_FLS_P1	tmp/ascii/mbascii.h	39;"	d
-CRC_FLS_P1	tmp/frame.h	38;"	d
-CRC_FLS_P1	tmp/frame/ascii/mbascii.h	39;"	d
-CRC_FLS_P1	tmp/frame/frame.h	38;"	d
-CRC_FLS_P1	tmp/frame/rtu/mbcdrtu.h	38;"	d
-CRC_FLS_P1	tmp/rtu/mbcdrtu.h	38;"	d
-CRC_FLS_P2	tmp/ascii/mbascii.h	40;"	d
-CRC_FLS_P2	tmp/frame.h	39;"	d
-CRC_FLS_P2	tmp/frame/ascii/mbascii.h	40;"	d
-CRC_FLS_P2	tmp/frame/frame.h	39;"	d
-CRC_FLS_P2	tmp/frame/rtu/mbcdrtu.h	39;"	d
-CRC_FLS_P2	tmp/rtu/mbcdrtu.h	39;"	d
-CRC_FLS_P3	tmp/ascii/mbascii.c	34;"	v	file:
-CRC_FLS_P3	tmp/ascii/mbascii.c	58;"	v	file:
-CRC_FLS_P3	tmp/ascii/mbascii.h	41;"	d
-CRC_FLS_P3	tmp/frame.c	34;"	v	file:
-CRC_FLS_P3	tmp/frame.c	58;"	v	file:
-CRC_FLS_P3	tmp/frame.h	40;"	d
-CRC_FLS_P3	tmp/frame/ascii/mbascii.c	34;"	v	file:
-CRC_FLS_P3	tmp/frame/ascii/mbascii.c	58;"	v	file:
-CRC_FLS_P3	tmp/frame/ascii/mbascii.h	41;"	d
-CRC_FLS_P3	tmp/frame/frame.c	34;"	v	file:
-CRC_FLS_P3	tmp/frame/frame.c	58;"	v	file:
-CRC_FLS_P3	tmp/frame/frame.h	40;"	d
-CRC_FLS_P3	tmp/frame/rtu/mbcdrtu.c	34;"	v	file:
-CRC_FLS_P3	tmp/frame/rtu/mbcdrtu.c	58;"	v	file:
-CRC_FLS_P3	tmp/frame/rtu/mbcdrtu.h	40;"	d
-CRC_FLS_P3	tmp/rtu/mbcdrtu.c	34;"	v	file:
-CRC_FLS_P3	tmp/rtu/mbcdrtu.c	58;"	v	file:
-CRC_FLS_P3	tmp/rtu/mbcdrtu.h	40;"	d
+ASCIID_STATE_0	modbcd/comm/server/asciid.h	35;"	d
+ASCIID_STATE_1	modbcd/comm/server/asciid.h	36;"	d
+ASCIID_STATE_2	modbcd/comm/server/asciid.h	37;"	d
+ASCIID_STATE_3	modbcd/comm/server/asciid.h	38;"	d
+ASCIID_STATE_4	modbcd/comm/server/asciid.h	39;"	d
+ASCIID_STATE_IDLE	modbcd/comm/server/asciid.h	40;"	d
 CXX	Makefile	10;"	m
 CXXFLAGS	Makefile	14;"	m
-FUNCODE_CANOPEN_REFERENCE	tmp/ascii/mbascii.h	95;"	d
-FUNCODE_CANOPEN_REFERENCE	tmp/frame.h	94;"	d
-FUNCODE_CANOPEN_REFERENCE	tmp/frame/ascii/mbascii.h	95;"	d
-FUNCODE_CANOPEN_REFERENCE	tmp/frame/frame.h	94;"	d
-FUNCODE_CANOPEN_REFERENCE	tmp/frame/rtu/mbcdrtu.h	94;"	d
-FUNCODE_CANOPEN_REFERENCE	tmp/rtu/mbcdrtu.h	94;"	d
-FUNCODE_DIAGNOSTIC	tmp/ascii/mbascii.h	67;"	d
-FUNCODE_DIAGNOSTIC	tmp/frame.h	66;"	d
-FUNCODE_DIAGNOSTIC	tmp/frame/ascii/mbascii.h	67;"	d
-FUNCODE_DIAGNOSTIC	tmp/frame/frame.h	66;"	d
-FUNCODE_DIAGNOSTIC	tmp/frame/rtu/mbcdrtu.h	66;"	d
-FUNCODE_DIAGNOSTIC	tmp/rtu/mbcdrtu.h	66;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/ascii/mbascii.h	90;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/frame.h	89;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/frame/ascii/mbascii.h	90;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/frame/frame.h	89;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/frame/rtu/mbcdrtu.h	89;"	d
-FUNCODE_ENCAP_INTERFACE_TRANSPORT	tmp/rtu/mbcdrtu.h	89;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/ascii/mbascii.h	85;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/frame.h	84;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/frame/ascii/mbascii.h	85;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/frame/frame.h	84;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/frame/rtu/mbcdrtu.h	84;"	d
-FUNCODE_GET_COM_EVENT_COUNTER	tmp/rtu/mbcdrtu.h	84;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/ascii/mbascii.h	86;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/frame.h	85;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/frame/ascii/mbascii.h	86;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/frame/frame.h	85;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/frame/rtu/mbcdrtu.h	85;"	d
-FUNCODE_GET_COM_EVENT_LOG	tmp/rtu/mbcdrtu.h	85;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/ascii/mbascii.h	60;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/frame.h	59;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/frame/ascii/mbascii.h	60;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/frame/frame.h	59;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/frame/rtu/mbcdrtu.h	59;"	d
-FUNCODE_MASK_WRITE_REGISTER	tmp/rtu/mbcdrtu.h	59;"	d
-FUNCODE_RD_COILS	tmp/ascii/mbascii.h	51;"	d
-FUNCODE_RD_COILS	tmp/frame.h	50;"	d
-FUNCODE_RD_COILS	tmp/frame/ascii/mbascii.h	51;"	d
-FUNCODE_RD_COILS	tmp/frame/frame.h	50;"	d
-FUNCODE_RD_COILS	tmp/frame/rtu/mbcdrtu.h	50;"	d
-FUNCODE_RD_COILS	tmp/rtu/mbcdrtu.h	50;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/ascii/mbascii.h	88;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/frame.h	87;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/frame/ascii/mbascii.h	88;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/frame/frame.h	87;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/frame/rtu/mbcdrtu.h	87;"	d
-FUNCODE_RD_DEVICE_IDENTIFICATION	tmp/rtu/mbcdrtu.h	87;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/ascii/mbascii.h	50;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/frame.h	49;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/frame/ascii/mbascii.h	50;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/frame/frame.h	49;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/frame/rtu/mbcdrtu.h	49;"	d
-FUNCODE_RD_DISCRETE_INPUT	tmp/rtu/mbcdrtu.h	49;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/ascii/mbascii.h	66;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/frame.h	65;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/frame/ascii/mbascii.h	66;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/frame/frame.h	65;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/frame/rtu/mbcdrtu.h	65;"	d
-FUNCODE_RD_EXCEPTION_STATUS	tmp/rtu/mbcdrtu.h	65;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/ascii/mbascii.h	61;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/frame.h	60;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/frame/ascii/mbascii.h	61;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/frame/frame.h	60;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/frame/rtu/mbcdrtu.h	60;"	d
-FUNCODE_RD_FIFO_QUEUE	tmp/rtu/mbcdrtu.h	60;"	d
-FUNCODE_RD_FILE_RECORD	tmp/ascii/mbascii.h	63;"	d
-FUNCODE_RD_FILE_RECORD	tmp/frame.h	62;"	d
-FUNCODE_RD_FILE_RECORD	tmp/frame/ascii/mbascii.h	63;"	d
-FUNCODE_RD_FILE_RECORD	tmp/frame/frame.h	62;"	d
-FUNCODE_RD_FILE_RECORD	tmp/frame/rtu/mbcdrtu.h	62;"	d
-FUNCODE_RD_FILE_RECORD	tmp/rtu/mbcdrtu.h	62;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/ascii/mbascii.h	56;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/frame.h	55;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/frame/ascii/mbascii.h	56;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/frame/frame.h	55;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/frame/rtu/mbcdrtu.h	55;"	d
-FUNCODE_RD_HOLDING_REGISTERS	tmp/rtu/mbcdrtu.h	55;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/ascii/mbascii.h	55;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/frame.h	54;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/frame/ascii/mbascii.h	55;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/frame/frame.h	54;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/frame/rtu/mbcdrtu.h	54;"	d
-FUNCODE_RD_INPUT_REGISTER	tmp/rtu/mbcdrtu.h	54;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/ascii/mbascii.h	87;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/frame.h	86;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/frame/ascii/mbascii.h	87;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/frame/frame.h	86;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/frame/rtu/mbcdrtu.h	86;"	d
-FUNCODE_REPORT_SERVER_ID	tmp/rtu/mbcdrtu.h	86;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/ascii/mbascii.h	59;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/frame.h	58;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/frame/ascii/mbascii.h	59;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/frame/frame.h	58;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/frame/rtu/mbcdrtu.h	58;"	d
-FUNCODE_RW_MULTIPLE_REGISTERS	tmp/rtu/mbcdrtu.h	58;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/ascii/mbascii.h	92;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/frame.h	91;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/frame/ascii/mbascii.h	92;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/frame/frame.h	91;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/frame/rtu/mbcdrtu.h	91;"	d
-FUNCODE_S2B_CANOPEN_REFER_PDU	tmp/rtu/mbcdrtu.h	91;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/ascii/mbascii.h	93;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/frame.h	92;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/frame/ascii/mbascii.h	93;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/frame/frame.h	92;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/frame/rtu/mbcdrtu.h	92;"	d
-FUNCODE_S2B_RD_DEVICE_ID	tmp/rtu/mbcdrtu.h	92;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/ascii/mbascii.h	72;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/frame.h	71;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/frame/ascii/mbascii.h	72;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/frame/frame.h	71;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/frame/rtu/mbcdrtu.h	71;"	d
-FUNCODE_S8_CH_ASCII_INPUT_DELIMITER	tmp/rtu/mbcdrtu.h	71;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/ascii/mbascii.h	74;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/frame.h	73;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/frame/ascii/mbascii.h	74;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/frame/frame.h	73;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/frame/rtu/mbcdrtu.h	73;"	d
-FUNCODE_S8_CLR_CNT_DIG_REG	tmp/rtu/mbcdrtu.h	73;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/ascii/mbascii.h	83;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/frame.h	82;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/frame/ascii/mbascii.h	83;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/frame/frame.h	82;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/frame/rtu/mbcdrtu.h	82;"	d
-FUNCODE_S8_CLR_OVERRUN_CNT_FLG	tmp/rtu/mbcdrtu.h	82;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/ascii/mbascii.h	73;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/frame.h	72;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/frame/ascii/mbascii.h	73;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/frame/frame.h	72;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/frame/rtu/mbcdrtu.h	72;"	d
-FUNCODE_S8_FORCE_LISTERN_ONLY_MODE	tmp/rtu/mbcdrtu.h	72;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/ascii/mbascii.h	71;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/frame.h	70;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/frame/ascii/mbascii.h	71;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/frame/frame.h	70;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/frame/rtu/mbcdrtu.h	70;"	d
-FUNCODE_S8_RETURN_DIAGNOSTIC_REG	tmp/rtu/mbcdrtu.h	70;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/ascii/mbascii.h	69;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/frame.h	68;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/frame/ascii/mbascii.h	69;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/frame/frame.h	68;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/frame/rtu/mbcdrtu.h	68;"	d
-FUNCODE_S8_RETURN_QUERY_DATA	tmp/rtu/mbcdrtu.h	68;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/ascii/mbascii.h	70;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/frame.h	69;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/frame/ascii/mbascii.h	70;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/frame/frame.h	69;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/frame/rtu/mbcdrtu.h	69;"	d
-FUNCODE_S8_RETURN_RST_COMM_OPT	tmp/rtu/mbcdrtu.h	69;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/ascii/mbascii.h	82;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/frame.h	81;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/frame/ascii/mbascii.h	82;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/frame/frame.h	81;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/frame/rtu/mbcdrtu.h	81;"	d
-FUNCODE_S8_RET_BUS_CHAR_OVERRUN_CNT	tmp/rtu/mbcdrtu.h	81;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/ascii/mbascii.h	76;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/frame.h	75;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/frame/ascii/mbascii.h	76;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/frame/frame.h	75;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/frame/rtu/mbcdrtu.h	75;"	d
-FUNCODE_S8_RET_BUS_COMM_ERR_CNT	tmp/rtu/mbcdrtu.h	75;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/ascii/mbascii.h	77;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/frame.h	76;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/frame/ascii/mbascii.h	77;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/frame/frame.h	76;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/frame/rtu/mbcdrtu.h	76;"	d
-FUNCODE_S8_RET_BUS_EXCEP_ERR_CNT	tmp/rtu/mbcdrtu.h	76;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/ascii/mbascii.h	75;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/frame.h	74;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/frame/ascii/mbascii.h	75;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/frame/frame.h	74;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/frame/rtu/mbcdrtu.h	74;"	d
-FUNCODE_S8_RET_BUS_MSG_CNT	tmp/rtu/mbcdrtu.h	74;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/ascii/mbascii.h	81;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/frame.h	80;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/frame/ascii/mbascii.h	81;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/frame/frame.h	80;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/frame/rtu/mbcdrtu.h	80;"	d
-FUNCODE_S8_RET_SERVER_BUSY_CNT	tmp/rtu/mbcdrtu.h	80;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/ascii/mbascii.h	78;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/frame.h	77;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/frame/ascii/mbascii.h	78;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/frame/frame.h	77;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/frame/rtu/mbcdrtu.h	77;"	d
-FUNCODE_S8_RET_SERVER_MSG_CNT	tmp/rtu/mbcdrtu.h	77;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/ascii/mbascii.h	80;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/frame.h	79;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/frame/ascii/mbascii.h	80;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/frame/frame.h	79;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/frame/rtu/mbcdrtu.h	79;"	d
-FUNCODE_S8_RET_SERVER_NAK_CNT	tmp/rtu/mbcdrtu.h	79;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/ascii/mbascii.h	79;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/frame.h	78;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/frame/ascii/mbascii.h	79;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/frame/frame.h	78;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/frame/rtu/mbcdrtu.h	78;"	d
-FUNCODE_S8_RET_SERVER_NO_RSP_CNT	tmp/rtu/mbcdrtu.h	78;"	d
-FUNCODE_WR_FILE_RECORD	tmp/ascii/mbascii.h	64;"	d
-FUNCODE_WR_FILE_RECORD	tmp/frame.h	63;"	d
-FUNCODE_WR_FILE_RECORD	tmp/frame/ascii/mbascii.h	64;"	d
-FUNCODE_WR_FILE_RECORD	tmp/frame/frame.h	63;"	d
-FUNCODE_WR_FILE_RECORD	tmp/frame/rtu/mbcdrtu.h	63;"	d
-FUNCODE_WR_FILE_RECORD	tmp/rtu/mbcdrtu.h	63;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/ascii/mbascii.h	53;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/frame.h	52;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/frame/ascii/mbascii.h	53;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/frame/frame.h	52;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/frame/rtu/mbcdrtu.h	52;"	d
-FUNCODE_WR_MULTIPLE_COILS	tmp/rtu/mbcdrtu.h	52;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/ascii/mbascii.h	58;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/frame.h	57;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/frame/ascii/mbascii.h	58;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/frame/frame.h	57;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/frame/rtu/mbcdrtu.h	57;"	d
-FUNCODE_WR_MULTIPLE_REGISTERS	tmp/rtu/mbcdrtu.h	57;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/ascii/mbascii.h	52;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/frame.h	51;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/frame/ascii/mbascii.h	52;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/frame/frame.h	51;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/frame/rtu/mbcdrtu.h	51;"	d
-FUNCODE_WR_SINGLE_COIL	tmp/rtu/mbcdrtu.h	51;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/ascii/mbascii.h	57;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/frame.h	56;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/frame/ascii/mbascii.h	57;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/frame/frame.h	56;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/frame/rtu/mbcdrtu.h	56;"	d
-FUNCODE_WR_SINGLE_REGISTER	tmp/rtu/mbcdrtu.h	56;"	d
-ILLSTATE	tmp/modbuscd.h	40;"	e	enum:MBcdErrCode
-INVAL	tmp/modbuscd.h	36;"	e	enum:MBcdErrCode
-IO	tmp/modbuscd.h	39;"	e	enum:MBcdErrCode
-LRC	tmp/ascii/mbascii.c	171;"	f	file:
-LRC	tmp/frame.c	171;"	f	file:
-LRC	tmp/frame/ascii/mbascii.c	171;"	f	file:
-LRC	tmp/frame/frame.c	171;"	f	file:
-LRC	tmp/frame/rtu/mbcdrtu.c	171;"	f	file:
-LRC	tmp/rtu/mbcdrtu.c	171;"	f	file:
+MBCD_ACKNOWLEDGE	modbcd/modbcd.h	42;"	d
+MBCD_CFG_ADDRESS	modbcd/config.h	63;"	d
 MBCD_CFG_CRC_P1	modbcd/config.h	50;"	d
 MBCD_CFG_CRC_P2	modbcd/config.h	51;"	d
 MBCD_CFG_CRC_P3	modbcd/config.h	52;"	d
 MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	32;"	v	file:
 MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	56;"	v	file:
-MBCD_CFG_MOD_ASCII_EN	modbcd/config.h	63;"	d
-MBCD_CFG_MOD_RTU_EN	modbcd/config.h	64;"	d
-MBCD_CFG_MOD_TCP_EN	modbcd/config.h	65;"	d
+MBCD_CFG_MOD_ASCII_EN	modbcd/config.h	65;"	d
+MBCD_CFG_MOD_RTU_EN	modbcd/config.h	66;"	d
+MBCD_CFG_MOD_TCP_EN	modbcd/config.h	67;"	d
 MBCD_CFG_MS_SEL	modbcd/config.h	61;"	d
-MBCD_FCODE_CANOPEN_REFERENCE	modbcd/frame/frame.h	83;"	d
-MBCD_FCODE_CANOPEN_REFER_PDU	modbcd/frame/frame.h	86;"	d
-MBCD_FCODE_CH_ASCII_INPUT_DELIMITER	modbcd/frame/frame.h	66;"	d
-MBCD_FCODE_CLR_CNT_DIG_REG	modbcd/frame/frame.h	68;"	d
-MBCD_FCODE_CLR_OVERRUN_CNT_FLG	modbcd/frame/frame.h	77;"	d
-MBCD_FCODE_DIAGNOSTIC	modbcd/frame/frame.h	56;"	d
-MBCD_FCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/frame.h	80;"	d
-MBCD_FCODE_FORCE_LISTERN_ONLY_MODE	modbcd/frame/frame.h	67;"	d
-MBCD_FCODE_GET_COM_EVENT_COUNTER	modbcd/frame/frame.h	57;"	d
-MBCD_FCODE_GET_COM_EVENT_LOG	modbcd/frame/frame.h	58;"	d
-MBCD_FCODE_MASK_WRITE_REGISTER	modbcd/frame/frame.h	47;"	d
-MBCD_FCODE_RD_COILS	modbcd/frame/frame.h	37;"	d
-MBCD_FCODE_RD_DEVICE_ID	modbcd/frame/frame.h	87;"	d
-MBCD_FCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/frame.h	60;"	d
-MBCD_FCODE_RD_DISCRETE_INPUT	modbcd/frame/frame.h	36;"	d
-MBCD_FCODE_RD_EXCEPTION_STATUS	modbcd/frame/frame.h	55;"	d
-MBCD_FCODE_RD_FIFO_QUEUE	modbcd/frame/frame.h	48;"	d
-MBCD_FCODE_RD_FILE_RECORD	modbcd/frame/frame.h	51;"	d
-MBCD_FCODE_RD_HOLDING_REGISTERS	modbcd/frame/frame.h	43;"	d
-MBCD_FCODE_RD_INPUT_REGISTER	modbcd/frame/frame.h	42;"	d
-MBCD_FCODE_REPORT_SERVER_ID	modbcd/frame/frame.h	59;"	d
-MBCD_FCODE_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/frame.h	76;"	d
-MBCD_FCODE_RET_BUS_COMM_ERR_CNT	modbcd/frame/frame.h	70;"	d
-MBCD_FCODE_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/frame.h	71;"	d
-MBCD_FCODE_RET_BUS_MSG_CNT	modbcd/frame/frame.h	69;"	d
-MBCD_FCODE_RET_DIAGNOSTIC_REG	modbcd/frame/frame.h	65;"	d
-MBCD_FCODE_RET_QUERY_DATA	modbcd/frame/frame.h	63;"	d
-MBCD_FCODE_RET_RST_COMM_OPT	modbcd/frame/frame.h	64;"	d
-MBCD_FCODE_RET_SERVER_BUSY_CNT	modbcd/frame/frame.h	75;"	d
-MBCD_FCODE_RET_SERVER_MSG_CNT	modbcd/frame/frame.h	72;"	d
-MBCD_FCODE_RET_SERVER_NAK_CNT	modbcd/frame/frame.h	74;"	d
-MBCD_FCODE_RET_SERVER_NO_RSP_CNT	modbcd/frame/frame.h	73;"	d
-MBCD_FCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/frame.h	46;"	d
-MBCD_FCODE_WR_FILE_RECORD	modbcd/frame/frame.h	52;"	d
-MBCD_FCODE_WR_MULTIPLE_COILS	modbcd/frame/frame.h	39;"	d
-MBCD_FCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/frame.h	45;"	d
-MBCD_FCODE_WR_SINGLE_COIL	modbcd/frame/frame.h	38;"	d
-MBCD_FCODE_WR_SINGLE_REGISTER	modbcd/frame/frame.h	44;"	d
+MBCD_FCODE_CANOPEN_REFERENCE	modbcd/frame/frame.h	92;"	d
+MBCD_FCODE_CANOPEN_REFER_PDU	modbcd/frame/frame.h	95;"	d
+MBCD_FCODE_CH_ASCII_INPUT_DELIMITER	modbcd/frame/frame.h	75;"	d
+MBCD_FCODE_CLR_CNT_DIG_REG	modbcd/frame/frame.h	77;"	d
+MBCD_FCODE_CLR_OVERRUN_CNT_FLG	modbcd/frame/frame.h	86;"	d
+MBCD_FCODE_DIAGNOSTIC	modbcd/frame/frame.h	65;"	d
+MBCD_FCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/frame.h	89;"	d
+MBCD_FCODE_FORCE_LISTERN_ONLY_MODE	modbcd/frame/frame.h	76;"	d
+MBCD_FCODE_GET_COM_EVENT_COUNTER	modbcd/frame/frame.h	66;"	d
+MBCD_FCODE_GET_COM_EVENT_LOG	modbcd/frame/frame.h	67;"	d
+MBCD_FCODE_MASK_WRITE_REGISTER	modbcd/frame/frame.h	56;"	d
+MBCD_FCODE_RD_COILS	modbcd/frame/frame.h	46;"	d
+MBCD_FCODE_RD_DEVICE_ID	modbcd/frame/frame.h	96;"	d
+MBCD_FCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/frame.h	69;"	d
+MBCD_FCODE_RD_DISCRETE_INPUT	modbcd/frame/frame.h	45;"	d
+MBCD_FCODE_RD_EXCEPTION_STATUS	modbcd/frame/frame.h	64;"	d
+MBCD_FCODE_RD_FIFO_QUEUE	modbcd/frame/frame.h	57;"	d
+MBCD_FCODE_RD_FILE_RECORD	modbcd/frame/frame.h	60;"	d
+MBCD_FCODE_RD_HOLDING_REGISTERS	modbcd/frame/frame.h	52;"	d
+MBCD_FCODE_RD_INPUT_REGISTER	modbcd/frame/frame.h	51;"	d
+MBCD_FCODE_REPORT_SERVER_ID	modbcd/frame/frame.h	68;"	d
+MBCD_FCODE_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/frame.h	85;"	d
+MBCD_FCODE_RET_BUS_COMM_ERR_CNT	modbcd/frame/frame.h	79;"	d
+MBCD_FCODE_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/frame.h	80;"	d
+MBCD_FCODE_RET_BUS_MSG_CNT	modbcd/frame/frame.h	78;"	d
+MBCD_FCODE_RET_DIAGNOSTIC_REG	modbcd/frame/frame.h	74;"	d
+MBCD_FCODE_RET_QUERY_DATA	modbcd/frame/frame.h	72;"	d
+MBCD_FCODE_RET_RST_COMM_OPT	modbcd/frame/frame.h	73;"	d
+MBCD_FCODE_RET_SERVER_BUSY_CNT	modbcd/frame/frame.h	84;"	d
+MBCD_FCODE_RET_SERVER_MSG_CNT	modbcd/frame/frame.h	81;"	d
+MBCD_FCODE_RET_SERVER_NAK_CNT	modbcd/frame/frame.h	83;"	d
+MBCD_FCODE_RET_SERVER_NO_RSP_CNT	modbcd/frame/frame.h	82;"	d
+MBCD_FCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/frame.h	55;"	d
+MBCD_FCODE_WR_FILE_RECORD	modbcd/frame/frame.h	61;"	d
+MBCD_FCODE_WR_MULTIPLE_COILS	modbcd/frame/frame.h	48;"	d
+MBCD_FCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/frame.h	54;"	d
+MBCD_FCODE_WR_SINGLE_COIL	modbcd/frame/frame.h	47;"	d
+MBCD_FCODE_WR_SINGLE_REGISTER	modbcd/frame/frame.h	53;"	d
 MBCD_FRAME_CR	modbcd/frame/frame.h	25;"	d
 MBCD_FRAME_LF	modbcd/frame/frame.h	26;"	d
-MB_ADDRESS_BROADCAST	tmp/frame.h	182;"	d
-MB_ADDRESS_BROADCAST	tmp/frame/frame.h	182;"	d
-MB_ADDRESS_MAX	tmp/frame.h	184;"	d
-MB_ADDRESS_MAX	tmp/frame/frame.h	184;"	d
-MB_ADDRESS_MIN	tmp/frame.h	183;"	d
-MB_ADDRESS_MIN	tmp/frame/frame.h	183;"	d
-MB_EX_ACKNOWLEDGE	tmp/frame.h	209;"	e	enum:__anon3
-MB_EX_ACKNOWLEDGE	tmp/frame/frame.h	209;"	e	enum:__anon1
-MB_EX_GATEWAY_PATH_FAILED	tmp/frame.h	212;"	e	enum:__anon3
-MB_EX_GATEWAY_PATH_FAILED	tmp/frame/frame.h	212;"	e	enum:__anon1
-MB_EX_GATEWAY_TGT_FAILED	tmp/frame.h	213;"	e	enum:__anon3
-MB_EX_GATEWAY_TGT_FAILED	tmp/frame/frame.h	213;"	e	enum:__anon1
-MB_EX_ILLEGAL_DATA_ADDRESS	tmp/frame.h	206;"	e	enum:__anon3
-MB_EX_ILLEGAL_DATA_ADDRESS	tmp/frame/frame.h	206;"	e	enum:__anon1
-MB_EX_ILLEGAL_DATA_VALUE	tmp/frame.h	207;"	e	enum:__anon3
-MB_EX_ILLEGAL_DATA_VALUE	tmp/frame/frame.h	207;"	e	enum:__anon1
-MB_EX_ILLEGAL_FUNCTION	tmp/frame.h	205;"	e	enum:__anon3
-MB_EX_ILLEGAL_FUNCTION	tmp/frame/frame.h	205;"	e	enum:__anon1
-MB_EX_MEMORY_PARITY_ERROR	tmp/frame.h	211;"	e	enum:__anon3
-MB_EX_MEMORY_PARITY_ERROR	tmp/frame/frame.h	211;"	e	enum:__anon1
-MB_EX_NONE	tmp/frame.h	204;"	e	enum:__anon3
-MB_EX_NONE	tmp/frame/frame.h	204;"	e	enum:__anon1
-MB_EX_SLAVE_BUSY	tmp/frame.h	210;"	e	enum:__anon3
-MB_EX_SLAVE_BUSY	tmp/frame/frame.h	210;"	e	enum:__anon1
-MB_EX_SLAVE_DEVICE_FAILURE	tmp/frame.h	208;"	e	enum:__anon3
-MB_EX_SLAVE_DEVICE_FAILURE	tmp/frame/frame.h	208;"	e	enum:__anon1
-MB_FUNC_DIAG_DIAGNOSTIC	tmp/frame.h	196;"	d
-MB_FUNC_DIAG_DIAGNOSTIC	tmp/frame/frame.h	196;"	d
-MB_FUNC_DIAG_GET_COM_EVENT_CNT	tmp/frame.h	197;"	d
-MB_FUNC_DIAG_GET_COM_EVENT_CNT	tmp/frame/frame.h	197;"	d
-MB_FUNC_DIAG_GET_COM_EVENT_LOG	tmp/frame.h	198;"	d
-MB_FUNC_DIAG_GET_COM_EVENT_LOG	tmp/frame/frame.h	198;"	d
-MB_FUNC_DIAG_READ_EXCEPTION	tmp/frame.h	195;"	d
-MB_FUNC_DIAG_READ_EXCEPTION	tmp/frame/frame.h	195;"	d
-MB_FUNC_ERROR	tmp/frame.h	200;"	d
-MB_FUNC_ERROR	tmp/frame/frame.h	200;"	d
-MB_FUNC_NONE	tmp/frame.h	185;"	d
-MB_FUNC_NONE	tmp/frame/frame.h	185;"	d
-MB_FUNC_OTHER_REPORT_SLAVEID	tmp/frame.h	199;"	d
-MB_FUNC_OTHER_REPORT_SLAVEID	tmp/frame/frame.h	199;"	d
-MB_FUNC_READWRITE_MULTIPLE_REGISTERS	tmp/frame.h	194;"	d
-MB_FUNC_READWRITE_MULTIPLE_REGISTERS	tmp/frame/frame.h	194;"	d
-MB_FUNC_READ_COILS	tmp/frame.h	186;"	d
-MB_FUNC_READ_COILS	tmp/frame/frame.h	186;"	d
-MB_FUNC_READ_DISCRETE_INPUTS	tmp/frame.h	187;"	d
-MB_FUNC_READ_DISCRETE_INPUTS	tmp/frame/frame.h	187;"	d
-MB_FUNC_READ_HOLDING_REGISTER	tmp/frame.h	190;"	d
-MB_FUNC_READ_HOLDING_REGISTER	tmp/frame/frame.h	190;"	d
-MB_FUNC_READ_INPUT_REGISTER	tmp/frame.h	191;"	d
-MB_FUNC_READ_INPUT_REGISTER	tmp/frame/frame.h	191;"	d
-MB_FUNC_WRITE_MULTIPLE_COILS	tmp/frame.h	189;"	d
-MB_FUNC_WRITE_MULTIPLE_COILS	tmp/frame/frame.h	189;"	d
-MB_FUNC_WRITE_MULTIPLE_REGISTERS	tmp/frame.h	193;"	d
-MB_FUNC_WRITE_MULTIPLE_REGISTERS	tmp/frame/frame.h	193;"	d
-MB_FUNC_WRITE_REGISTER	tmp/frame.h	192;"	d
-MB_FUNC_WRITE_REGISTER	tmp/frame/frame.h	192;"	d
-MB_FUNC_WRITE_SINGLE_COIL	tmp/frame.h	188;"	d
-MB_FUNC_WRITE_SINGLE_COIL	tmp/frame/frame.h	188;"	d
-MB_PAR_EVEN	tmp/modbuscd.h	50;"	e	enum:__anon5
-MB_PAR_NONE	tmp/modbuscd.h	48;"	e	enum:__anon5
-MB_PAR_ODD	tmp/modbuscd.h	49;"	e	enum:__anon5
-MBcdErrCode	tmp/modbuscd.h	33;"	g
-MBcdMode	tmp/modbuscd.h	31;"	g
+MBCD_GATEWAY_PATH_UNAVAILABLE	modbcd/modbcd.h	45;"	d
+MBCD_GATEWAY_TARGET_DEVICE_FAILED_TO_RESPONSE	modbcd/modbcd.h	46;"	d
+MBCD_ILLEGAL_DATA_ADDRESS	modbcd/modbcd.h	39;"	d
+MBCD_ILLEGAL_DATA_VALUE	modbcd/modbcd.h	40;"	d
+MBCD_ILLEGAL_FUNCTION	modbcd/modbcd.h	38;"	d
+MBCD_MAX_ASCII_FRAME_SIZE	modbcd/frame/frame.h	35;"	d
+MBCD_MEMORY_PARITY_EEROR	modbcd/modbcd.h	44;"	d
+MBCD_SERVER_DEVICE_BUSY	modbcd/modbcd.h	43;"	d
+MBCD_SERVER_DEVICE_FAILURE	modbcd/modbcd.h	41;"	d
 NAMEDIR	tst/Makefile	4;"	m
-NOERR	tmp/modbuscd.h	34;"	e	enum:MBcdErrCode
-NOREG	tmp/modbuscd.h	35;"	e	enum:MBcdErrCode
-NORES	tmp/modbuscd.h	38;"	e	enum:MBcdErrCode
 OBJS	modbcd/Makefile	8;"	m
 OBJS	modbcd/comm/Makefile	8;"	m
+OBJS	modbcd/comm/client/Makefile	8;"	m
+OBJS	modbcd/comm/server/Makefile	8;"	m
 OBJS	modbcd/frame/Makefile	8;"	m
 OBJS	modbcd/frame/network/Makefile	8;"	m
 OBJS	modbcd/frame/serial/Makefile	8;"	m
 OBJS	modbcd/util/Makefile	8;"	m
-OBJS	tmp/comm/Makefile	8;"	m
-OBJS	tmp/frame/Makefile	8;"	m
-OBJS	tmp/frame/rtu/Makefile	8;"	m
-OBJS	tmp/rtu/Makefile	8;"	m
 OBJS	tst/Makefile	2;"	m
-PORTERR	tmp/modbuscd.h	37;"	e	enum:MBcdErrCode
 PROJECT	Makefile	8;"	m
-RTU	tmp/modbuscd.h	31;"	e	enum:MBcdMode
 SUBDIRS	Makefile	21;"	m
 SUBDIRS	modbcd/Makefile	9;"	m
 SUBDIRS	modbcd/comm/Makefile	9;"	m
+SUBDIRS	modbcd/comm/client/Makefile	9;"	m
+SUBDIRS	modbcd/comm/server/Makefile	9;"	m
 SUBDIRS	modbcd/frame/Makefile	9;"	m
 SUBDIRS	modbcd/frame/network/Makefile	9;"	m
 SUBDIRS	modbcd/frame/serial/Makefile	9;"	m
 SUBDIRS	modbcd/util/Makefile	9;"	m
-SUBDIRS	tmp/comm/Makefile	9;"	m
-SUBDIRS	tmp/frame/Makefile	9;"	m
-SUBDIRS	tmp/frame/rtu/Makefile	9;"	m
-SUBDIRS	tmp/rtu/Makefile	9;"	m
 SUBDIRS	tst/Makefile	3;"	m
 TARGET	Makefile	7;"	m
-TCP	tmp/modbuscd.h	31;"	e	enum:MBcdMode
-TIMEDOUT	tmp/modbuscd.h	41;"	e	enum:MBcdErrCode
 UINT16	modbcd/config.h	33;"	d
-__MBCD_MODBUSCD_H__	tmp/modbuscd.h	10;"	d
+__MODBCD_ASCIID_H__	modbcd/comm/server/asciid.h	11;"	d
 __MODBCD_CONFIG_H__	modbcd/config.h	10;"	d
 __MODBCD_H__	modbcd/modbcd.h	10;"	d
 __MODBCD_MBASCII_H__	modbcd/frame/serial/mbascii.h	11;"	d
@@ -449,190 +106,47 @@ __MODBCD_MBFRAME_H__	modbcd/frame/frame.h	11;"	d
 __MODBCD_MBLRC_H__	modbcd/util/mblrc.h	11;"	d
 __MODBCD_MBRTU_H__	modbcd/frame/serial/mbrtu.h	11;"	d
 __MODBCD_TRANS_H__	modbcd/util/trans.h	10;"	d
-__MODBUSCD_FRAME_H__	tmp/ascii/mbascii.h	11;"	d
-__MODBUSCD_FRAME_H__	tmp/frame.h	11;"	d
-__MODBUSCD_FRAME_H__	tmp/frame/ascii/mbascii.h	11;"	d
-__MODBUSCD_FRAME_H__	tmp/frame/frame.h	11;"	d
-__MODBUSCD_FRAME_H__	tmp/frame/rtu/mbcdrtu.h	11;"	d
-__MODBUSCD_FRAME_H__	tmp/rtu/mbcdrtu.h	11;"	d
-__MODEBUS_COMM_H__	tmp/comm/comm.h	11;"	d
-_size	modbcd/frame/serial/mbascii.h	44;"	m	struct:mb_ascii_frame_send
-_size	modbcd/frame/serial/mbascii.h	53;"	m	struct:mb_ascii_frame_recv
-_size	modbcd/frame/serial/mbrtu.h	41;"	m	struct:mb_rtu_frame
-address	modbcd/frame/serial/mbascii.h	38;"	m	struct:mb_ascii_frame_send
-address	modbcd/frame/serial/mbascii.h	48;"	m	struct:mb_ascii_frame_recv
-address	modbcd/frame/serial/mbrtu.h	36;"	m	struct:mb_rtu_frame
-address	tmp/ascii/mbascii.h	109;"	m	struct:mbascii_rtu_chk
-address	tmp/ascii/mbascii.h	142;"	m	struct:mbascii_asc_chk
-address	tmp/frame.h	108;"	m	struct:frame_rtu_chk
-address	tmp/frame.h	141;"	m	struct:frame_asc_chk
-address	tmp/frame/ascii/mbascii.h	109;"	m	struct:mbascii_rtu_chk
-address	tmp/frame/ascii/mbascii.h	142;"	m	struct:mbascii_asc_chk
-address	tmp/frame/frame.h	108;"	m	struct:frame_rtu_chk
-address	tmp/frame/frame.h	141;"	m	struct:frame_asc_chk
-address	tmp/frame/rtu/mbcdrtu.h	108;"	m	struct:frame_rtu_chk
-address	tmp/frame/rtu/mbcdrtu.h	141;"	m	struct:frame_asc_chk
-address	tmp/rtu/mbcdrtu.h	108;"	m	struct:frame_rtu_chk
-address	tmp/rtu/mbcdrtu.h	141;"	m	struct:frame_asc_chk
-chk	tmp/ascii/mbascii.h	126;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_chk
-chk	tmp/ascii/mbascii.h	159;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_chk
-chk	tmp/frame.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
-chk	tmp/frame.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
-chk	tmp/frame/ascii/mbascii.h	126;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_chk
-chk	tmp/frame/ascii/mbascii.h	159;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_chk
-chk	tmp/frame/frame.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
-chk	tmp/frame/frame.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
-chk	tmp/frame/rtu/mbcdrtu.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
-chk	tmp/frame/rtu/mbcdrtu.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
-chk	tmp/rtu/mbcdrtu.h	125;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_chk
-chk	tmp/rtu/mbcdrtu.h	158;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_chk
-colon	modbcd/frame/serial/mbascii.h	37;"	m	struct:mb_ascii_frame_send
-crc	modbcd/frame/serial/mbrtu.h	39;"	m	struct:mb_rtu_frame
-crc	tmp/ascii/mbascii.h	127;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_crc
-crc	tmp/frame.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
-crc	tmp/frame/ascii/mbascii.h	127;"	m	struct:mbascii_rtu_adu	typeref:struct:mbascii_rtu_adu::mbascii_rtu_crc
-crc	tmp/frame/frame.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
-crc	tmp/frame/rtu/mbcdrtu.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
-crc	tmp/rtu/mbcdrtu.h	126;"	m	struct:frame_rtu_adu	typeref:struct:frame_rtu_adu::frame_rtu_crc
-crcHi	tmp/ascii/mbascii.h	119;"	m	struct:mbascii_rtu_crc
-crcHi	tmp/frame.h	118;"	m	struct:frame_rtu_crc
-crcHi	tmp/frame/ascii/mbascii.h	119;"	m	struct:mbascii_rtu_crc
-crcHi	tmp/frame/frame.h	118;"	m	struct:frame_rtu_crc
-crcHi	tmp/frame/rtu/mbcdrtu.h	118;"	m	struct:frame_rtu_crc
-crcHi	tmp/rtu/mbcdrtu.h	118;"	m	struct:frame_rtu_crc
-crcLo	tmp/ascii/mbascii.h	118;"	m	struct:mbascii_rtu_crc
-crcLo	tmp/frame.h	117;"	m	struct:frame_rtu_crc
-crcLo	tmp/frame/ascii/mbascii.h	118;"	m	struct:mbascii_rtu_crc
-crcLo	tmp/frame/frame.h	117;"	m	struct:frame_rtu_crc
-crcLo	tmp/frame/rtu/mbcdrtu.h	117;"	m	struct:frame_rtu_crc
-crcLo	tmp/rtu/mbcdrtu.h	117;"	m	struct:frame_rtu_crc
-crlf	modbcd/frame/serial/mbascii.h	42;"	m	struct:mb_ascii_frame_send
-data	tmp/ascii/mbascii.h	111;"	m	struct:mbascii_rtu_chk
-data	tmp/ascii/mbascii.h	144;"	m	struct:mbascii_asc_chk
-data	tmp/frame.h	110;"	m	struct:frame_rtu_chk
-data	tmp/frame.h	143;"	m	struct:frame_asc_chk
-data	tmp/frame/ascii/mbascii.h	111;"	m	struct:mbascii_rtu_chk
-data	tmp/frame/ascii/mbascii.h	144;"	m	struct:mbascii_asc_chk
-data	tmp/frame/frame.h	110;"	m	struct:frame_rtu_chk
-data	tmp/frame/frame.h	143;"	m	struct:frame_asc_chk
-data	tmp/frame/rtu/mbcdrtu.h	110;"	m	struct:frame_rtu_chk
-data	tmp/frame/rtu/mbcdrtu.h	143;"	m	struct:frame_asc_chk
-data	tmp/rtu/mbcdrtu.h	110;"	m	struct:frame_rtu_chk
-data	tmp/rtu/mbcdrtu.h	143;"	m	struct:frame_asc_chk
-eMBException	tmp/frame.h	214;"	t	typeref:enum:__anon3
-eMBException	tmp/frame/frame.h	214;"	t	typeref:enum:__anon1
-eMBParity	tmp/modbuscd.h	51;"	t	typeref:enum:__anon5
-frame_asc_adu	tmp/frame.h	157;"	s
-frame_asc_adu	tmp/frame/frame.h	157;"	s
-frame_asc_adu	tmp/frame/rtu/mbcdrtu.h	157;"	s
-frame_asc_adu	tmp/rtu/mbcdrtu.h	157;"	s
-frame_asc_chk	tmp/frame.h	140;"	s
-frame_asc_chk	tmp/frame/frame.h	140;"	s
-frame_asc_chk	tmp/frame/rtu/mbcdrtu.h	140;"	s
-frame_asc_chk	tmp/rtu/mbcdrtu.h	140;"	s
-frame_asc_lrc	tmp/frame.h	149;"	s
-frame_asc_lrc	tmp/frame/frame.h	149;"	s
-frame_asc_lrc	tmp/frame/rtu/mbcdrtu.h	149;"	s
-frame_asc_lrc	tmp/rtu/mbcdrtu.h	149;"	s
-frame_asc_set	tmp/ascii/mbascii.c	117;"	f
-frame_asc_set	tmp/frame.c	117;"	f
-frame_asc_set	tmp/frame/ascii/mbascii.c	117;"	f
-frame_asc_set	tmp/frame/frame.c	117;"	f
-frame_asc_set	tmp/frame/rtu/mbcdrtu.c	117;"	f
-frame_asc_set	tmp/rtu/mbcdrtu.c	117;"	f
-frame_rtu_adu	tmp/frame.h	124;"	s
-frame_rtu_adu	tmp/frame/frame.h	124;"	s
-frame_rtu_adu	tmp/frame/rtu/mbcdrtu.h	124;"	s
-frame_rtu_adu	tmp/rtu/mbcdrtu.h	124;"	s
-frame_rtu_chk	tmp/frame.h	107;"	s
-frame_rtu_chk	tmp/frame/frame.h	107;"	s
-frame_rtu_chk	tmp/frame/rtu/mbcdrtu.h	107;"	s
-frame_rtu_chk	tmp/rtu/mbcdrtu.h	107;"	s
-frame_rtu_crc	tmp/frame.h	116;"	s
-frame_rtu_crc	tmp/frame/frame.h	116;"	s
-frame_rtu_crc	tmp/frame/rtu/mbcdrtu.h	116;"	s
-frame_rtu_crc	tmp/rtu/mbcdrtu.h	116;"	s
-frame_rtu_set	tmp/ascii/mbascii.c	97;"	f
-frame_rtu_set	tmp/frame.c	97;"	f
-frame_rtu_set	tmp/frame/ascii/mbascii.c	97;"	f
-frame_rtu_set	tmp/frame/frame.c	97;"	f
-frame_rtu_set	tmp/frame/rtu/mbcdrtu.c	97;"	f
-frame_rtu_set	tmp/rtu/mbcdrtu.c	97;"	f
-funCode	modbcd/frame/serial/mbascii.h	39;"	m	struct:mb_ascii_frame_send
-funCode	modbcd/frame/serial/mbascii.h	49;"	m	struct:mb_ascii_frame_recv
-funCode	modbcd/frame/serial/mbrtu.h	37;"	m	struct:mb_rtu_frame
-funCode	tmp/ascii/mbascii.h	110;"	m	struct:mbascii_rtu_chk
-funCode	tmp/ascii/mbascii.h	143;"	m	struct:mbascii_asc_chk
-funCode	tmp/frame.h	109;"	m	struct:frame_rtu_chk
-funCode	tmp/frame.h	142;"	m	struct:frame_asc_chk
-funCode	tmp/frame/ascii/mbascii.h	110;"	m	struct:mbascii_rtu_chk
-funCode	tmp/frame/ascii/mbascii.h	143;"	m	struct:mbascii_asc_chk
-funCode	tmp/frame/frame.h	109;"	m	struct:frame_rtu_chk
-funCode	tmp/frame/frame.h	142;"	m	struct:frame_asc_chk
-funCode	tmp/frame/rtu/mbcdrtu.h	109;"	m	struct:frame_rtu_chk
-funCode	tmp/frame/rtu/mbcdrtu.h	142;"	m	struct:frame_asc_chk
-funCode	tmp/rtu/mbcdrtu.h	109;"	m	struct:frame_rtu_chk
-funCode	tmp/rtu/mbcdrtu.h	142;"	m	struct:frame_asc_chk
+_size	modbcd/comm/server/asciid.h	61;"	m	struct:asciid_state
+_size	modbcd/frame/serial/mbascii.h	47;"	m	struct:mb_ascii_frame_send
+_size	modbcd/frame/serial/mbascii.h	56;"	m	struct:mb_ascii_frame_recv
+_size	modbcd/frame/serial/mbrtu.h	43;"	m	struct:mb_rtu_frame
+address	modbcd/frame/serial/mbascii.h	41;"	m	struct:mb_ascii_frame_send
+address	modbcd/frame/serial/mbascii.h	51;"	m	struct:mb_ascii_frame_recv
+address	modbcd/frame/serial/mbrtu.h	38;"	m	struct:mb_rtu_frame
+asciid_init	modbcd/comm/server/asciid.c	45;"	f
+asciid_recv	modbcd/comm/server/asciid.c	66;"	f
+asciid_state	modbcd/comm/server/asciid.h	56;"	s
+colon	modbcd/frame/serial/mbascii.h	40;"	m	struct:mb_ascii_frame_send
+crc	modbcd/frame/serial/mbrtu.h	41;"	m	struct:mb_rtu_frame
+crlf	modbcd/frame/serial/mbascii.h	45;"	m	struct:mb_ascii_frame_send
+funCode	modbcd/frame/serial/mbascii.h	42;"	m	struct:mb_ascii_frame_send
+funCode	modbcd/frame/serial/mbascii.h	52;"	m	struct:mb_ascii_frame_recv
+funCode	modbcd/frame/serial/mbrtu.h	39;"	m	struct:mb_rtu_frame
 hexToAscii	modbcd/util/trans.c	34;"	f
-lrc	modbcd/frame/serial/mbascii.h	41;"	m	struct:mb_ascii_frame_send
-lrc	modbcd/frame/serial/mbascii.h	51;"	m	struct:mb_ascii_frame_recv
-lrc	tmp/ascii/mbascii.h	160;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_lrc
-lrc	tmp/frame.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
-lrc	tmp/frame/ascii/mbascii.h	160;"	m	struct:mbascii_asc_adu	typeref:struct:mbascii_asc_adu::mbascii_asc_lrc
-lrc	tmp/frame/frame.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
-lrc	tmp/frame/rtu/mbcdrtu.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
-lrc	tmp/rtu/mbcdrtu.h	159;"	m	struct:frame_asc_adu	typeref:struct:frame_asc_adu::frame_asc_lrc
-lrcHi	tmp/ascii/mbascii.h	151;"	m	struct:mbascii_asc_lrc
-lrcHi	tmp/frame.h	150;"	m	struct:frame_asc_lrc
-lrcHi	tmp/frame/ascii/mbascii.h	151;"	m	struct:mbascii_asc_lrc
-lrcHi	tmp/frame/frame.h	150;"	m	struct:frame_asc_lrc
-lrcHi	tmp/frame/rtu/mbcdrtu.h	150;"	m	struct:frame_asc_lrc
-lrcHi	tmp/rtu/mbcdrtu.h	150;"	m	struct:frame_asc_lrc
-lrcLo	tmp/ascii/mbascii.h	152;"	m	struct:mbascii_asc_lrc
-lrcLo	tmp/frame.h	151;"	m	struct:frame_asc_lrc
-lrcLo	tmp/frame/ascii/mbascii.h	152;"	m	struct:mbascii_asc_lrc
-lrcLo	tmp/frame/frame.h	151;"	m	struct:frame_asc_lrc
-lrcLo	tmp/frame/rtu/mbcdrtu.h	151;"	m	struct:frame_asc_lrc
-lrcLo	tmp/rtu/mbcdrtu.h	151;"	m	struct:frame_asc_lrc
-main	tmp/ascii/mbascii.c	187;"	f
-main	tmp/comm/comm.c	50;"	f
-main	tmp/frame.c	187;"	f
-main	tmp/frame/ascii/mbascii.c	187;"	f
-main	tmp/frame/frame.c	187;"	f
-main	tmp/frame/rtu/mbcdrtu.c	187;"	f
-main	tmp/rtu/mbcdrtu.c	187;"	f
+lrc	modbcd/frame/serial/mbascii.h	44;"	m	struct:mb_ascii_frame_send
+lrc	modbcd/frame/serial/mbascii.h	54;"	m	struct:mb_ascii_frame_recv
 main	tst/crc.c	7;"	f
 main	tst/frame.c	5;"	f
 main	tst/lrc.c	7;"	f
-mb_ascii_frame_recv	modbcd/frame/serial/mbascii.h	47;"	s
-mb_ascii_frame_send	modbcd/frame/serial/mbascii.h	36;"	s
-mb_rtu_frame	modbcd/frame/serial/mbrtu.h	35;"	s
-mbascii_asc_adu	tmp/ascii/mbascii.h	158;"	s
-mbascii_asc_adu	tmp/frame/ascii/mbascii.h	158;"	s
-mbascii_asc_chk	tmp/ascii/mbascii.h	141;"	s
-mbascii_asc_chk	tmp/frame/ascii/mbascii.h	141;"	s
-mbascii_asc_lrc	tmp/ascii/mbascii.h	150;"	s
-mbascii_asc_lrc	tmp/frame/ascii/mbascii.h	150;"	s
-mbascii_get_frame	modbcd/frame/serial/mbascii.c	91;"	f
-mbascii_rtu_adu	tmp/ascii/mbascii.h	125;"	s
-mbascii_rtu_adu	tmp/frame/ascii/mbascii.h	125;"	s
-mbascii_rtu_chk	tmp/ascii/mbascii.h	108;"	s
-mbascii_rtu_chk	tmp/frame/ascii/mbascii.h	108;"	s
-mbascii_rtu_crc	tmp/ascii/mbascii.h	117;"	s
-mbascii_rtu_crc	tmp/frame/ascii/mbascii.h	117;"	s
-mbascii_set_frame	modbcd/frame/serial/mbascii.c	40;"	f
+mb_ascii_frame_recv	modbcd/frame/serial/mbascii.h	50;"	s
+mb_ascii_frame_send	modbcd/frame/serial/mbascii.h	39;"	s
+mb_rtu_frame	modbcd/frame/serial/mbrtu.h	37;"	s
+mbascii_get_frame	modbcd/frame/serial/mbascii.c	92;"	f
+mbascii_set_frame	modbcd/frame/serial/mbascii.c	42;"	f
 mbcrc	modbcd/util/mbcrc.c	94;"	f
 mblrc	modbcd/util/mblrc.c	36;"	f
-mbrtu_get_frame	modbcd/frame/serial/mbrtu.c	69;"	f
-mbrtu_set_frame	modbcd/frame/serial/mbrtu.c	40;"	f
-pData	modbcd/frame/serial/mbascii.h	40;"	m	struct:mb_ascii_frame_send
-pData	modbcd/frame/serial/mbascii.h	50;"	m	struct:mb_ascii_frame_recv
-pData	modbcd/frame/serial/mbrtu.h	38;"	m	struct:mb_rtu_frame
-pxHandler	tmp/frame.h	221;"	m	struct:__anon4
-pxHandler	tmp/frame/frame.h	221;"	m	struct:__anon2
-pxMBFunctionHandler	tmp/frame.h	216;"	t
-pxMBFunctionHandler	tmp/frame/frame.h	216;"	t
-ucFunctionCode	tmp/frame.h	220;"	m	struct:__anon4
-ucFunctionCode	tmp/frame/frame.h	220;"	m	struct:__anon2
-xMBFunctionHandler	tmp/frame.h	222;"	t	typeref:struct:__anon4
-xMBFunctionHandler	tmp/frame/frame.h	222;"	t	typeref:struct:__anon2
+mbrtu_get_frame	modbcd/frame/serial/mbrtu.c	71;"	f
+mbrtu_set_frame	modbcd/frame/serial/mbrtu.c	42;"	f
+pData	modbcd/frame/serial/mbascii.h	43;"	m	struct:mb_ascii_frame_send
+pData	modbcd/frame/serial/mbascii.h	53;"	m	struct:mb_ascii_frame_recv
+pData	modbcd/frame/serial/mbrtu.h	40;"	m	struct:mb_rtu_frame
+pFun_exec	modbcd/comm/server/asciid.h	54;"	t
+pFun_recv	modbcd/comm/server/asciid.h	52;"	t
+pFun_send	modbcd/comm/server/asciid.h	53;"	t
+pInit	modbcd/comm/server/asciid.h	59;"	m	struct:asciid_state
+pInxt	modbcd/comm/server/asciid.h	58;"	m	struct:asciid_state
+serial_exec	modbcd/comm/server/asciid.h	65;"	m	struct:asciid_state
+serial_recv	modbcd/comm/server/asciid.h	63;"	m	struct:asciid_state
+serial_send	modbcd/comm/server/asciid.h	64;"	m	struct:asciid_state
+stat_s	modbcd/comm/server/asciid.c	19;"	v	typeref:struct:asciid_state	file:
+state	modbcd/comm/server/asciid.h	57;"	m	struct:asciid_state

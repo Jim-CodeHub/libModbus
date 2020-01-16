@@ -9,6 +9,8 @@
 #include <modbcd/frame/serial/mbrtu.h>
 
 
+#if  MBCD_CFG_MOD_RTU_EN  >  0 
+
 /*
 --------------------------------------------------------------------------------------------------------------------
 *
@@ -78,4 +80,7 @@ struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size)
 
 	return frame;
 }
+
+#endif //MBCD_CFG_MOD_RTU_EN  >  0 
+
 

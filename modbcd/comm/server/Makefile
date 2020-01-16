@@ -1,11 +1,11 @@
 #-------------------------------------------------------------------------------------------------------
 #																									   #
-#								Makefile for libModbus source file 									   #
+#								Makefile for modbcd source file 									   #
 #																									   #
 #-------------------------------------------------------------------------------------------------------
 
 
-OBJS    = frame.o 
+OBJS    = asciid.o
 SUBDIRS =
  
  
@@ -26,7 +26,7 @@ $(SUBDIRS):ECHO
 ECHO:
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
 .PHONY:clean
 clean:

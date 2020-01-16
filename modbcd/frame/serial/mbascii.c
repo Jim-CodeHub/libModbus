@@ -9,6 +9,8 @@
 #include <modbcd/frame/serial/mbascii.h>
 
 
+#if  MBCD_CFG_MOD_ASCII_EN  >  0
+
 /*
 --------------------------------------------------------------------------------------------------------------------
 *
@@ -36,6 +38,11 @@
  *	@return		ASCII Frame 
  *	@note		1. The function do not have volidity check for param 'data' 
  *				2. Stack map : colon + address + funCode + data + lrc + CRLF 
+ *				3. ***Param 'data' MUST BE double size of origin one 
+ *	@code
+ *		unsigned char data[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0} //ERROR
+ *		unsigned char data[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0} //RIGHT
+ *	@endcode
  **/
 struct mb_ascii_frame_send mbascii_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size)
 {
@@ -44,17 +51,17 @@ struct mb_ascii_frame_send mbascii_set_frame(unsigned char address, unsigned cha
 	/*------------------------------- Set Start -------------------------------------*/
 	frame.colon = ':';
 
-	if (size > 252) { size = 252; } /**< Max size of ASCII (uncodec) data = 252Bytes */
+	if (size > 2*252) { size = 2*252; } /**< Max size of ASCII data = 2*252Bytes */
 
 	hexToAscii(address, frame.address); /**< Set address */
 	hexToAscii(funCode, frame.funCode); /**< Set funCode */
 
-	frame._size = size; /**< Set size */
-	frame.pData = data; /**< Set data (pointer) */
+	frame._size = size;	 /**< Set data size */
+	frame.pData = data;  /**< Set data pointer */
 
 	/*------------------------------- Set LRC --------------------------------------*/
 
-	char buff[size*2 + 4]; 
+	char buff[size + 4]; 
 
 	buff[0] = frame.address[0];
 	buff[1] = frame.address[1];
@@ -69,6 +76,10 @@ struct mb_ascii_frame_send mbascii_set_frame(unsigned char address, unsigned cha
 	unsigned char lrc = mblrc((unsigned char *)buff, sizeof(buff));
 
 	hexToAscii(lrc, frame.lrc);
+
+	/*------------------------------- Set DATA -------------------------------------*/
+
+	memcpy(frame.pData, buff + 4, sizeof(buff) - 4);
 
 	/*------------------------------- Set End --------------------------------------*/
 
@@ -108,4 +119,6 @@ struct mb_ascii_frame_recv mbascii_get_frame(unsigned char *data, unsigned short
 
 	return frame;
 }
+
+#endif //MBCD_CFG_MOD_ASCII_EN  >  0
 

@@ -25,7 +25,10 @@ extern "C" {
 #include <string.h>
 #include <modbcd/util/mblrc.h>
 #include <modbcd/util/trans.h>
+#include <modbcd/config.h>
 
+
+#if  MBCD_CFG_MOD_ASCII_EN  >  0
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -61,6 +64,9 @@ struct mb_ascii_frame_recv{
 */
 struct mb_ascii_frame_send mbascii_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size);
 struct mb_ascii_frame_recv mbascii_get_frame(unsigned char *data, unsigned short size);
+
+
+#endif //MBCD_CFG_MOD_ASCII_EN  >  0
 
 
 #if defined(__cplusplus)

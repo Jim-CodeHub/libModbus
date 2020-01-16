@@ -58,11 +58,13 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  MBCD_CFG_MS_SEL								1	/**< 0 for Slave and 1 for Master */
+#define  MBCD_CFG_MS_SEL								1		/**< 0 for Slave and 1 for Master */
+
+#define  MBCD_CFG_ADDRESS								0X01	/**< Slave address				  */
 
 #define  MBCD_CFG_MOD_ASCII_EN							1
-#define  MBCD_CFG_MOD_RTU_EN                          	1 
-#define  MBCD_CFG_MOD_TCP_EN                          	0 
+#define  MBCD_CFG_MOD_RTU_EN                          	1
+#define  MBCD_CFG_MOD_TCP_EN                          	0
 
 
 #if defined(__cplusplus)
