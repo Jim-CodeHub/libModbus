@@ -7,4 +7,5 @@ Comm : EIA/TIA-232 or EIA/TIA-485 / Internet
 
 ## Next
 
-TCP Mode support
+RTU & TCP Mode support
+

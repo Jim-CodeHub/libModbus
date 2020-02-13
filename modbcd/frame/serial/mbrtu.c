@@ -36,8 +36,7 @@
  *	@param[in]  size    - data size 
  *	@param[out] None
  *	@return		RTU Frame 
- *	@note		1. The function do not have volidity check for param 'data' 
- *				2. Stack map : address + funCode + data + crc 
+ *	@note		Stack map : address + funCode + data + crc 
  **/
 struct mb_rtu_frame mbrtu_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size)
 {
@@ -65,8 +64,7 @@ struct mb_rtu_frame mbrtu_set_frame(unsigned char address, unsigned char funCode
  *	@param[in]  size - data size
  *	@param[out] None
  *	@return		RTU Frame 
- *	@note		1. The function do not have volidity check for param 'data' 
- *				2. Stack map : address + funCode + data + crc 
+ *	@note		Stack map : address + funCode + data + crc 
  **/
 struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size)
 {

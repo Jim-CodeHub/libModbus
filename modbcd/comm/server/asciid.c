@@ -35,46 +35,16 @@ static struct asciid_state stat_s = {.state = ASCIID_STATE_IDLE};
 */
 
 /**
- *	@brief		Init Modbus Ascii server
- *	@param[in]	buff		-   Recive buffer 
- *	@param[in]	size		-   Size of recive buffer 
- *	@param[in]  recv		-	Method to recive character from RS232/RS485/USART ...
- *	@param[in]  send		-	Method to send character to RS232/RS485/USART ...
- *	@param[in]  exec		-	Method to execute action 
- *	@param[out] None	
- *	@return		None
- *	@note		1. The param 'size' SHOULD BE larger enough
- *				2. The param 'exec' SHOULD BE :
- *					a). Check whether function code and data field is valid or not
- *					b). Execute action
- *					c). Do normal/exception response (asciid_emit() can be called)
- **/
-void asciid_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec)
-{
-	stat_s.pInit = buff;
-	stat_s.pInxt = buff;
-
-	stat_s._size = size;
-
-	stat_s.serial_recv = recv;
-	stat_s.serial_send = send;
-	stat_s.serial_exec = exec;
-
-	return;
-}
-
-/**
  *	@brief	    Recive Modbus client data
- *	@param[in]  None 
- *	@param[out] None
- *	@return		None	
- *	@note		Put the function into the loop or interrupt depends on the implementation of 'serial_recv()'	
+ *	@param[in]  ch		-	character which get from client 
+ *	@param[in]  buff	-   user's data buffer	
+ *	@param[in]  size	-   buffer size 
+ *	@param[out] buff 
+ *	@return		Function Code or 0 (invalid)
  **/
-void asciid_recv(void)
+unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short size)
 {
-	char ch = stat_s.serial_recv();
-
-	if (':' == ch) {memset(stat_s.pInit, 0, stat_s._size); stat_s.pInxt= stat_s.pInit; stat_s.state = ASCIID_STATE_0;}
+	if (':' == ch) { memset(buff, 0, _size); stat_s.pInxt = buff; stat_s.state = ASCIID_STATE_0; }
 
 	switch (stat_s.state)
 	{
@@ -104,8 +74,10 @@ void asciid_recv(void)
 				{
 					case 0X0A: /**< LF */ 
 						{
-							stat_s.serial_exec(&stat_s);
+							//*(stat_s.pInxt) = ch; (stat_s.pInxt)++; 
+
 							stat_s.state = ASCIID_STATE_IDLE;
+							goto _EXIT;
 						}
 						break;
 					default:
@@ -117,23 +89,24 @@ void asciid_recv(void)
 			;
 	}
 
-	return;
+	return 0;
+_EXIT:
+	return ((buff[2] - 48) << 4) | (buff[3] - 48);
 }
 
 /**
  *	@brief	    Response Modbus data to client
- *	@param[in]  None 
+ *	@param[in]  sndc	-	character send function 
+ *	@param[in]  data	-	send buffer 
+ *	@param[in]  size	-	buffer size 
  *	@param[out] None
  *	@return		None	
- *	@note	    1. The data SHOULD HAD BE setted by ascii frame function		
+ *	@note	    1. The data SHOULD BE setted by ascii frame function		
  *				2. ***Only loop mode is supported
  **/
-void asciid_emit(unsigned char *data, unsigned short size)
+void asciid_emit(pFun_send sndc, unsigned char *data, unsigned short size)
 {
-	for (; size != 0; size--)
-	{
-		stat_s.serial_send(*data); data++;
-	}
+	for (; size != 0; size--) { sndc(*data); data++; }
 
 	return;
 }

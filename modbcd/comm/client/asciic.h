@@ -54,22 +54,11 @@ extern "C" {
  *------------------------------------------------------------------------------------------------------------------
 */
 	
-struct asciic_state; /**< Forward declaration */
-
-typedef unsigned char (*pFun_recv)(void); 
-typedef void		  (*pFun_send)(unsigned char); 
-typedef void		  (*pFun_exec)(const struct asciic_state *); 
+typedef void (*pFun_send)(unsigned char); 
 
 struct asciic_state{
 	unsigned char   state;
 	unsigned char  *pInxt;
-	unsigned char  *pInit;
-
-	unsigned short  _size;
-
-	pFun_recv serial_recv;
-	pFun_send serial_send;
-	pFun_exec serial_exec;
 };
 
 
@@ -79,9 +68,9 @@ struct asciic_state{
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-void asciic_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec);
-void asciic_recv(void);
-void asciic_emit(unsigned char *data, unsigned short size);
+
+unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size);
+void asciic_emit(pFun_send sndc, unsigned char *data, unsigned short size);
 
 
 #endif //((MBCD_CFG_MS_SEL == 1) && (MBCD_CFG_MOD_ASCII_EN > 0))

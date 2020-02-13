@@ -25,6 +25,7 @@
 --------------------------------------------------------------------------------------------------------------------
 */
 
+#if 0
 /**
  *	@brief	    
  *	@param[in]  
@@ -32,24 +33,19 @@
  *	@return		
  *	@note		
  **/
+//Master/Client
+mbcd_send_rqst();
+mbcd_recv_rsps();
 
-#if 0 //Modbus application layer define
+//Slave/Server
+mbcd_recv_rqst();
+mbcd_send_rsps();
 
-	mbcd_req_pdu(function_code, request_data)
-					1Byte			nByte
-	mbcd_rsp_pdu(function_code, response_data)
-					1Byte			nByte
+mbcd_recv_rqst()
+{
+	asciid_recv();
+}
 
-	mbcd_excep_rsp_pdu(exception-function_code, exception_code);
-						---------------------
-						1Byte:function_code + 0x08		
-												--------------
-												1Byte:01/02/03/04/05/06/08/0A/0B
-	关于响应：
-		1。 服务器连接正常，并且可以处理请求，则正常响应
-		2。 服务器连接错误，则无响应，客户端做超时处理
-		3。 服务器连接正常，但奇偶校验错误/LRC/CRC/。。等错误，无响应，客户端做超时处理
-		4。 服务器连接正常，但无法处理请求（如访问了一个不存在的寄存器,或不支持功能码等），则返回异常
 #endif
 
 

@@ -6,74 +6,98 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 --PREFIX	Makefile	12;"	m
 -exclude	Makefile	56;"	m
-ASCIID_STATE_0	modbcd/comm/server/asciid.h	35;"	d
-ASCIID_STATE_1	modbcd/comm/server/asciid.h	36;"	d
-ASCIID_STATE_2	modbcd/comm/server/asciid.h	37;"	d
-ASCIID_STATE_3	modbcd/comm/server/asciid.h	38;"	d
-ASCIID_STATE_4	modbcd/comm/server/asciid.h	39;"	d
-ASCIID_STATE_IDLE	modbcd/comm/server/asciid.h	40;"	d
+ASCIIC_STATE_0	modbcd/comm/client/asciic.h	42;"	d
+ASCIIC_STATE_1	modbcd/comm/client/asciic.h	43;"	d
+ASCIIC_STATE_2	modbcd/comm/client/asciic.h	44;"	d
+ASCIIC_STATE_3	modbcd/comm/client/asciic.h	45;"	d
+ASCIIC_STATE_4	modbcd/comm/client/asciic.h	46;"	d
+ASCIIC_STATE_IDLE	modbcd/comm/client/asciic.h	47;"	d
+ASCIID_STATE_0	modbcd/comm/server/asciid.h	42;"	d
+ASCIID_STATE_1	modbcd/comm/server/asciid.h	43;"	d
+ASCIID_STATE_2	modbcd/comm/server/asciid.h	44;"	d
+ASCIID_STATE_3	modbcd/comm/server/asciid.h	45;"	d
+ASCIID_STATE_4	modbcd/comm/server/asciid.h	46;"	d
+ASCIID_STATE_IDLE	modbcd/comm/server/asciid.h	47;"	d
 CXX	Makefile	10;"	m
 CXXFLAGS	Makefile	14;"	m
-MBCD_ACKNOWLEDGE	modbcd/modbcd.h	42;"	d
-MBCD_CFG_ADDRESS	modbcd/config.h	63;"	d
+MBCD_ACKNOWLEDGE	modbcd/modbcd.h	104;"	d
+MBCD_CFG_ADDRESS	modbcd/config.h	65;"	d
+MBCD_CFG_COD_CANOPEN_GENERAL_REFERENCE	modbcd/config.h	98;"	d
+MBCD_CFG_COD_DIAGNOSTIC	modbcd/config.h	91;"	d
+MBCD_CFG_COD_ENCAPSULATED_INTERFACE_TRANSPORT	modbcd/config.h	97;"	d
+MBCD_CFG_COD_GET_COM_EVENT_COUNTER	modbcd/config.h	92;"	d
+MBCD_CFG_COD_GET_COM_EVENT_LOG	modbcd/config.h	93;"	d
+MBCD_CFG_COD_RD_COILS_EN	modbcd/config.h	75;"	d
+MBCD_CFG_COD_RD_DEVICE_ID	modbcd/config.h	95;"	d
+MBCD_CFG_COD_RD_DISCRETE_INPUTS	modbcd/config.h	74;"	d
+MBCD_CFG_COD_RD_EXCEPTION_STATUS	modbcd/config.h	90;"	d
+MBCD_CFG_COD_RD_FIFO_QUEUE	modbcd/config.h	85;"	d
+MBCD_CFG_COD_RD_FILE_RECORD	modbcd/config.h	87;"	d
+MBCD_CFG_COD_RD_HOLDING_REGISTERS	modbcd/config.h	80;"	d
+MBCD_CFG_COD_RD_INPUT_REGISTER	modbcd/config.h	79;"	d
+MBCD_CFG_COD_REPORT_SERVER_ID	modbcd/config.h	94;"	d
+MBCD_CFG_COD_RW_MULTIPLE_REGISTERS	modbcd/config.h	83;"	d
+MBCD_CFG_COD_WR_FILE_RECORD	modbcd/config.h	88;"	d
+MBCD_CFG_COD_WR_MASK_REGISTER	modbcd/config.h	84;"	d
+MBCD_CFG_COD_WR_MULTIPLE_COILS	modbcd/config.h	77;"	d
+MBCD_CFG_COD_WR_MULTIPLE_REGISTERS	modbcd/config.h	82;"	d
+MBCD_CFG_COD_WR_SINGLE_COIL	modbcd/config.h	76;"	d
+MBCD_CFG_COD_WR_SINGLE_REGISTER	modbcd/config.h	81;"	d
 MBCD_CFG_CRC_P1	modbcd/config.h	50;"	d
 MBCD_CFG_CRC_P2	modbcd/config.h	51;"	d
 MBCD_CFG_CRC_P3	modbcd/config.h	52;"	d
 MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	32;"	v	file:
 MBCD_CFG_CRC_P3	modbcd/util/mbcrc.c	56;"	v	file:
-MBCD_CFG_MOD_ASCII_EN	modbcd/config.h	65;"	d
-MBCD_CFG_MOD_RTU_EN	modbcd/config.h	66;"	d
-MBCD_CFG_MOD_TCP_EN	modbcd/config.h	67;"	d
-MBCD_CFG_MS_SEL	modbcd/config.h	61;"	d
-MBCD_FCODE_CANOPEN_REFERENCE	modbcd/frame/frame.h	92;"	d
-MBCD_FCODE_CANOPEN_REFER_PDU	modbcd/frame/frame.h	95;"	d
-MBCD_FCODE_CH_ASCII_INPUT_DELIMITER	modbcd/frame/frame.h	75;"	d
-MBCD_FCODE_CLR_CNT_DIG_REG	modbcd/frame/frame.h	77;"	d
-MBCD_FCODE_CLR_OVERRUN_CNT_FLG	modbcd/frame/frame.h	86;"	d
-MBCD_FCODE_DIAGNOSTIC	modbcd/frame/frame.h	65;"	d
-MBCD_FCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/frame/frame.h	89;"	d
-MBCD_FCODE_FORCE_LISTERN_ONLY_MODE	modbcd/frame/frame.h	76;"	d
-MBCD_FCODE_GET_COM_EVENT_COUNTER	modbcd/frame/frame.h	66;"	d
-MBCD_FCODE_GET_COM_EVENT_LOG	modbcd/frame/frame.h	67;"	d
-MBCD_FCODE_MASK_WRITE_REGISTER	modbcd/frame/frame.h	56;"	d
-MBCD_FCODE_RD_COILS	modbcd/frame/frame.h	46;"	d
-MBCD_FCODE_RD_DEVICE_ID	modbcd/frame/frame.h	96;"	d
-MBCD_FCODE_RD_DEVICE_IDENTIFICATION	modbcd/frame/frame.h	69;"	d
-MBCD_FCODE_RD_DISCRETE_INPUT	modbcd/frame/frame.h	45;"	d
-MBCD_FCODE_RD_EXCEPTION_STATUS	modbcd/frame/frame.h	64;"	d
-MBCD_FCODE_RD_FIFO_QUEUE	modbcd/frame/frame.h	57;"	d
-MBCD_FCODE_RD_FILE_RECORD	modbcd/frame/frame.h	60;"	d
-MBCD_FCODE_RD_HOLDING_REGISTERS	modbcd/frame/frame.h	52;"	d
-MBCD_FCODE_RD_INPUT_REGISTER	modbcd/frame/frame.h	51;"	d
-MBCD_FCODE_REPORT_SERVER_ID	modbcd/frame/frame.h	68;"	d
-MBCD_FCODE_RET_BUS_CHAR_OVERRUN_CNT	modbcd/frame/frame.h	85;"	d
-MBCD_FCODE_RET_BUS_COMM_ERR_CNT	modbcd/frame/frame.h	79;"	d
-MBCD_FCODE_RET_BUS_EXCEP_ERR_CNT	modbcd/frame/frame.h	80;"	d
-MBCD_FCODE_RET_BUS_MSG_CNT	modbcd/frame/frame.h	78;"	d
-MBCD_FCODE_RET_DIAGNOSTIC_REG	modbcd/frame/frame.h	74;"	d
-MBCD_FCODE_RET_QUERY_DATA	modbcd/frame/frame.h	72;"	d
-MBCD_FCODE_RET_RST_COMM_OPT	modbcd/frame/frame.h	73;"	d
-MBCD_FCODE_RET_SERVER_BUSY_CNT	modbcd/frame/frame.h	84;"	d
-MBCD_FCODE_RET_SERVER_MSG_CNT	modbcd/frame/frame.h	81;"	d
-MBCD_FCODE_RET_SERVER_NAK_CNT	modbcd/frame/frame.h	83;"	d
-MBCD_FCODE_RET_SERVER_NO_RSP_CNT	modbcd/frame/frame.h	82;"	d
-MBCD_FCODE_RW_MULTIPLE_REGISTERS	modbcd/frame/frame.h	55;"	d
-MBCD_FCODE_WR_FILE_RECORD	modbcd/frame/frame.h	61;"	d
-MBCD_FCODE_WR_MULTIPLE_COILS	modbcd/frame/frame.h	48;"	d
-MBCD_FCODE_WR_MULTIPLE_REGISTERS	modbcd/frame/frame.h	54;"	d
-MBCD_FCODE_WR_SINGLE_COIL	modbcd/frame/frame.h	47;"	d
-MBCD_FCODE_WR_SINGLE_REGISTER	modbcd/frame/frame.h	53;"	d
-MBCD_FRAME_CR	modbcd/frame/frame.h	25;"	d
-MBCD_FRAME_LF	modbcd/frame/frame.h	26;"	d
-MBCD_GATEWAY_PATH_UNAVAILABLE	modbcd/modbcd.h	45;"	d
-MBCD_GATEWAY_TARGET_DEVICE_FAILED_TO_RESPONSE	modbcd/modbcd.h	46;"	d
-MBCD_ILLEGAL_DATA_ADDRESS	modbcd/modbcd.h	39;"	d
-MBCD_ILLEGAL_DATA_VALUE	modbcd/modbcd.h	40;"	d
-MBCD_ILLEGAL_FUNCTION	modbcd/modbcd.h	38;"	d
-MBCD_MAX_ASCII_FRAME_SIZE	modbcd/frame/frame.h	35;"	d
-MBCD_MEMORY_PARITY_EEROR	modbcd/modbcd.h	44;"	d
-MBCD_SERVER_DEVICE_BUSY	modbcd/modbcd.h	43;"	d
-MBCD_SERVER_DEVICE_FAILURE	modbcd/modbcd.h	41;"	d
+MBCD_CFG_MOD_ASCII_EN	modbcd/config.h	68;"	d
+MBCD_CFG_MOD_RTU_EN	modbcd/config.h	69;"	d
+MBCD_CFG_MOD_TCP_EN	modbcd/config.h	70;"	d
+MBCD_CFG_MS_SEL	modbcd/config.h	62;"	d
+MBCD_FCODE_CANOPEN_REFERENCE	modbcd/modbcd.h	87;"	d
+MBCD_FCODE_CANOPEN_REFER_PDU	modbcd/modbcd.h	90;"	d
+MBCD_FCODE_CH_ASCII_INPUT_DELIMITER	modbcd/modbcd.h	70;"	d
+MBCD_FCODE_CLR_CNT_DIG_REG	modbcd/modbcd.h	72;"	d
+MBCD_FCODE_CLR_OVERRUN_CNT_FLG	modbcd/modbcd.h	81;"	d
+MBCD_FCODE_DIAGNOSTIC	modbcd/modbcd.h	60;"	d
+MBCD_FCODE_ENCAP_INTERFACE_TRANSPORT	modbcd/modbcd.h	84;"	d
+MBCD_FCODE_FORCE_LISTERN_ONLY_MODE	modbcd/modbcd.h	71;"	d
+MBCD_FCODE_GET_COM_EVENT_COUNTER	modbcd/modbcd.h	61;"	d
+MBCD_FCODE_GET_COM_EVENT_LOG	modbcd/modbcd.h	62;"	d
+MBCD_FCODE_MASK_WRITE_REGISTER	modbcd/modbcd.h	51;"	d
+MBCD_FCODE_RD_COILS	modbcd/modbcd.h	41;"	d
+MBCD_FCODE_RD_DEVICE_ID	modbcd/modbcd.h	91;"	d
+MBCD_FCODE_RD_DEVICE_IDENTIFICATION	modbcd/modbcd.h	64;"	d
+MBCD_FCODE_RD_DISCRETE_INPUT	modbcd/modbcd.h	40;"	d
+MBCD_FCODE_RD_EXCEPTION_STATUS	modbcd/modbcd.h	59;"	d
+MBCD_FCODE_RD_FIFO_QUEUE	modbcd/modbcd.h	52;"	d
+MBCD_FCODE_RD_FILE_RECORD	modbcd/modbcd.h	55;"	d
+MBCD_FCODE_RD_HOLDING_REGISTERS	modbcd/modbcd.h	47;"	d
+MBCD_FCODE_RD_INPUT_REGISTER	modbcd/modbcd.h	46;"	d
+MBCD_FCODE_REPORT_SERVER_ID	modbcd/modbcd.h	63;"	d
+MBCD_FCODE_RET_BUS_CHAR_OVERRUN_CNT	modbcd/modbcd.h	80;"	d
+MBCD_FCODE_RET_BUS_COMM_ERR_CNT	modbcd/modbcd.h	74;"	d
+MBCD_FCODE_RET_BUS_EXCEP_ERR_CNT	modbcd/modbcd.h	75;"	d
+MBCD_FCODE_RET_BUS_MSG_CNT	modbcd/modbcd.h	73;"	d
+MBCD_FCODE_RET_DIAGNOSTIC_REG	modbcd/modbcd.h	69;"	d
+MBCD_FCODE_RET_QUERY_DATA	modbcd/modbcd.h	67;"	d
+MBCD_FCODE_RET_RST_COMM_OPT	modbcd/modbcd.h	68;"	d
+MBCD_FCODE_RET_SERVER_BUSY_CNT	modbcd/modbcd.h	79;"	d
+MBCD_FCODE_RET_SERVER_MSG_CNT	modbcd/modbcd.h	76;"	d
+MBCD_FCODE_RET_SERVER_NAK_CNT	modbcd/modbcd.h	78;"	d
+MBCD_FCODE_RET_SERVER_NO_RSP_CNT	modbcd/modbcd.h	77;"	d
+MBCD_FCODE_RW_MULTIPLE_REGISTERS	modbcd/modbcd.h	50;"	d
+MBCD_FCODE_WR_FILE_RECORD	modbcd/modbcd.h	56;"	d
+MBCD_FCODE_WR_MULTIPLE_COILS	modbcd/modbcd.h	43;"	d
+MBCD_FCODE_WR_MULTIPLE_REGISTERS	modbcd/modbcd.h	49;"	d
+MBCD_FCODE_WR_SINGLE_COIL	modbcd/modbcd.h	42;"	d
+MBCD_FCODE_WR_SINGLE_REGISTER	modbcd/modbcd.h	48;"	d
+MBCD_GATEWAY_PATH_UNAVAILABLE	modbcd/modbcd.h	107;"	d
+MBCD_GATEWAY_TARGET_DEVICE_FAILED_TO_RESPONSE	modbcd/modbcd.h	108;"	d
+MBCD_ILLEGAL_DATA_ADDRESS	modbcd/modbcd.h	101;"	d
+MBCD_ILLEGAL_DATA_VALUE	modbcd/modbcd.h	102;"	d
+MBCD_ILLEGAL_FUNCTION	modbcd/modbcd.h	100;"	d
+MBCD_MEMORY_PARITY_EEROR	modbcd/modbcd.h	106;"	d
+MBCD_SERVER_DEVICE_BUSY	modbcd/modbcd.h	105;"	d
+MBCD_SERVER_DEVICE_FAILURE	modbcd/modbcd.h	103;"	d
 NAMEDIR	tst/Makefile	4;"	m
 OBJS	modbcd/Makefile	8;"	m
 OBJS	modbcd/comm/Makefile	8;"	m
@@ -82,6 +106,12 @@ OBJS	modbcd/comm/server/Makefile	8;"	m
 OBJS	modbcd/frame/Makefile	8;"	m
 OBJS	modbcd/frame/network/Makefile	8;"	m
 OBJS	modbcd/frame/serial/Makefile	8;"	m
+OBJS	modbcd/functions/Makefile	8;"	m
+OBJS	modbcd/functions/data_access/Makefile	8;"	m
+OBJS	modbcd/functions/data_access/_01bit_access/Makefile	8;"	m
+OBJS	modbcd/functions/data_access/_16bit_access/Makefile	8;"	m
+OBJS	modbcd/functions/diagnostics/Makefile	8;"	m
+OBJS	modbcd/functions/other/Makefile	8;"	m
 OBJS	modbcd/util/Makefile	8;"	m
 OBJS	tst/Makefile	2;"	m
 PROJECT	Makefile	8;"	m
@@ -93,29 +123,38 @@ SUBDIRS	modbcd/comm/server/Makefile	9;"	m
 SUBDIRS	modbcd/frame/Makefile	9;"	m
 SUBDIRS	modbcd/frame/network/Makefile	9;"	m
 SUBDIRS	modbcd/frame/serial/Makefile	9;"	m
+SUBDIRS	modbcd/functions/Makefile	9;"	m
+SUBDIRS	modbcd/functions/data_access/Makefile	9;"	m
+SUBDIRS	modbcd/functions/data_access/_01bit_access/Makefile	9;"	m
+SUBDIRS	modbcd/functions/data_access/_16bit_access/Makefile	9;"	m
+SUBDIRS	modbcd/functions/diagnostics/Makefile	9;"	m
+SUBDIRS	modbcd/functions/other/Makefile	9;"	m
 SUBDIRS	modbcd/util/Makefile	9;"	m
 SUBDIRS	tst/Makefile	3;"	m
 TARGET	Makefile	7;"	m
 UINT16	modbcd/config.h	33;"	d
-__MODBCD_ASCIID_H__	modbcd/comm/server/asciid.h	11;"	d
+__MODBCD_ASCIIC_H__	modbcd/comm/client/asciic.h	16;"	d
+__MODBCD_ASCIID_H__	modbcd/comm/server/asciid.h	16;"	d
 __MODBCD_CONFIG_H__	modbcd/config.h	10;"	d
 __MODBCD_H__	modbcd/modbcd.h	10;"	d
 __MODBCD_MBASCII_H__	modbcd/frame/serial/mbascii.h	11;"	d
+__MODBCD_MBCOILS_H__	modbcd/functions/data_access/_01bit_access/mbcoils.h	11;"	d
 __MODBCD_MBCRC_H__	modbcd/util/mbcrc.h	11;"	d
-__MODBCD_MBFRAME_H__	modbcd/frame/frame.h	11;"	d
 __MODBCD_MBLRC_H__	modbcd/util/mblrc.h	11;"	d
 __MODBCD_MBRTU_H__	modbcd/frame/serial/mbrtu.h	11;"	d
 __MODBCD_TRANS_H__	modbcd/util/trans.h	10;"	d
-_size	modbcd/comm/server/asciid.h	61;"	m	struct:asciid_state
 _size	modbcd/frame/serial/mbascii.h	47;"	m	struct:mb_ascii_frame_send
 _size	modbcd/frame/serial/mbascii.h	56;"	m	struct:mb_ascii_frame_recv
 _size	modbcd/frame/serial/mbrtu.h	43;"	m	struct:mb_rtu_frame
 address	modbcd/frame/serial/mbascii.h	41;"	m	struct:mb_ascii_frame_send
 address	modbcd/frame/serial/mbascii.h	51;"	m	struct:mb_ascii_frame_recv
 address	modbcd/frame/serial/mbrtu.h	38;"	m	struct:mb_rtu_frame
-asciid_init	modbcd/comm/server/asciid.c	45;"	f
-asciid_recv	modbcd/comm/server/asciid.c	66;"	f
-asciid_state	modbcd/comm/server/asciid.h	56;"	s
+asciic_emit	modbcd/comm/client/asciic.c	101;"	f
+asciic_recv	modbcd/comm/client/asciic.c	45;"	f
+asciic_state	modbcd/comm/client/asciic.h	59;"	s
+asciid_emit	modbcd/comm/server/asciid.c	107;"	f
+asciid_recv	modbcd/comm/server/asciid.c	45;"	f
+asciid_state	modbcd/comm/server/asciid.h	59;"	s
 colon	modbcd/frame/serial/mbascii.h	40;"	m	struct:mb_ascii_frame_send
 crc	modbcd/frame/serial/mbrtu.h	41;"	m	struct:mb_rtu_frame
 crlf	modbcd/frame/serial/mbascii.h	45;"	m	struct:mb_ascii_frame_send
@@ -131,22 +170,20 @@ main	tst/lrc.c	7;"	f
 mb_ascii_frame_recv	modbcd/frame/serial/mbascii.h	50;"	s
 mb_ascii_frame_send	modbcd/frame/serial/mbascii.h	39;"	s
 mb_rtu_frame	modbcd/frame/serial/mbrtu.h	37;"	s
-mbascii_get_frame	modbcd/frame/serial/mbascii.c	92;"	f
-mbascii_set_frame	modbcd/frame/serial/mbascii.c	42;"	f
+mbascii_get_frame	modbcd/frame/serial/mbascii.c	99;"	f
+mbascii_set_frame	modbcd/frame/serial/mbascii.c	46;"	f
 mbcrc	modbcd/util/mbcrc.c	94;"	f
 mblrc	modbcd/util/mblrc.c	36;"	f
-mbrtu_get_frame	modbcd/frame/serial/mbrtu.c	71;"	f
-mbrtu_set_frame	modbcd/frame/serial/mbrtu.c	42;"	f
+mbrtu_get_frame	modbcd/frame/serial/mbrtu.c	69;"	f
+mbrtu_set_frame	modbcd/frame/serial/mbrtu.c	41;"	f
 pData	modbcd/frame/serial/mbascii.h	43;"	m	struct:mb_ascii_frame_send
 pData	modbcd/frame/serial/mbascii.h	53;"	m	struct:mb_ascii_frame_recv
 pData	modbcd/frame/serial/mbrtu.h	40;"	m	struct:mb_rtu_frame
-pFun_exec	modbcd/comm/server/asciid.h	54;"	t
-pFun_recv	modbcd/comm/server/asciid.h	52;"	t
-pFun_send	modbcd/comm/server/asciid.h	53;"	t
-pInit	modbcd/comm/server/asciid.h	59;"	m	struct:asciid_state
-pInxt	modbcd/comm/server/asciid.h	58;"	m	struct:asciid_state
-serial_exec	modbcd/comm/server/asciid.h	65;"	m	struct:asciid_state
-serial_recv	modbcd/comm/server/asciid.h	63;"	m	struct:asciid_state
-serial_send	modbcd/comm/server/asciid.h	64;"	m	struct:asciid_state
-stat_s	modbcd/comm/server/asciid.c	19;"	v	typeref:struct:asciid_state	file:
-state	modbcd/comm/server/asciid.h	57;"	m	struct:asciid_state
+pFun_send	modbcd/comm/client/asciic.h	57;"	t
+pFun_send	modbcd/comm/server/asciid.h	57;"	t
+pInxt	modbcd/comm/client/asciic.h	61;"	m	struct:asciic_state
+pInxt	modbcd/comm/server/asciid.h	61;"	m	struct:asciid_state
+stat_s	modbcd/comm/client/asciic.c	26;"	v	typeref:struct:asciic_state	file:
+stat_s	modbcd/comm/server/asciid.c	26;"	v	typeref:struct:asciid_state	file:
+state	modbcd/comm/client/asciic.h	60;"	m	struct:asciic_state
+state	modbcd/comm/server/asciid.h	60;"	m	struct:asciid_state

@@ -30,7 +30,7 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  UINT16			unsigned short	
+#define  UINT16											unsigned short
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -58,13 +58,44 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  MBCD_CFG_MS_SEL								1		/**< 0 for Slave and 1 for Master */
+																/**-------------- Slave/Master config ------------*/
+#define  MBCD_CFG_MS_SEL								1		/**< 0 for Slave and 1 for Master				  */
 
-#define  MBCD_CFG_ADDRESS								0X01	/**< Slave address				  */
+																/**-------------- Slave address config -----------*/
+#define  MBCD_CFG_ADDRESS								0X01	/**< Slave address								  */
 
-#define  MBCD_CFG_MOD_ASCII_EN							1
-#define  MBCD_CFG_MOD_RTU_EN                          	1
-#define  MBCD_CFG_MOD_TCP_EN                          	0
+																/**-------------- Trans mode config --------------*/
+#define  MBCD_CFG_MOD_ASCII_EN							1		/**< ASCII mode	1 for enable & 0 for disable      */
+#define  MBCD_CFG_MOD_RTU_EN                          	0		/**< RTU   mode	1 for enable & 0 for disable      */
+#define  MBCD_CFG_MOD_TCP_EN                          	0		/**< TCP   mode	1 for enable & 0 for disable      */
+
+																/**-------------- Functions config ---------------*/
+																/**< Bit Access ++++++++++++++++++++++++++++++++++*/
+#define  MBCD_CFG_COD_RD_DISCRETE_INPUTS				1		/**< Enable 0X02 Read Discrete inputs or not      */
+#define  MBCD_CFG_COD_RD_COILS_EN						1		/**< Enable 0x01 Read Coils or not				  */
+#define  MBCD_CFG_COD_WR_SINGLE_COIL					1		/**< Enable 0X05 Write Single Coil or not         */
+#define  MBCD_CFG_COD_WR_MULTIPLE_COILS					1		/**< Enable 0X0F Write Multiple Coils or not      */
+																/**< 16Bit Access ++++++++++++++++++++++++++++++++*/
+#define  MBCD_CFG_COD_RD_INPUT_REGISTER					1		/**< Enable 0x04 Read Input Register or not       */
+#define  MBCD_CFG_COD_RD_HOLDING_REGISTERS				1		/**< Enable 0x03 Read Holding Registers or not    */
+#define  MBCD_CFG_COD_WR_SINGLE_REGISTER				1		/**< Enable 0x06 Write Single Register or not     */
+#define  MBCD_CFG_COD_WR_MULTIPLE_REGISTERS				1		/**< Enable 0x10 Write Multiple Registers or not  */
+#define  MBCD_CFG_COD_RW_MULTIPLE_REGISTERS				1		/**< Enable 0x17 Read/Write Multiple Registers y/n*/
+#define  MBCD_CFG_COD_WR_MASK_REGISTER					1		/**< Enable 0x16 Mask Write Register or not		  */
+#define  MBCD_CFG_COD_RD_FIFO_QUEUE						1		/**< Enable 0x18 Read FIFO queue or not			  */
+																/**< File Record Access ++++++++++++++++++++++++++*/
+#define  MBCD_CFG_COD_RD_FILE_RECORD					1		/**< Enable 0x14 Read File Record or not		  */
+#define  MBCD_CFG_COD_WR_FILE_RECORD					1		/**< Enable 0x15 Write File Record or not		  */
+																/**< Diagnostics +++++++++++++++++++++++++++++++++*/
+#define  MBCD_CFG_COD_RD_EXCEPTION_STATUS				1		/**< Enable 0X07 Read Exception status or not     */
+#define  MBCD_CFG_COD_DIAGNOSTIC						1		/**< Enable 0X08 Diagnostic	or not				  */
+#define  MBCD_CFG_COD_GET_COM_EVENT_COUNTER				1		/**< Enable 0X0B Get Com event counter or not	  */
+#define  MBCD_CFG_COD_GET_COM_EVENT_LOG					1		/**< Enable 0X0C Get Com event log or not		  */
+#define  MBCD_CFG_COD_REPORT_SERVER_ID					1		/**< Enable 0X11 Report server ID or not		  */
+#define  MBCD_CFG_COD_RD_DEVICE_ID						1		/**< Enable 0X2B Read device identification or not*/
+																/**< Others ++++++++++++++++++++++++++++++++++++++*/
+#define  MBCD_CFG_COD_ENCAPSULATED_INTERFACE_TRANSPORT	1		/**< Enable 0X2B-Subcode 13,14 or not			  */
+#define  MBCD_CFG_COD_CANOPEN_GENERAL_REFERENCE			1		/**< Enable 0X2B-Subcode 13 or not				  */
 
 
 #if defined(__cplusplus)

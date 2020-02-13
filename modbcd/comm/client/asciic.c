@@ -35,46 +35,16 @@ static struct asciic_state stat_s = {.state = ASCIIC_STATE_IDLE};
 */
 
 /**
- *	@brief		Init Modbus Ascii client 
- *	@param[in]	buff		-   Recive buffer 
- *	@param[in]	size		-   Size of recive buffer 
- *	@param[in]  recv		-	Method to recive character from RS232/RS485/USART ...
- *	@param[in]  send		-	Method to send character to RS232/RS485/USART ...
- *	@param[in]  exec		-	Method to execute action 
- *	@param[out] None	
- *	@return		None
- *	@note		1. The param 'size' SHOULD BE larger enough
- *				2. The param 'exec' SHOULD BE :
- *					a). Check whether function code and data field is valid or not
- *					b). Execute action
- *					c). Do normal/exception response (asciic_emit() can be called)
- **/
-void asciic_init(unsigned char *buff, unsigned short size, pFun_recv recv, pFun_send send, pFun_exec exec)
-{
-	stat_s.pInit = buff;
-	stat_s.pInxt = buff;
-
-	stat_s._size = size;
-
-	stat_s.serial_recv = recv;
-	stat_s.serial_send = send;
-	stat_s.serial_exec = exec;
-
-	return;
-}
-
-/**
  *	@brief	    Recive Modbus server data
- *	@param[in]  None 
- *	@param[out] None
- *	@return		None	
- *	@note		Put the function into the loop or interrupt depends on the implementation of 'serial_recv()'	
+ *	@param[in]  ch		-	character which get from client 
+ *	@param[in]  buff	-   user's data buffer	
+ *	@param[in]  size	-   buffer size 
+ *	@param[out] buff 
+ *	@return	    1 (Frame has been recived) / 0
  **/
-void asciic_recv(void)
+unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size)
 {
-	char ch = stat_s.serial_recv();
-
-	if (':' == ch) {memset(stat_s.pInit, 0, stat_s._size); stat_s.pInxt= stat_s.pInit; stat_s.state = ASCIIC_STATE_0;}
+	if (':' == ch) { memset(buff, 0, size); stat_s.pInxt = buff; stat_s.state = ASCIIC_STATE_0; }
 
 	switch (stat_s.state)
 	{
@@ -83,7 +53,7 @@ void asciic_recv(void)
 				switch (ch)
 				{
 					case 0X0D: /**< CR */ 
-						stat_s.state = ASCIIC_STATE_1;
+						stat_s.state = ASCIIC_STATE_2;
 						break;
 					default:
 						{
@@ -98,8 +68,10 @@ void asciic_recv(void)
 				{
 					case 0X0A: /**< LF */ 
 						{
-							stat_s.serial_exec(&stat_s);
+							//*(stat_s.pInxt) = ch; (stat_s.pInxt)++; 
+
 							stat_s.state = ASCIIC_STATE_IDLE;
+							goto _EXIT;
 						}
 						break;
 					default:
@@ -111,26 +83,28 @@ void asciic_recv(void)
 			;
 	}
 
-	return;
+	return 0;
+_EXIT:
+	return 1; 
 }
 
 /**
  *	@brief	    Send Modbus data to server 
- *	@param[in]  None 
+ *	@param[in]  sndc	-	character send function 
+ *	@param[in]  data	-	send buffer 
+ *	@param[in]  size	-	buffer size 
  *	@param[out] None
  *	@return		None	
- *	@note	    1. The data SHOULD HAD BE setted by ascii frame function		
+ *	@note	    1. The data SHOULD BE setted by ascii frame function		
  *				2. ***Only loop mode is supported
  **/
-void asciic_emit(unsigned char *data, unsigned short size)
+void asciic_emit(pFun_send sndc, unsigned char *data, unsigned short size)
 {
-	for (; size != 0; size--)
-	{
-		stat_s.serial_send(*data); data++;
-	}
+	for (; size != 0; size--) { sndc(*data); data++; }
 
 	return;
 }
+
 
 #endif //((MBCD_CFG_MS_SEL == 1) && (MBCD_CFG_MOD_ASCII_EN > 0))
 

@@ -36,9 +36,8 @@
  *	@param[in]  size    - data size 
  *	@param[out] None
  *	@return		ASCII Frame 
- *	@note		1. The function do not have volidity check for param 'data' 
- *				2. Stack map : colon + address + funCode + data + lrc + CRLF 
- *				3. ***Param 'data' MUST BE double size of origin one 
+ *	@note		1. Stack map : colon + address + funCode + data + lrc + CRLF 
+ *				2. ***Param 'data' MUST BE double size of origin one 
  *	@code
  *		unsigned char data[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0} //ERROR
  *		unsigned char data[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0} //RIGHT
@@ -95,8 +94,7 @@ struct mb_ascii_frame_send mbascii_set_frame(unsigned char address, unsigned cha
  *	@param[in]  size - data size
  *	@param[out] data 
  *	@return		ASCII Frame 
- *	@note		1. The function do not have volidity check for param 'data' 
- *				2. Stack map : colon + address + funCode + data + lrc + CRLF 
+ *	@note		Stack map : colon + address + funCode + data + lrc + CRLF 
  **/
 struct mb_ascii_frame_recv mbascii_get_frame(unsigned char *data, unsigned short size)
 {
