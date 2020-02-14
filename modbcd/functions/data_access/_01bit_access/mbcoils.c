@@ -26,69 +26,51 @@
 --------------------------------------------------------------------------------------------------------------------
 */
 
-#if 0
 /**
  *	@brief		Read coils (function code = 0x01) 
- *	@param[in]  
- *	@param[out] 
+ *	@param[in]	data - Frame buffer which hass been parsed
+ *	@param[out] None
  *	@return		
  *	@note		
  **/
-void mb_read_coils(struct asciid_state *st, unsigned char *buff, unsigned short _size)
+unsigned char mb_read_coils(const unsigned char *data)
 {
-	/**--------------------- Check the Validate function code ----------------------*/
-
-	if (MBCD_CFG_COD_RD_COILS_EN <= 0) { goto _EXCEPT_01; }
-
-	struct mb_ascii_frame_send snd;
-	struct mb_ascii_frame_recv rcv;
-
-	rcv = mbascii_get_frame(st->pInit, st->_size);
+	//TBD ADD PDU LENGTH CHECK
+	
+#if  MBCD_CFG_COD_RD_COILS_EN > 0 
 
 	/**--------------------- Check the Validate data address -----------------------*/
 
-	UINT16 Quantity = (pData[3] << 8) | (pData[4]);
+	UINT16 Quantity = (data[3] << 8) | (data[4]);
 
 	if (!((Quantity >= 0x0001) && (Quantity <= 0X07D))) { goto _EXCEPT_03; }
 
 	/**--------------------- Check the Validate data value -------------------------*/
 
-	UINT16 StartAdr = (pData[1] << 8) | (pData[2]);
+	UINT16 StartAdr = (data[1] << 8) | (data[2]);
+	//Note 1 address 0
 
 	if (!(StartAdr >= 0x0000) && (StartAdr <= 0XFFFF)) 
 	{
-		if (
 	}
 
-	{goto _EXCEPT_02}
-
 	/**--------------------- Check the Execute MB result ---------------------------*/
-	//bool fun_exect()
+//_EXCEPT_01:
+	return 0X01; /**< EXCEPTION 0x01 */
 
-	unsigned char address;
-	unsigned char funCode;
-	unsigned char *pData ;
-	unsigned char lrc    ;
-
-	unsigned char _size  ; /**< pData size, wich has been recived */
-
-
-
-
-	//pFun_recv serial_recv;
-	//pFun_send serial_send;
-
-	/**--------------------- Send Modbus Response ----------------------------------*/
-
-_EXCEPT_01:
-	snd = mbascii_set_frame(MBCD_CFG_ADDRESS, 0X01+0X80, buff, 0);
-_EXCEPT_02:
+//_EXCEPT_02:
+	return 0X02; /**< EXCEPTION 0x02 */
 
 _EXCEPT_03:
-	snd = mbascii_set_frame(MBCD_CFG_ADDRESS, 0X03+0X80, buff, 0);
+	return 0X03; /**< EXCEPTION 0x03 */
 
-	//st->send()
-	return;
+//_EXCEPT_04:
+	return 0X04; /**< EXCEPTION 0x03 */
+
+#else
+	return 0X01; /**< EXCEPTION 0x01 */
+
+#endif //MBCD_CFG_COD_RD_COILS_EN > 0 
 }
 
 /**
@@ -107,4 +89,3 @@ _EXCEPT_03:
  *	@note		
  **/
 
-#endif

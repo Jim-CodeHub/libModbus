@@ -51,7 +51,8 @@ struct mb_ascii_frame_recv{
 	unsigned char address;
 	unsigned char funCode;
 	unsigned char *pData ;
-	unsigned char lrc    ;
+	unsigned char lrc_cal;
+	unsigned char lrc_src;
 
 	unsigned char _size  ; /**< pData size, wich has been recived */
 };

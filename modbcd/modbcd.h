@@ -28,6 +28,7 @@ extern "C" {
 #include <modbcd/frame/serial/mbascii.h>
 #include <modbcd/comm/server/asciid.h>
 #include <modbcd/comm/client/asciic.h>
+#include <modbcd/functions/data_access/_01bit_access/mbcoils.h>
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -106,6 +107,36 @@ extern "C" {
 #define	 MBCD_MEMORY_PARITY_EEROR						0x08	
 #define  MBCD_GATEWAY_PATH_UNAVAILABLE					0X0A	
 #define	 MBCD_GATEWAY_TARGET_DEVICE_FAILED_TO_RESPONSE	0X0B
+
+
+/*------------------------------------------------------------------------------------------------------------------
+ * 
+ *											  MODBCD SHORT ALIAS FOR FSM
+ *
+ *------------------------------------------------------------------------------------------------------------------
+*/
+#define  MBCD_STATE_0								    1
+#define  MBCD_STATE_1								    2
+#define  MBCD_STATE_2								    3
+#define  MBCD_STATE_3								    4
+#define  MBCD_STATE_4								    5
+
+#define  MBCD_STATE_6								    7 
+#define  MBCD_STATE_7								    8 
+#define  MBCD_STATE_8								    9 
+#define  MBCD_STATE_9								    10
+#define  MBCD_STATE_IDLE								255
+
+
+/*------------------------------------------------------------------------------------------------------------------
+ * 
+ *												 MODBCD CODE BLOCKS 
+ *
+ *------------------------------------------------------------------------------------------------------------------
+*/
+struct mbcd_server_block{
+	unsigned char state; 
+};
 
 
 /*------------------------------------------------------------------------------------------------------------------

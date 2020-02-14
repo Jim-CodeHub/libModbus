@@ -46,12 +46,12 @@ int main(void)
 
 	puts("---------------------------------------------------");
 
-	unsigned char buff[] = {48, 49, 48, 50, 48, 49, 48, 50, 48, 51, 48, 52, 66, 55};
+	unsigned char buff[] = {48, 49, 48, 50, 48, 49, 48, 50, 48, 51, 48, 52, 66, 51};
 
 	struct mb_ascii_frame_recv fram2 = mbascii_get_frame(buff, sizeof(buff)); 
 
-	printf("address = %#X\n, funCode = %#X\n, lrc = %#X\n, size = %d\n" ,
-			fram2.address,   fram2.funCode,   fram2.lrc , fram2._size );
+	printf("address = %#X\n, funCode = %#X\n, lrc_cal = %#X\n, lrc_src = %#X\n, size = %d\n" ,
+			fram2.address,   fram2.funCode,   fram2.lrc_cal,   fram2.lrc_src, fram2._size );
 
 	int size = fram2._size; 
 

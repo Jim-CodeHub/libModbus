@@ -30,6 +30,7 @@ extern "C" {
  *------------------------------------------------------------------------------------------------------------------
 */
 void hexToAscii(unsigned char Hex, char ascii[2]);
+unsigned char asciiToHex(char ascii_1, char ascii_2);
 
 
 #if defined(__cplusplus)

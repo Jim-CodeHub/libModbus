@@ -37,14 +37,13 @@ static struct asciic_state stat_s = {.state = ASCIIC_STATE_IDLE};
 /**
  *	@brief	    Recive Modbus server data
  *	@param[in]  ch		-	character which get from client 
- *	@param[in]  buff	-   user's data buffer	
- *	@param[in]  size	-   buffer size 
- *	@param[out] buff 
- *	@return	    1 (Frame has been recived) / 0
+ *	@param[out] buff	-   user's data buffer
+ *	@param[out] size	-   frame size 
+ *	@return	    1(Frame has been recived - CR) / 2(End recive - LF) / 0
  **/
-unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size)
+unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short *size)
 {
-	if (':' == ch) { memset(buff, 0, size); stat_s.pInxt = buff; stat_s.state = ASCIIC_STATE_0; }
+	if (':' == ch) { stat_s.pInxt = buff; stat_s.state = ASCIIC_STATE_0; }
 
 	switch (stat_s.state)
 	{
@@ -53,7 +52,11 @@ unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size)
 				switch (ch)
 				{
 					case 0X0D: /**< CR */ 
-						stat_s.state = ASCIIC_STATE_2;
+						{
+							stat_s.state = ASCIIC_STATE_1;
+
+							goto _EXIT_CR;
+						}
 						break;
 					default:
 						{
@@ -68,10 +71,11 @@ unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size)
 				{
 					case 0X0A: /**< LF */ 
 						{
-							//*(stat_s.pInxt) = ch; (stat_s.pInxt)++; 
+							*size = stat_s.pInxt - buff;
 
 							stat_s.state = ASCIIC_STATE_IDLE;
-							goto _EXIT;
+
+							goto _EXIT_LF;
 						}
 						break;
 					default:
@@ -84,8 +88,10 @@ unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size)
 	}
 
 	return 0;
-_EXIT:
+_EXIT_CR:
 	return 1; 
+_EXIT_LF:
+	return 2;
 }
 
 /**

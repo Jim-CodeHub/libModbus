@@ -55,6 +55,7 @@ extern "C" {
 */
 	
 typedef void (*pFun_send)(unsigned char); 
+typedef char (*pFun_recv)(void); 
 
 struct asciic_state{
 	unsigned char   state;
@@ -69,7 +70,7 @@ struct asciic_state{
  *------------------------------------------------------------------------------------------------------------------
 */
 
-unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short size);
+unsigned char asciic_recv(char ch, unsigned char *buff, unsigned short *size);
 void asciic_emit(pFun_send sndc, unsigned char *data, unsigned short size);
 
 

@@ -38,7 +38,7 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-
+unsigned char mb_read_coils(const unsigned char *data);
 
 
 #if defined(__cplusplus)

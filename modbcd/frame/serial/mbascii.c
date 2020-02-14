@@ -102,17 +102,19 @@ struct mb_ascii_frame_recv mbascii_get_frame(unsigned char *data, unsigned short
 
 	if (size > 2*255) { size = 2*255; } /**< Max size of ASCII frame = 2*255Bytes */
 
-	frame.lrc = mblrc(data, size - 2);
+	frame.lrc_cal = mblrc(data, size - 2);
+	frame.lrc_src = asciiToHex(data[size-2], data[size-1]); 
 
-	frame.address = ((data[0] - 48) << 4) | (data[1] - 48);
-	frame.funCode = ((data[2] - 48) << 4) | (data[3] - 48);
+	frame.address = asciiToHex(data[0], data[1]); 
+	frame.funCode = asciiToHex(data[2], data[3]); 
 
-	frame._size = (size - 6) >> 1;
+	frame._size = (size - 6) >> 1; /**< Set data size */
+	frame.pData = data + 4;  /**< Set data pointer */
 
 	size -= 6; /**< Delete address, funCode and LRC size */
 	for (unsigned char *p = data + 4; size != 0; size -= 2, data++, p += 2)
 	{
-		*data = ((*p - 48) >> 4) | (*(p+1) - 48);
+		*data = asciiToHex(*p, *(p + 1)); 
 	}
 
 	return frame;

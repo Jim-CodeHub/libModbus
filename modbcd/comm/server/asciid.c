@@ -37,29 +37,26 @@ static struct asciid_state stat_s = {.state = ASCIID_STATE_IDLE};
 /**
  *	@brief	    Recive Modbus client data
  *	@param[in]  ch		-	character which get from client 
- *	@param[in]  buff	-   user's data buffer	
- *	@param[in]  size	-   buffer size 
- *	@param[out] buff 
- *	@return		Function Code or 0 (invalid)
+ *	@param[out] buff	-   user's data buffer	
+ *	@param[out] size	-   buffer size 
+ *	@return	    1(Frame has been recived - CR) / 2(End recive - LF) / 0
  **/
-unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short size)
+unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short *size)
 {
-	if (':' == ch) { memset(buff, 0, _size); stat_s.pInxt = buff; stat_s.state = ASCIID_STATE_0; }
+	if (':' == ch) { stat_s.pInxt = buff; stat_s.state = ASCIID_STATE_0; }
 
 	switch (stat_s.state)
 	{
-		case ASCIID_STATE_0: /**< Check address field */
-			{
-				/**< Quick address field (the first byte) handler */
-				stat_s.state = ((0 != ch) && (MBCD_CFG_ADDRESS != ch))?ASCIID_STATE_IDLE:ASCIID_STATE_1;
-			}
-			break;
-		case ASCIID_STATE_1: /**< Recive data into buff */
+		case ASCIID_STATE_0: /**< Recive data into buff */
 			{
 				switch (ch)
 				{
 					case 0X0D: /**< CR */ 
-						stat_s.state = ASCIID_STATE_2;
+						{
+							stat_s.state = ASCIID_STATE_2;
+
+							goto _EXIT_CR;
+						}
 						break;
 					default:
 						{
@@ -74,10 +71,11 @@ unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short size)
 				{
 					case 0X0A: /**< LF */ 
 						{
-							//*(stat_s.pInxt) = ch; (stat_s.pInxt)++; 
+							*size = stat_s.pInxt - buff;
 
 							stat_s.state = ASCIID_STATE_IDLE;
-							goto _EXIT;
+
+							goto _EXIT_LF;
 						}
 						break;
 					default:
@@ -90,8 +88,10 @@ unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short size)
 	}
 
 	return 0;
-_EXIT:
-	return ((buff[2] - 48) << 4) | (buff[3] - 48);
+_EXIT_CR:
+	return 1;
+_EXIT_LF:
+	return 2;
 }
 
 /**
