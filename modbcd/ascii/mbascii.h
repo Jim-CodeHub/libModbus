@@ -1,6 +1,6 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	asciid.h
- * @brief	Modbus ASCII mode server/slave handler 
+ * @file	mbascii.h
+ * @brief	Modbus ASCII mode client/master and server/slave handler 
  * @note	Bit per Byte : 
  *					1     start  bit
  *					7	  data   bit, least significant bit (LSB) sent first
@@ -12,8 +12,8 @@
 */
 
 
-#ifndef __MODBCD_ASCIID_H__
-#define __MODBCD_ASCIID_H__
+#ifndef __MODBCD_MBASCII_H__
+#define __MODBCD_MBASCII_H__
 
 
 #if defined(__cplusplus)
@@ -23,43 +23,46 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID INCLUDES 
+ *												MBASCII INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <string.h>
-#include <modbcd/config.h>
+#include "../config.h"
+#include "../macro.h"
+#include "../util/trans.h"
+#include "../util/msgbox.h"
+#include <assert.h>
 
 
-#if  ((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0)) //Slave and ascii mode enabled
+#if  MBCD_CFG_MOD_ASCII_EN > 0 //Ascii mode enabled
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID SHORT ALIAS 
+ *												MBASCII SHORT ALIAS 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  ASCIID_STATE_0							0
-#define  ASCIID_STATE_1							1
-#define  ASCIID_STATE_2							2
-#define  ASCIID_STATE_3							3
-#define  ASCIID_STATE_4							4
-#define  ASCIID_STATE_IDLE					    255	
+#define  MBASCII_STATE_NONE							0
+#define  MBASCII_STATE_0							1
+#define  MBASCII_STATE_1							2
+#define  MBASCII_STATE_2							3
+#define  MBASCII_STATE_3							4
+#define  MBASCII_STATE_4							5
+#define  MBASCII_STATE_IDLE					        255	
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												ASCIID DATABLOCK 
+ *												MBASCII DATABLOCK 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-	
-typedef void (*pFun_send)(unsigned char); 
-typedef char (*pFun_recv)(void); 
+struct mbascii_state{
+	UCHAR   state_Rx;
+	UCHAR   state_HL; /**< High character & Low character state */
+	UCHAR   state_Tx;
 
-struct asciid_state{
-	unsigned char   state;
-	unsigned char  *pInxt;
+	UCHAR  *pIndex;
 };
 
 
@@ -69,17 +72,18 @@ struct asciid_state{
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-unsigned char asciid_recv(char ch, unsigned char *buff, unsigned short *size);
-void asciid_emit(pFun_send sndc, unsigned char *data, unsigned short size);
+_BOOL mbascii_emit(void  (*putc)(SCHAR ch), UCHAR *data, USHRT  size);
+_BOOL mbascii_recv(SCHAR (*getc)(void)    , UCHAR *buff, USHRT *size);
 
 
-#endif //((MBCD_CFG_MS_SEL == 0) && (MBCD_CFG_MOD_ASCII_EN > 0))
+#endif //MBCD_CFG_MOD_ASCII_EN > 0
+
 
 #if defined(__cplusplus)
 }
 #endif
 
 
-#endif /*__MODBCD_ASCIID_H__*/
+#endif /*__MODBCD_MBASCII_H__*/
 
 

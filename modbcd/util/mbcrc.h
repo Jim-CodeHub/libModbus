@@ -22,8 +22,10 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <modbcd/config.h>
+#include "../config.h"
 
+
+#if MBCD_CFG_MOD_RTU_EN > 0
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -31,7 +33,10 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-UINT16 mbcrc(const unsigned char *puchMsg, unsigned short usDataLen);
+USHRT mbcrc(const UCHAR *puchMsg, USHRT usDataLen);
+
+
+#endif //MBCD_CFG_MOD_RTU_EN
 
 
 #if defined(__cplusplus)

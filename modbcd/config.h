@@ -17,20 +17,26 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											 CONFIG INCLUDES 
- *
- *------------------------------------------------------------------------------------------------------------------
-*/
-#include <stddef.h>
-
-
-/*------------------------------------------------------------------------------------------------------------------
- * 
  *											 CONFIG DATA TYPE 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  UINT16											unsigned short
+#include <stdbool.h>
+
+#define  UCHAR											unsigned char
+#define  SCHAR											char	
+#define  USHRT											unsigned short
+#define  _BOOL											bool
+
+
+/*------------------------------------------------------------------------------------------------------------------
+ * 
+ *											 CONFIG CRITICAL 
+ *
+ *------------------------------------------------------------------------------------------------------------------
+*/
+#define  MBCD_ENTER_CRITICAL() 
+#define  MBCD_EXIT_CRITICAL()
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -58,21 +64,18 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-																/**-------------- Slave/Master config ------------*/
-#define  MBCD_CFG_MS_SEL								0		/**< 0 for Slave(server) and 1 for Master(client) */
-
 																/**-------------- Slave address config -----------*/
 #define  MBCD_CFG_ADDRESS								0X01	/**< Slave address								  */
 
 																/**-------------- Trans mode config --------------*/
 #define  MBCD_CFG_MOD_ASCII_EN							1		/**< ASCII mode	1 for enable & 0 for disable      */
-#define  MBCD_CFG_MOD_RTU_EN                          	0		/**< RTU   mode	1 for enable & 0 for disable      */
-#define  MBCD_CFG_MOD_TCP_EN                          	0		/**< TCP   mode	1 for enable & 0 for disable      */
+#define  MBCD_CFG_MOD_RTU_EN                          	1		/**< RTU   mode	1 for enable & 0 for disable      */
+#define  MBCD_CFG_MOD_TCP_EN                          	1		/**< TCP   mode	1 for enable & 0 for disable      */
 
 																/**-------------- Functions config ---------------*/
 																/**< Bit Access ++++++++++++++++++++++++++++++++++*/
 #define  MBCD_CFG_COD_RD_DISCRETE_INPUTS_EN				1		/**< Enable 0X02 Read Discrete inputs or not      */
-#define  MBCD_CFG_COD_RD_COILS_EN						1		/**< Enable 0x01 Read Coils or not				  */
+#define  MBCD_CFG_COD_RD_COILS_EN						0		/**< Enable 0x01 Read Coils or not				  */
 #define  MBCD_CFG_COD_WR_SINGLE_COIL_EN					1		/**< Enable 0X05 Write Single Coil or not         */
 #define  MBCD_CFG_COD_WR_MULTIPLE_COILS_EN				1		/**< Enable 0X0F Write Multiple Coils or not      */
 																/**< 16Bit Access ++++++++++++++++++++++++++++++++*/

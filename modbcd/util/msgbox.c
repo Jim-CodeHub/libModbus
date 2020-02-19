@@ -1,11 +1,10 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	trans.c
+ * @file	msgbox.c
  *
  * Copyright (c) 2019-2019 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
-
-#include "trans.h"
+#include "msgbox.h"
 
 
 /*
@@ -25,31 +24,41 @@
 --------------------------------------------------------------------------------------------------------------------
 */
 
-#if  MBCD_CFG_MOD_ASCII_EN > 0 //Ascii mode enabled
-
 /**
- *	@brief	    Trans binary value to ascii (Capital & alphanum)character
- *	@param[in]  binary 
- *	@param[out] None 
- *	@return	    binary	
- **/
-SCHAR BinToAsc(UCHAR binary)
+    @brief      Post message
+    @param[in]  mbox - message box ID pointer,
+				msg - message	
+    @param[out] None
+    @return     None
+*/
+void _OSMboxPost(struct _os_mbox *mbox, void *msg) 
 {
-	return ((binary >= '0') && (binary <= '9'))?(binary+48):(binary+55);
+	mbox->msg = msg;
+
+	return;
 }
 
-
 /**
- *	@brief	    Trans ascii (Capital & alphanum) character to binary value
- *	@param[in]  ascii
- *	@param[out] None 
- *	@return	    binary	
- **/
-UCHAR AscToBin(SCHAR ascii)
+    @brief      Post message
+    @param[in]  mbox - message box ID pointer,
+    @param[out] None
+    @return     Message 
+*/
+void *_OSMboxAccept(struct _os_mbox *mbox)
 {
-	return ((ascii >= '0') && (ascii <= '9'))?(ascii-48):(ascii-55);
-}
+	void *msg = (void *)0;
 
-#endif //MBCD_CFG_MOD_ASCII_EN > 0
+	if ((void *)0 != mbox->msg) /**< To avoid read signal frequently */
+	{
+		MBCD_ENTER_CRITICAL();
+
+		msg = mbox->msg;
+		mbox->msg = (void *)0;
+
+		MBCD_EXIT_CRITICAL();
+	}
+
+	return msg;
+}
 
 

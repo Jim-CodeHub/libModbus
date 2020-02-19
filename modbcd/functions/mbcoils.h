@@ -1,14 +1,14 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbrtu.h
- * @brief	packetize and depacketize Modbus RTU frame
+ * @file	mbcoils.h
+ * @brief   Read and Write modbus coils (function code -> 0x01, 0x05, 0x0F supported)	
  *
  * Copyright (c) 2019-2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
 
-#ifndef __MODBCD_MBRTU_H__
-#define __MODBCD_MBRTU_H__
+#ifndef __MODBCD_MBCOILS_H__
+#define __MODBCD_MBCOILS_H__
 
 
 #if defined(__cplusplus)
@@ -18,42 +18,27 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBRTU INCLUDES 
+ *												MBCOILS INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <string.h>
-#include <modbcd/util/mbcrc.h>
+#include "../config.h"
 
-
-#if  MBCD_CFG_MOD_RTU_EN  >  0 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBRTU DATABLOCK 
+ *												MBCOILS DATABLOCK 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-struct mb_rtu_frame{
-	unsigned char	address;
-	unsigned char	funCode;
-	unsigned char  *pData  ;
-	UINT16			crc	   ;
-
-	unsigned short  _size  ; /**< pData size */
-};
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											 FUNCTIONS DECLARATION
+ *		 									   FUNCTIONS DECLARATION
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-struct mb_rtu_frame mbrtu_set_frame(unsigned char address, unsigned char funCode, unsigned char *data, unsigned short size);
-struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size);
-
-
-#endif//  MBCD_CFG_MOD_RTU_EN  >  0 
+UCHAR mb_read_coils(const UCHAR *data, UCHAR *size);
 
 
 #if defined(__cplusplus)
@@ -61,6 +46,6 @@ struct mb_rtu_frame mbrtu_get_frame(unsigned char *data, unsigned short size);
 #endif
 
 
-#endif /*__MODBCD_MBRTU_H__*/
+#endif /*__MODBCD_MBCOILS_H__*/
 
 

@@ -6,7 +6,7 @@
 
 
 OBJS    = modbcd.o
-SUBDIRS = comm frame util functions
+SUBDIRS = ascii rtu tcp functions util
  
  
 #-------------------------------------------------------------------------------------------------------

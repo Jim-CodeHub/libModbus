@@ -6,7 +6,7 @@
  *------------------------------------------------------------------------------------------------------------------
 */
 
-#include <modbcd/functions/data_access/_01bit_access/mbcoils.h>
+#include "mbcoils.h"
 
 
 /*
@@ -28,20 +28,18 @@
 
 /**
  *	@brief		Read coils (function code = 0x01) 
- *	@param[in]	data - Frame buffer which hass been parsed
+ *	@param[in]	data - Frame buffer which has been parsed
  *	@param[out] None
  *	@return		
  *	@note		
  **/
-unsigned char mb_read_coils(const unsigned char *data)
+UCHAR mb_read_coils(const UCHAR *data, UCHAR *size)
 {
-	//TBD ADD PDU LENGTH CHECK
-	
 #if  MBCD_CFG_COD_RD_COILS_EN > 0 
 
 	/**--------------------- Check the Validate data address -----------------------*/
-
-	UINT16 Quantity = (data[3] << 8) | (data[4]);
+		
+	UINT16 Quantity = (data[4] << 8) | (data[5]);
 
 	if (!((Quantity >= 0x0001) && (Quantity <= 0X07D))) { goto _EXCEPT_03; }
 
@@ -52,23 +50,24 @@ unsigned char mb_read_coils(const unsigned char *data)
 
 	if (!(StartAdr >= 0x0000) && (StartAdr <= 0XFFFF)) 
 	{
+		//这里 start地址是否OK 和 start+线圈数量是否OK 在freeModbus中 放在 excute中高定了，excute定义返回值（最好用enum）
 	}
 
 	/**--------------------- Check the Execute MB result ---------------------------*/
-//_EXCEPT_01:
-	return 0X01; /**< EXCEPTION 0x01 */
+_EXCEPT_01:
+	return MBCD_EXPT_ILLEGAL_FUNCTION;
 
-//_EXCEPT_02:
-	return 0X02; /**< EXCEPTION 0x02 */
+_EXCEPT_02:
+	return MBCD_EXPT_ILLEGAL_DATA_ADDRESS;
 
 _EXCEPT_03:
-	return 0X03; /**< EXCEPTION 0x03 */
+	return MBCD_EXPT_ILLEGAL_DATA_VALUE;
 
-//_EXCEPT_04:
-	return 0X04; /**< EXCEPTION 0x03 */
+_EXCEPT_04:
+	return MBCD_EXPT_SERVER_DEVICE_FAILURE;
 
 #else
-	return 0X01; /**< EXCEPTION 0x01 */
+	return MBCD_EXPT_ILLEGAL_FUNCTION; /**< EXCEPTION 0x01 */
 
 #endif //MBCD_CFG_COD_RD_COILS_EN > 0 
 }

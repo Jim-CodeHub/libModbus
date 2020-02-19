@@ -1,14 +1,13 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbcoils.h
- * @brief   Read and Write modbus coils (function code -> 0x01, 0x05, 0x0F supported)	
+ * @file	msgbox.h
  *
  * Copyright (c) 2019-2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
 
-#ifndef __MODBCD_MBCOILS_H__
-#define __MODBCD_MBCOILS_H__
+#ifndef __MODBCD_MSGBOX_H__
+#define __MODBCD_MSGBOX_H__
 
 
 #if defined(__cplusplus)
@@ -18,19 +17,21 @@ extern "C" {
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBCOILS INCLUDES 
+ *												MSGBOX INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <modbcd/config.h>
+#include "../config.h"
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBCOILS DATABLOCK 
+ *												  DATA BLOCKS 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
+struct _os_mbox { void *msg; };
+
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -38,7 +39,8 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-unsigned char mb_read_coils(const unsigned char *data);
+void  _OSMboxPost  (struct _os_mbox *mbox, void *msg);
+void *_OSMboxAccept(struct _os_mbox *mbox);
 
 
 #if defined(__cplusplus)
@@ -46,6 +48,6 @@ unsigned char mb_read_coils(const unsigned char *data);
 #endif
 
 
-#endif /*__MODBCD_MBCOILS_H__*/
+#endif /*__MODBCD_MSGBOX_H__*/
 
 

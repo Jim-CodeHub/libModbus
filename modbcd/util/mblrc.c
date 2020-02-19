@@ -6,8 +6,10 @@
  *------------------------------------------------------------------------------------------------------------------
 */
 
-#include <modbcd/util/mblrc.h>
+#include "mblrc.h"
 
+
+#if  MBCD_CFG_MOD_ASCII_EN > 0 //Ascii mode enabled
 
 /*
 --------------------------------------------------------------------------------------------------------------------
@@ -33,15 +35,19 @@
  *	@param[out] None
  *	@return		LRC value	
  **/
-unsigned char mblrc(const unsigned char *auchMsg, unsigned short usDataLen)
+UCHAR mblrc(const UCHAR *auchMsg, USHRT usDataLen)
 {
-	unsigned char uchLRC = 0;
+	UCHAR uchLRC = 0;
 
 	while (usDataLen--)
 	{
 		uchLRC += *auchMsg++; /*< add buffer byte without carry */
 	}
 
-	return ((unsigned char)(-((char)uchLRC)));  /*< twos complement */
+	return ((UCHAR)(-((char)uchLRC)));  /*< twos complement */
 }
+
+
+#endif //MBCD_CFG_MOD_ASCII_EN > 0
+
 

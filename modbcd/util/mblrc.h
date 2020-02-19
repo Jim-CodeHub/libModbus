@@ -22,7 +22,10 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
+#include "../config.h"
 
+
+#if  MBCD_CFG_MOD_ASCII_EN > 0 //Ascii mode enabled
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -30,7 +33,10 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-unsigned char mblrc(const unsigned char *auchMsg, unsigned short usDataLen);
+UCHAR mblrc(const UCHAR *auchMsg, USHRT usDataLen);
+
+
+#endif //MBCD_CFG_MOD_ASCII_EN > 0
 
 
 #if defined(__cplusplus)

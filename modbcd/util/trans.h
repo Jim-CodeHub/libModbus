@@ -29,8 +29,10 @@ extern "C" {
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-void hexToAscii(unsigned char Hex, char ascii[2]);
-unsigned char asciiToHex(char ascii_1, char ascii_2);
+#if  MBCD_CFG_MOD_ASCII_EN > 0 
+SCHAR BinToAsc(UCHAR binary);
+UCHAR AscToBin(SCHAR ascii );
+#endif //MBCD_CFG_MOD_ASCII_EN > 0 
 
 
 #if defined(__cplusplus)
