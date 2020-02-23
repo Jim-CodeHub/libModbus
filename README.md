@@ -1,4 +1,4 @@
-# Modbus Client(Master) & Server(Slave) library for MCU with C language 
+# Modbus Client(Master) library for MCU with C language 
 
 ## Feature
 
@@ -7,5 +7,4 @@ Comm : EIA/TIA-232 or EIA/TIA-485 / Internet
 
 ## Next
 
-RTU & TCP Mode support
 
