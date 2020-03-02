@@ -26,14 +26,15 @@ OBJS	   += ../modbcd/modbcd.o					\
 
 CFLAGS 		= -mmcu=$(MCU) -Werror -Os -std=c99 -D F_CPU=$(F_CPU)
 CFLAGS     += -g
+CFLAGS	   += -I.
 CFLAGS	   += -I../modbcd
+CFLAGS	   += -I../modbcd/util
 #CFLAGS	   += -I. 									\
 			  -I../ascii							\
 			  -I../rtu								\
 			  -I../tcp								\
 			  -I../functions						\
 			  -I../include							\
-			  -I../port/avr/atmega128
 
 LDFLAGS 	= -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
  
