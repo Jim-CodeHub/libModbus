@@ -1,10 +1,10 @@
 #-------------------------------------------------------------------------------------------------------
 #																									   #
-#								Makefile for modbcd source file 									   #
+#								Makefile for modbcd TST source file 								   #
 #																									   #
 #-------------------------------------------------------------------------------------------------------
 
-PROJECT		= modbcd
+PROJECT		= modbcd_tst
 MJR_VER		= V1.0
 
 TARGET 		= $(PROJECT)_$(MJR_VER)
@@ -22,23 +22,7 @@ MCU 		= atmega128
 F_CPU 		= 16000000UL
 
 OBJS		= main.o
-#OBJS		= main.o								    \
-			  ../ascii/mbascii.o					\
-			  ../rtu/mbcrc.o						\
-			  ../rtu/mbrtu.o						\
-			  ../tcp/mbtcp.o						\
-			  ../functions/mbfunccoils.o			\
-			  ../functions/mbfuncdiag.o				\
-			  ../functions/mbfuncdisc.o				\
-			  ../functions/mbfuncholding.o			\
-			  ../functions/mbfuncinput.o			\
-			  ../functions/mbfuncother.o			\
-			  ../functions/mbutils.o				\
-			  ../mb.o								\
-			  ../port/avr/atmega128/event.o			\
-			  ../port/avr/atmega128/serial.o		\
-			  ../port/avr/atmega128/timer.o			\
-			  ../port/avr/atmega128/port.o
+OBJS	   += ../modbcd/modbcd.o					\
 
 CFLAGS 		= -mmcu=$(MCU) -Werror -Os -std=c99 -D F_CPU=$(F_CPU)
 CFLAGS     += -g

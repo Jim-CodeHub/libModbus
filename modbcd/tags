@@ -1,0 +1,343 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BITS_UCHAR	functions/mbutils.c	42;"	d	file:
+BOOL	port/avr/atmega128/port.h	/^typedef char									BOOL;										$/;"	t
+BYTE_HIGH_NIBBLE	ascii/mbascii.c	/^    BYTE_HIGH_NIBBLE,           \/*!< Character for high nibble of byte. *\/$/;"	e	enum:__anon13	file:
+BYTE_LOW_NIBBLE	ascii/mbascii.c	/^    BYTE_LOW_NIBBLE             \/*!< Character for low nibble of byte. *\/$/;"	e	enum:__anon13	file:
+CHAR	port/avr/atmega128/port.h	/^typedef char									CHAR;$/;"	t
+ENTER_CRITICAL_SECTION	port/avr/atmega128/port.c	/^void ENTER_CRITICAL_SECTION( void )	{_SREG = SREG; __asm__ volatile("cli");}$/;"	f
+EV_EXECUTE	include/mbport.h	/^    EV_EXECUTE,                 \/*!< Execute function. *\/$/;"	e	enum:__anon9
+EV_FRAME_RECEIVED	include/mbport.h	/^    EV_FRAME_RECEIVED,          \/*!< Frame received. *\/$/;"	e	enum:__anon9
+EV_FRAME_SENT	include/mbport.h	/^    EV_FRAME_SENT               \/*!< Frame sent. *\/$/;"	e	enum:__anon9
+EV_READY	include/mbport.h	/^    EV_READY,                   \/*!< Startup finished. *\/$/;"	e	enum:__anon9
+EXIT_CRITICAL_SECTION	port/avr/atmega128/port.c	/^void EXIT_CRITICAL_SECTION( void )	{SREG = _SREG;}	$/;"	f
+FALSE	port/avr/atmega128/port.h	51;"	d
+INLINE	port/avr/atmega128/port.h	34;"	d
+ISR	port/avr/atmega128/serial.c	/^ISR(USART1_RX_vect)$/;"	f
+ISR	port/avr/atmega128/serial.c	/^ISR(USART1_UDRE_vect) \/**< Use UDRE IE instead of TX IE (USART1_TX_vect) to speed up trans *\/$/;"	f
+ISR	port/avr/atmega128/timer.c	/^ISR(TIMER3_OVF_vect)$/;"	f
+LONG	port/avr/atmega128/port.h	/^typedef long									LONG;$/;"	t
+MB_ADDRESS_BROADCAST	include/mbproto.h	37;"	d
+MB_ADDRESS_MAX	include/mbproto.h	39;"	d
+MB_ADDRESS_MIN	include/mbproto.h	38;"	d
+MB_ASCII	include/mb.h	/^    MB_ASCII,                   \/*!< ASCII transmission mode. *\/$/;"	e	enum:__anon6
+MB_ASCII_DEFAULT_CR	ascii/mbascii.c	49;"	d	file:
+MB_ASCII_DEFAULT_LF	ascii/mbascii.c	50;"	d	file:
+MB_ASCII_ENABLED	include/mbconfig.h	49;"	d
+MB_ASCII_TIMEOUT_SEC	include/mbconfig.h	63;"	d
+MB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS	include/mbconfig.h	75;"	d
+MB_EILLSTATE	include/mb.h	/^    MB_EILLSTATE,               \/*!< protocol stack in illegal state. *\/$/;"	e	enum:__anon8
+MB_EINVAL	include/mb.h	/^    MB_EINVAL,                  \/*!< illegal argument. *\/$/;"	e	enum:__anon8
+MB_EIO	include/mb.h	/^    MB_EIO,                     \/*!< I\/O error. *\/$/;"	e	enum:__anon8
+MB_ENOERR	include/mb.h	/^    MB_ENOERR,                  \/*!< no error. *\/$/;"	e	enum:__anon8
+MB_ENOREG	include/mb.h	/^    MB_ENOREG,                  \/*!< illegal register address. *\/$/;"	e	enum:__anon8
+MB_ENORES	include/mb.h	/^    MB_ENORES,                  \/*!< insufficient resources. *\/$/;"	e	enum:__anon8
+MB_EPORTERR	include/mb.h	/^    MB_EPORTERR,                \/*!< porting layer error. *\/$/;"	e	enum:__anon8
+MB_ETIMEDOUT	include/mb.h	/^    MB_ETIMEDOUT                \/*!< timeout error occurred. *\/$/;"	e	enum:__anon8
+MB_EX_ACKNOWLEDGE	include/mbproto.h	/^    MB_EX_ACKNOWLEDGE = 0x05,$/;"	e	enum:__anon4
+MB_EX_GATEWAY_PATH_FAILED	include/mbproto.h	/^    MB_EX_GATEWAY_PATH_FAILED = 0x0A,$/;"	e	enum:__anon4
+MB_EX_GATEWAY_TGT_FAILED	include/mbproto.h	/^    MB_EX_GATEWAY_TGT_FAILED = 0x0B$/;"	e	enum:__anon4
+MB_EX_ILLEGAL_DATA_ADDRESS	include/mbproto.h	/^    MB_EX_ILLEGAL_DATA_ADDRESS = 0x02,$/;"	e	enum:__anon4
+MB_EX_ILLEGAL_DATA_VALUE	include/mbproto.h	/^    MB_EX_ILLEGAL_DATA_VALUE = 0x03,$/;"	e	enum:__anon4
+MB_EX_ILLEGAL_FUNCTION	include/mbproto.h	/^    MB_EX_ILLEGAL_FUNCTION = 0x01,$/;"	e	enum:__anon4
+MB_EX_MEMORY_PARITY_ERROR	include/mbproto.h	/^    MB_EX_MEMORY_PARITY_ERROR = 0x08,$/;"	e	enum:__anon4
+MB_EX_NONE	include/mbproto.h	/^    MB_EX_NONE = 0x00,$/;"	e	enum:__anon4
+MB_EX_SLAVE_BUSY	include/mbproto.h	/^    MB_EX_SLAVE_BUSY = 0x06,$/;"	e	enum:__anon4
+MB_EX_SLAVE_DEVICE_FAILURE	include/mbproto.h	/^    MB_EX_SLAVE_DEVICE_FAILURE = 0x04,$/;"	e	enum:__anon4
+MB_FUNC_DIAG_DIAGNOSTIC	include/mbproto.h	51;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_CNT	include/mbproto.h	52;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_LOG	include/mbproto.h	53;"	d
+MB_FUNC_DIAG_READ_EXCEPTION	include/mbproto.h	50;"	d
+MB_FUNC_ERROR	include/mbproto.h	55;"	d
+MB_FUNC_HANDLERS_MAX	include/mbconfig.h	85;"	d
+MB_FUNC_NONE	include/mbproto.h	40;"	d
+MB_FUNC_OTHER_REPORT_SLAVEID	include/mbproto.h	54;"	d
+MB_FUNC_OTHER_REP_SLAVEID_BUF	include/mbconfig.h	95;"	d
+MB_FUNC_OTHER_REP_SLAVEID_ENABLED	include/mbconfig.h	98;"	d
+MB_FUNC_READWRITE_HOLDING_ENABLED	include/mbconfig.h	125;"	d
+MB_FUNC_READWRITE_MULTIPLE_REGISTERS	include/mbproto.h	49;"	d
+MB_FUNC_READ_COILS	include/mbproto.h	41;"	d
+MB_FUNC_READ_COILS_ENABLED	include/mbconfig.h	113;"	d
+MB_FUNC_READ_DISCRETE_INPUTS	include/mbproto.h	42;"	d
+MB_FUNC_READ_DISCRETE_INPUTS_ENABLED	include/mbconfig.h	122;"	d
+MB_FUNC_READ_HOLDING_ENABLED	include/mbconfig.h	104;"	d
+MB_FUNC_READ_HOLDING_REGISTER	include/mbproto.h	45;"	d
+MB_FUNC_READ_INPUT_ENABLED	include/mbconfig.h	101;"	d
+MB_FUNC_READ_INPUT_REGISTER	include/mbproto.h	46;"	d
+MB_FUNC_WRITE_COIL_ENABLED	include/mbconfig.h	116;"	d
+MB_FUNC_WRITE_HOLDING_ENABLED	include/mbconfig.h	107;"	d
+MB_FUNC_WRITE_MULTIPLE_COILS	include/mbproto.h	44;"	d
+MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED	include/mbconfig.h	119;"	d
+MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED	include/mbconfig.h	110;"	d
+MB_FUNC_WRITE_MULTIPLE_REGISTERS	include/mbproto.h	48;"	d
+MB_FUNC_WRITE_REGISTER	include/mbproto.h	47;"	d
+MB_FUNC_WRITE_SINGLE_COIL	include/mbproto.h	43;"	d
+MB_PAR_EVEN	include/mbport.h	/^    MB_PAR_EVEN                 \/*!< Even parity. *\/$/;"	e	enum:__anon10
+MB_PAR_NONE	include/mbport.h	/^    MB_PAR_NONE,                \/*!< No parity. *\/$/;"	e	enum:__anon10
+MB_PAR_ODD	include/mbport.h	/^    MB_PAR_ODD,                 \/*!< Odd parity. *\/$/;"	e	enum:__anon10
+MB_PDU_DATA_OFF	include/mbframe.h	66;"	d
+MB_PDU_FUNC_OFF	include/mbframe.h	65;"	d
+MB_PDU_FUNC_READWRITE_BYTECNT_OFF	functions/mbfuncholding.c	64;"	d	file:
+MB_PDU_FUNC_READWRITE_READ_ADDR_OFF	functions/mbfuncholding.c	60;"	d	file:
+MB_PDU_FUNC_READWRITE_READ_REGCNT_OFF	functions/mbfuncholding.c	61;"	d	file:
+MB_PDU_FUNC_READWRITE_SIZE_MIN	functions/mbfuncholding.c	66;"	d	file:
+MB_PDU_FUNC_READWRITE_WRITE_ADDR_OFF	functions/mbfuncholding.c	62;"	d	file:
+MB_PDU_FUNC_READWRITE_WRITE_REGCNT_OFF	functions/mbfuncholding.c	63;"	d	file:
+MB_PDU_FUNC_READWRITE_WRITE_VALUES_OFF	functions/mbfuncholding.c	65;"	d	file:
+MB_PDU_FUNC_READ_ADDR_OFF	functions/mbfunccoils.c	44;"	d	file:
+MB_PDU_FUNC_READ_ADDR_OFF	functions/mbfuncdisc.c	44;"	d	file:
+MB_PDU_FUNC_READ_ADDR_OFF	functions/mbfuncholding.c	44;"	d	file:
+MB_PDU_FUNC_READ_ADDR_OFF	functions/mbfuncinput.c	44;"	d	file:
+MB_PDU_FUNC_READ_COILCNT_MAX	functions/mbfunccoils.c	47;"	d	file:
+MB_PDU_FUNC_READ_COILCNT_OFF	functions/mbfunccoils.c	45;"	d	file:
+MB_PDU_FUNC_READ_DISCCNT_MAX	functions/mbfuncdisc.c	47;"	d	file:
+MB_PDU_FUNC_READ_DISCCNT_OFF	functions/mbfuncdisc.c	45;"	d	file:
+MB_PDU_FUNC_READ_REGCNT_MAX	functions/mbfuncholding.c	47;"	d	file:
+MB_PDU_FUNC_READ_REGCNT_MAX	functions/mbfuncinput.c	47;"	d	file:
+MB_PDU_FUNC_READ_REGCNT_OFF	functions/mbfuncholding.c	45;"	d	file:
+MB_PDU_FUNC_READ_REGCNT_OFF	functions/mbfuncinput.c	45;"	d	file:
+MB_PDU_FUNC_READ_RSP_BYTECNT_OFF	functions/mbfuncinput.c	49;"	d	file:
+MB_PDU_FUNC_READ_SIZE	functions/mbfunccoils.c	46;"	d	file:
+MB_PDU_FUNC_READ_SIZE	functions/mbfuncdisc.c	46;"	d	file:
+MB_PDU_FUNC_READ_SIZE	functions/mbfuncholding.c	46;"	d	file:
+MB_PDU_FUNC_READ_SIZE	functions/mbfuncinput.c	46;"	d	file:
+MB_PDU_FUNC_WRITE_ADDR_OFF	functions/mbfunccoils.c	49;"	d	file:
+MB_PDU_FUNC_WRITE_ADDR_OFF	functions/mbfuncholding.c	49;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_ADDR_OFF	functions/mbfunccoils.c	53;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_ADDR_OFF	functions/mbfuncholding.c	53;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_BYTECNT_OFF	functions/mbfunccoils.c	55;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_BYTECNT_OFF	functions/mbfuncholding.c	55;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_COILCNT_MAX	functions/mbfunccoils.c	58;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_COILCNT_OFF	functions/mbfunccoils.c	54;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_REGCNT_MAX	functions/mbfuncholding.c	58;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_REGCNT_OFF	functions/mbfuncholding.c	54;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_SIZE_MIN	functions/mbfunccoils.c	57;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_SIZE_MIN	functions/mbfuncholding.c	57;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_VALUES_OFF	functions/mbfunccoils.c	56;"	d	file:
+MB_PDU_FUNC_WRITE_MUL_VALUES_OFF	functions/mbfuncholding.c	56;"	d	file:
+MB_PDU_FUNC_WRITE_SIZE	functions/mbfunccoils.c	51;"	d	file:
+MB_PDU_FUNC_WRITE_SIZE	functions/mbfuncholding.c	51;"	d	file:
+MB_PDU_FUNC_WRITE_VALUE_OFF	functions/mbfunccoils.c	50;"	d	file:
+MB_PDU_FUNC_WRITE_VALUE_OFF	functions/mbfuncholding.c	50;"	d	file:
+MB_PDU_SIZE_MAX	include/mbframe.h	63;"	d
+MB_PDU_SIZE_MIN	include/mbframe.h	64;"	d
+MB_PORT_HAS_CLOSE	mb.c	56;"	d	file:
+MB_REG_READ	include/mb.h	/^    MB_REG_READ,                \/*!< Read register values and pass to protocol stack. *\/$/;"	e	enum:__anon7
+MB_REG_WRITE	include/mb.h	/^    MB_REG_WRITE                \/*!< Update register values. *\/$/;"	e	enum:__anon7
+MB_RTU	include/mb.h	/^    MB_RTU,                     \/*!< RTU transmission mode. *\/$/;"	e	enum:__anon6
+MB_RTU_ENABLED	include/mbconfig.h	52;"	d
+MB_SER_PDU_ADDR_OFF	ascii/mbascii.c	54;"	d	file:
+MB_SER_PDU_ADDR_OFF	rtu/mbrtu.c	49;"	d	file:
+MB_SER_PDU_PDU_OFF	ascii/mbascii.c	55;"	d	file:
+MB_SER_PDU_PDU_OFF	rtu/mbrtu.c	50;"	d	file:
+MB_SER_PDU_SIZE_CRC	rtu/mbrtu.c	48;"	d	file:
+MB_SER_PDU_SIZE_LRC	ascii/mbascii.c	53;"	d	file:
+MB_SER_PDU_SIZE_MAX	ascii/mbascii.c	52;"	d	file:
+MB_SER_PDU_SIZE_MAX	rtu/mbrtu.c	47;"	d	file:
+MB_SER_PDU_SIZE_MIN	ascii/mbascii.c	51;"	d	file:
+MB_SER_PDU_SIZE_MIN	rtu/mbrtu.c	46;"	d	file:
+MB_TCP	include/mb.h	/^    MB_TCP                      \/*!< TCP mode. *\/$/;"	e	enum:__anon6
+MB_TCP_ENABLED	include/mbconfig.h	55;"	d
+MB_TCP_FUNC	tcp/mbtcp.c	73;"	d	file:
+MB_TCP_LEN	tcp/mbtcp.c	71;"	d	file:
+MB_TCP_PID	tcp/mbtcp.c	70;"	d	file:
+MB_TCP_PORT_USE_DEFAULT	include/mb.h	73;"	d
+MB_TCP_PROTOCOL_ID	tcp/mbtcp.c	75;"	d	file:
+MB_TCP_PSEUDO_ADDRESS	tcp/mbtcp.h	38;"	d
+MB_TCP_TID	tcp/mbtcp.c	69;"	d	file:
+MB_TCP_UID	tcp/mbtcp.c	72;"	d	file:
+PR_BEGIN_EXTERN_C	port/avr/atmega128/port.h	31;"	d
+PR_END_EXTERN_C	port/avr/atmega128/port.h	32;"	d
+SHORT	port/avr/atmega128/port.h	/^typedef short									SHORT;$/;"	t
+STATE_DISABLED	mb.c	/^    STATE_DISABLED,$/;"	e	enum:__anon3	file:
+STATE_ENABLED	mb.c	/^    STATE_ENABLED,$/;"	e	enum:__anon3	file:
+STATE_NOT_INITIALIZED	mb.c	/^    STATE_NOT_INITIALIZED$/;"	e	enum:__anon3	file:
+STATE_RX_ERROR	rtu/mbrtu.c	/^    STATE_RX_ERROR              \/*!< If the frame is invalid. *\/$/;"	e	enum:__anon1	file:
+STATE_RX_IDLE	ascii/mbascii.c	/^    STATE_RX_IDLE,              \/*!< Receiver is in idle state. *\/$/;"	e	enum:__anon11	file:
+STATE_RX_IDLE	rtu/mbrtu.c	/^    STATE_RX_IDLE,              \/*!< Receiver is in idle state. *\/$/;"	e	enum:__anon1	file:
+STATE_RX_INIT	rtu/mbrtu.c	/^    STATE_RX_INIT,              \/*!< Receiver is in initial state. *\/$/;"	e	enum:__anon1	file:
+STATE_RX_RCV	ascii/mbascii.c	/^    STATE_RX_RCV,               \/*!< Frame is beeing received. *\/$/;"	e	enum:__anon11	file:
+STATE_RX_RCV	rtu/mbrtu.c	/^    STATE_RX_RCV,               \/*!< Frame is beeing received. *\/$/;"	e	enum:__anon1	file:
+STATE_RX_WAIT_EOF	ascii/mbascii.c	/^    STATE_RX_WAIT_EOF           \/*!< Wait for End of Frame. *\/$/;"	e	enum:__anon11	file:
+STATE_TX_DATA	ascii/mbascii.c	/^    STATE_TX_DATA,              \/*!< Sending of data (Address, Data, LRC). *\/$/;"	e	enum:__anon12	file:
+STATE_TX_END	ascii/mbascii.c	/^    STATE_TX_END,               \/*!< End of transmission. *\/$/;"	e	enum:__anon12	file:
+STATE_TX_IDLE	ascii/mbascii.c	/^    STATE_TX_IDLE,              \/*!< Transmitter is in idle state. *\/$/;"	e	enum:__anon12	file:
+STATE_TX_IDLE	rtu/mbrtu.c	/^    STATE_TX_IDLE,              \/*!< Transmitter is in idle state. *\/$/;"	e	enum:__anon2	file:
+STATE_TX_NOTIFY	ascii/mbascii.c	/^    STATE_TX_NOTIFY             \/*!< Notify sender that the frame has been sent. *\/$/;"	e	enum:__anon12	file:
+STATE_TX_START	ascii/mbascii.c	/^    STATE_TX_START,             \/*!< Starting transmission (':' sent). *\/$/;"	e	enum:__anon12	file:
+STATE_TX_XMIT	rtu/mbrtu.c	/^    STATE_TX_XMIT               \/*!< Transmitter is in transfer state. *\/$/;"	e	enum:__anon2	file:
+TRUE	port/avr/atmega128/port.h	47;"	d
+UCHAR	port/avr/atmega128/port.h	/^typedef unsigned char							UCHAR;$/;"	t
+ULONG	port/avr/atmega128/port.h	/^typedef unsigned long							ULONG;$/;"	t
+USHORT	port/avr/atmega128/port.h	/^typedef unsigned short							USHORT;$/;"	t
+_MB_ASCII_ENABLED	port/avr/atmega128/port.h	62;"	d
+_MB_ASCII_H	ascii/mbascii.h	31;"	d
+_MB_ASCII_TIMEOUT_SEC	port/avr/atmega128/port.h	67;"	d
+_MB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS	port/avr/atmega128/port.h	68;"	d
+_MB_COILS_RD_ADDR_START	port/avr/atmega128/port.h	95;"	d
+_MB_COILS_RD_QUANTITY	port/avr/atmega128/port.h	96;"	d
+_MB_COILS_WR_ADDR_START	port/avr/atmega128/port.h	97;"	d
+_MB_COILS_WR_QUANTITY	port/avr/atmega128/port.h	98;"	d
+_MB_CONFIG_H	include/mbconfig.h	31;"	d
+_MB_CRC_H	rtu/mbcrc.h	31;"	d
+_MB_DISC_RD_ADDR_START	port/avr/atmega128/port.h	99;"	d
+_MB_DISC_RD_QUANTITY	port/avr/atmega128/port.h	100;"	d
+_MB_FRAME_H	include/mbframe.h	31;"	d
+_MB_FUNC_H	include/mbfunc.h	31;"	d
+_MB_FUNC_HANDLERS_MAX	port/avr/atmega128/port.h	71;"	d
+_MB_FUNC_OTHER_REP_SLAVEID_BUF	port/avr/atmega128/port.h	72;"	d
+_MB_FUNC_OTHER_REP_SLAVEID_ENABLED	port/avr/atmega128/port.h	75;"	d
+_MB_FUNC_READWRITE_HOLDING_ENABLED	port/avr/atmega128/port.h	84;"	d
+_MB_FUNC_READ_COILS_ENABLED	port/avr/atmega128/port.h	80;"	d
+_MB_FUNC_READ_DISCRETE_INPUTS_ENABLED	port/avr/atmega128/port.h	83;"	d
+_MB_FUNC_READ_HOLDING_ENABLED	port/avr/atmega128/port.h	77;"	d
+_MB_FUNC_READ_INPUT_ENABLED	port/avr/atmega128/port.h	76;"	d
+_MB_FUNC_WRITE_COIL_ENABLED	port/avr/atmega128/port.h	81;"	d
+_MB_FUNC_WRITE_HOLDING_ENABLED	port/avr/atmega128/port.h	78;"	d
+_MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED	port/avr/atmega128/port.h	82;"	d
+_MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED	port/avr/atmega128/port.h	79;"	d
+_MB_H	include/mb.h	31;"	d
+_MB_HOLD_RD_ADDR_START	port/avr/atmega128/port.h	101;"	d
+_MB_HOLD_RD_QUANTITY	port/avr/atmega128/port.h	102;"	d
+_MB_HOLD_WR_ADDR_START	port/avr/atmega128/port.h	103;"	d
+_MB_HOLD_WR_QUANTITY	port/avr/atmega128/port.h	104;"	d
+_MB_PORT_H	include/mbport.h	31;"	d
+_MB_PROTO_H	include/mbproto.h	31;"	d
+_MB_REG_INPUT_ADDR_START	port/avr/atmega128/port.h	93;"	d
+_MB_REG_INPUT_QUANTITY	port/avr/atmega128/port.h	94;"	d
+_MB_RTU_ENABLED	port/avr/atmega128/port.h	63;"	d
+_MB_RTU_H	rtu/mbrtu.h	31;"	d
+_MB_TCP_ENABLED	port/avr/atmega128/port.h	64;"	d
+_MB_TCP_H	tcp/mbtcp.h	31;"	d
+_MB_UTILS_H	include/mbutils.h	31;"	d
+_PORT_H__	port/avr/atmega128/port.h	11;"	d
+_SREG	port/avr/atmega128/port.c	/^static UCHAR	_SREG;	\/**< For Enter & Exit critical *\/$/;"	v	file:
+assert	port/avr/atmega128/port.h	36;"	d
+aucCRCHi	port/avr/atmega128/mbcrc.c	/^static const PROGMEM UCHAR aucCRCHi[] = {$/;"	v	file:
+aucCRCHi	rtu/mbcrc.c	/^static const UCHAR aucCRCHi[] = {$/;"	v	file:
+aucCRCLo	port/avr/atmega128/mbcrc.c	/^static const PROGMEM UCHAR aucCRCLo[] = {$/;"	v	file:
+aucCRCLo	rtu/mbcrc.c	/^static const UCHAR aucCRCLo[] = {$/;"	v	file:
+eBytePos	ascii/mbascii.c	/^static volatile eMBBytePos eBytePos;$/;"	v	file:
+eMBASCIIInit	ascii/mbascii.c	/^eMBASCIIInit( UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )$/;"	f
+eMBASCIIReceive	ascii/mbascii.c	/^eMBASCIIReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength )$/;"	f
+eMBASCIISend	ascii/mbascii.c	/^eMBASCIISend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )$/;"	f
+eMBASCIIStart	ascii/mbascii.c	/^eMBASCIIStart( void )$/;"	f
+eMBASCIIStop	ascii/mbascii.c	/^eMBASCIIStop( void )$/;"	f
+eMBBytePos	ascii/mbascii.c	/^} eMBBytePos;$/;"	t	typeref:enum:__anon13	file:
+eMBClose	mb.c	/^eMBClose( void )$/;"	f
+eMBCurrentMode	mb.c	/^static eMBMode  eMBCurrentMode;$/;"	v	file:
+eMBDisable	mb.c	/^eMBDisable( void )$/;"	f
+eMBEnable	mb.c	/^eMBEnable( void )$/;"	f
+eMBErrorCode	include/mb.h	/^} eMBErrorCode;$/;"	t	typeref:enum:__anon8
+eMBEventType	include/mbport.h	/^} eMBEventType;$/;"	t	typeref:enum:__anon9
+eMBException	include/mbproto.h	/^} eMBException;$/;"	t	typeref:enum:__anon4
+eMBFuncReadCoils	functions/mbfunccoils.c	/^eMBFuncReadCoils( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncReadDiscreteInputs	functions/mbfuncdisc.c	/^eMBFuncReadDiscreteInputs( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncReadHoldingRegister	functions/mbfuncholding.c	/^eMBFuncReadHoldingRegister( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncReadInputRegister	functions/mbfuncinput.c	/^eMBFuncReadInputRegister( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncReadWriteMultipleHoldingRegister	functions/mbfuncholding.c	/^eMBFuncReadWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncReportSlaveID	functions/mbfuncother.c	/^eMBFuncReportSlaveID( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncWriteCoil	functions/mbfunccoils.c	/^eMBFuncWriteCoil( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncWriteHoldingRegister	functions/mbfuncholding.c	/^eMBFuncWriteHoldingRegister( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncWriteMultipleCoils	functions/mbfunccoils.c	/^eMBFuncWriteMultipleCoils( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBFuncWriteMultipleHoldingRegister	functions/mbfuncholding.c	/^eMBFuncWriteMultipleHoldingRegister( UCHAR * pucFrame, USHORT * usLen )$/;"	f
+eMBInit	mb.c	/^eMBInit( eMBMode eMode, UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity )$/;"	f
+eMBMode	include/mb.h	/^} eMBMode;$/;"	t	typeref:enum:__anon6
+eMBParity	include/mbport.h	/^} eMBParity;$/;"	t	typeref:enum:__anon10
+eMBPoll	mb.c	/^eMBPoll( void )$/;"	f
+eMBRTUInit	rtu/mbrtu.c	/^eMBRTUInit( UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity, UCHAR **_RTUBuf )$/;"	f
+eMBRTUReceive	rtu/mbrtu.c	/^eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength )$/;"	f
+eMBRTUSend	rtu/mbrtu.c	/^eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )$/;"	f
+eMBRTUStart	rtu/mbrtu.c	/^eMBRTUStart( void )$/;"	f
+eMBRTUStop	rtu/mbrtu.c	/^eMBRTUStop( void )$/;"	f
+eMBRcvState	ascii/mbascii.c	/^} eMBRcvState;$/;"	t	typeref:enum:__anon11	file:
+eMBRcvState	rtu/mbrtu.c	/^} eMBRcvState;$/;"	t	typeref:enum:__anon1	file:
+eMBRecv	mb.c	/^eMBErrorCode eMBRecv()$/;"	f
+eMBRegCoilsCB	port/avr/atmega128/port.c	/^eMBErrorCode    eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils, eMBRegisterMode eMode )$/;"	f
+eMBRegDiscreteCB	port/avr/atmega128/port.c	/^eMBErrorCode    eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )$/;"	f
+eMBRegHoldingCB	port/avr/atmega128/port.c	/^eMBErrorCode    eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMode eMode )$/;"	f
+eMBRegInputCB	port/avr/atmega128/port.c	/^eMBErrorCode    eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )$/;"	f
+eMBRegisterCB	mb.c	/^eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler )$/;"	f
+eMBRegisterMode	include/mb.h	/^} eMBRegisterMode;$/;"	t	typeref:enum:__anon7
+eMBSend	mb.c	/^eMBErrorCode eMBSend( UCHAR ucSlaveAddress, UCHAR ucFunCode, )$/;"	f
+eMBSetSlaveID	functions/mbfuncother.c	/^eMBSetSlaveID( UCHAR ucSlaveID, BOOL xIsRunning,$/;"	f
+eMBSndState	ascii/mbascii.c	/^} eMBSndState;$/;"	t	typeref:enum:__anon12	file:
+eMBSndState	rtu/mbrtu.c	/^} eMBSndState;$/;"	t	typeref:enum:__anon2	file:
+eMBState	mb.c	/^} eMBState = STATE_NOT_INITIALIZED;$/;"	v	typeref:enum:__anon3	file:
+eMBTCPDoInit	tcp/mbtcp.c	/^eMBTCPDoInit( USHORT ucTCPPort )$/;"	f
+eMBTCPInit	mb.c	/^eMBTCPInit( USHORT ucTCPPort )$/;"	f
+eMBTCPReceive	tcp/mbtcp.c	/^eMBTCPReceive( UCHAR * pucRcvAddress, UCHAR ** ppucFrame, USHORT * pusLength )$/;"	f
+eMBTCPSend	tcp/mbtcp.c	/^eMBTCPSend( UCHAR _unused, const UCHAR * pucFrame, USHORT usLength )$/;"	f
+eMBTCPStart	tcp/mbtcp.c	/^eMBTCPStart( void )$/;"	f
+eMBTCPStop	tcp/mbtcp.c	/^eMBTCPStop( void )$/;"	f
+eQueuedEvent	port/avr/atmega128/event.c	/^static eMBEventType eQueuedEvent;$/;"	v	file:
+eRcvState	ascii/mbascii.c	/^static volatile eMBRcvState eRcvState;$/;"	v	file:
+eRcvState	rtu/mbrtu.c	/^static volatile eMBRcvState eRcvState;$/;"	v	file:
+eSndState	ascii/mbascii.c	/^static volatile eMBSndState eSndState;$/;"	v	file:
+eSndState	rtu/mbrtu.c	/^static volatile eMBSndState eSndState;$/;"	v	file:
+peMBFrameReceive	include/mbframe.h	/^typedef eMBErrorCode( *peMBFrameReceive ) ( UCHAR * pucRcvAddress,$/;"	t
+peMBFrameReceiveCur	mb.c	/^static peMBFrameReceive peMBFrameReceiveCur;$/;"	v	file:
+peMBFrameSend	include/mbframe.h	/^typedef eMBErrorCode( *peMBFrameSend ) ( UCHAR slaveAddress,$/;"	t
+peMBFrameSendCur	mb.c	/^static peMBFrameSend peMBFrameSendCur;$/;"	v	file:
+prveMBError2Exception	functions/mbutils.c	/^prveMBError2Exception( eMBErrorCode eErrorCode )$/;"	f
+prvucMBBIN2CHAR	ascii/mbascii.c	/^prvucMBBIN2CHAR( UCHAR ucByte )$/;"	f	file:
+prvucMBCHAR2BIN	ascii/mbascii.c	/^prvucMBCHAR2BIN( UCHAR ucCharacter )$/;"	f	file:
+prvucMBLRC	ascii/mbascii.c	/^prvucMBLRC( UCHAR * pucFrame, USHORT usLen )$/;"	f	file:
+pucSndBufferCur	ascii/mbascii.c	/^static volatile UCHAR *pucSndBufferCur;$/;"	v	file:
+pucSndBufferCur	rtu/mbrtu.c	/^static volatile UCHAR *pucSndBufferCur;$/;"	v	file:
+pvMBFrameClose	include/mbframe.h	/^typedef void( *pvMBFrameClose ) ( void );$/;"	t
+pvMBFrameCloseCur	mb.c	/^static pvMBFrameClose pvMBFrameCloseCur;$/;"	v	file:
+pvMBFrameStart	include/mbframe.h	/^typedef void    ( *pvMBFrameStart ) ( void );$/;"	t
+pvMBFrameStartCur	mb.c	/^static pvMBFrameStart pvMBFrameStartCur;$/;"	v	file:
+pvMBFrameStop	include/mbframe.h	/^typedef void    ( *pvMBFrameStop ) ( void );$/;"	t
+pvMBFrameStopCur	mb.c	/^static pvMBFrameStop pvMBFrameStopCur;$/;"	v	file:
+pxHandler	include/mbproto.h	/^    pxMBFunctionHandler pxHandler;$/;"	m	struct:__anon5
+pxMBFrameCBByteReceived	mb.c	/^BOOL( *pxMBFrameCBByteReceived ) ( void );$/;"	v
+pxMBFrameCBReceiveFSMCur	mb.c	/^BOOL( *pxMBFrameCBReceiveFSMCur ) ( void );$/;"	v
+pxMBFrameCBTransmitFSMCur	mb.c	/^BOOL( *pxMBFrameCBTransmitFSMCur ) ( void );$/;"	v
+pxMBFrameCBTransmitterEmpty	mb.c	/^BOOL( *pxMBFrameCBTransmitterEmpty ) ( void );$/;"	v
+pxMBFunctionHandler	include/mbproto.h	/^typedef         eMBException( *pxMBFunctionHandler ) ( UCHAR * pucFrame, USHORT * pusLength );$/;"	t
+pxMBPortCBTimerExpired	mb.c	/^BOOL( *pxMBPortCBTimerExpired ) ( void );$/;"	v
+ucASCIIBuf	ascii/mbascii.c	/^static volatile UCHAR *ucASCIIBuf = ucRTUBuf;$/;"	v	file:
+ucFunctionCode	include/mbproto.h	/^    UCHAR           ucFunctionCode;$/;"	m	struct:__anon5
+ucLRC	ascii/mbascii.c	/^static volatile UCHAR ucLRC;$/;"	v	file:
+ucMBAddress	mb.c	/^static UCHAR    ucMBAddress;$/;"	v	file:
+ucMBFrame	mb.c	/^static UCHAR   *ucMBFrame;$/;"	v	file:
+ucMBLFCharacter	ascii/mbascii.c	/^static volatile UCHAR ucMBLFCharacter;$/;"	v	file:
+ucMBSlaveID	functions/mbfuncother.c	/^static UCHAR    ucMBSlaveID[MB_FUNC_OTHER_REP_SLAVEID_BUF];$/;"	v	file:
+ucRTUBuf	rtu/mbrtu.c	/^volatile UCHAR  ucRTUBuf[MB_SER_PDU_SIZE_MAX];$/;"	v
+usMBCRC16	port/avr/atmega128/mbcrc.c	/^usMBCRC16( UCHAR * pucFrame, USHORT usLen )$/;"	f
+usMBCRC16	rtu/mbcrc.c	/^usMBCRC16( UCHAR * pucFrame, USHORT usLen )$/;"	f
+usMBSlaveIDLen	functions/mbfuncother.c	/^static USHORT   usMBSlaveIDLen;$/;"	v	file:
+usRcvBufferPos	ascii/mbascii.c	/^static volatile USHORT usRcvBufferPos;$/;"	v	file:
+usRcvBufferPos	rtu/mbrtu.c	/^static volatile USHORT usRcvBufferPos;$/;"	v	file:
+usSndBufferCount	ascii/mbascii.c	/^static volatile USHORT usSndBufferCount;$/;"	v	file:
+usSndBufferCount	rtu/mbrtu.c	/^static volatile USHORT usSndBufferCount;$/;"	v	file:
+usTimer3TCNTDelta	port/avr/atmega128/timer.c	/^static USHORT   usTimer3TCNTDelta;$/;"	v	file:
+vMBPortSerialEnable	port/avr/atmega128/serial.c	/^void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )$/;"	f
+vMBPortTimersDisable	port/avr/atmega128/timer.c	/^inline void vMBPortTimersDisable(  )$/;"	f
+vMBPortTimersEnable	port/avr/atmega128/timer.c	/^inline void vMBPortTimersEnable(  )$/;"	f
+xEventInQueue	port/avr/atmega128/event.c	/^static BOOL        xEventInQueue;$/;"	v	file:
+xFuncHandlers	mb.c	/^static xMBFunctionHandler xFuncHandlers[MB_FUNC_HANDLERS_MAX] = {$/;"	v	file:
+xMBASCIIReceiveFSM	ascii/mbascii.c	/^xMBASCIIReceiveFSM( void )$/;"	f
+xMBASCIITimerT1SExpired	ascii/mbascii.c	/^xMBASCIITimerT1SExpired( void )$/;"	f
+xMBASCIITransmitFSM	ascii/mbascii.c	/^xMBASCIITransmitFSM( void )$/;"	f
+xMBFunctionHandler	include/mbproto.h	/^} xMBFunctionHandler;$/;"	t	typeref:struct:__anon5
+xMBPortEventGet	port/avr/atmega128/event.c	/^BOOL xMBPortEventGet( eMBEventType * eEvent )$/;"	f
+xMBPortEventInit	port/avr/atmega128/event.c	/^BOOL xMBPortEventInit( void )$/;"	f
+xMBPortEventPost	port/avr/atmega128/event.c	/^BOOL xMBPortEventPost( eMBEventType eEvent )$/;"	f
+xMBPortSerialGetByte	port/avr/atmega128/serial.c	/^BOOL xMBPortSerialGetByte( CHAR * pucByte )$/;"	f
+xMBPortSerialInit	port/avr/atmega128/serial.c	/^BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )$/;"	f
+xMBPortSerialPutByte	port/avr/atmega128/serial.c	/^BOOL xMBPortSerialPutByte( CHAR ucByte )$/;"	f
+xMBPortTimersInit	port/avr/atmega128/timer.c	/^BOOL xMBPortTimersInit( USHORT usTim1Timerout50us )$/;"	f
+xMBRTUReceiveFSM	rtu/mbrtu.c	/^xMBRTUReceiveFSM( void )$/;"	f
+xMBRTUTimerT35Expired	rtu/mbrtu.c	/^xMBRTUTimerT35Expired( void )$/;"	f
+xMBRTUTransmitFSM	rtu/mbrtu.c	/^xMBRTUTransmitFSM( void )$/;"	f
+xMBRecvEvent	mb.c	/^static BOOL		xMBRecvEvent = FALSE;$/;"	v	file:
+xMBSendEvent	mb.c	/^static BOOL		xMBSendEvent = FALSE;$/;"	v	file:
+xMBUtilGetBits	functions/mbutils.c	/^xMBUtilGetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits )$/;"	f
+xMBUtilSetBits	functions/mbutils.c	/^xMBUtilSetBits( UCHAR * ucByteBuf, USHORT usBitOffset, UCHAR ucNBits,$/;"	f
