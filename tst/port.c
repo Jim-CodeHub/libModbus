@@ -8,8 +8,6 @@
  *------------------------------------------------------------------------------------------------------------------
 */
 #include "port.h"
-#include "mb.h"
-#include "mbport.h"
 
 /*
 --------------------------------------------------------------------------------------------------------------------
@@ -20,7 +18,10 @@
 */
 static UCHAR	_SREG;	/**< For Enter & Exit critical */
 
+void ENTER_CRITICAL( void )	{_SREG = SREG; __asm__ volatile("cli");}
+void EXIT_CRITICAL( void )	{SREG = _SREG;}	
 
+#if 0
 /*------------------------------------------------------------------------------------------------------------------
  * 
  *  										  FUNCTIONS DECLARATION
@@ -42,8 +43,6 @@ eMBErrorCode _eMBRegHoldingCB_WR( UCHAR * pucRegBuffer, USHORT usAddress, USHORT
 *
 --------------------------------------------------------------------------------------------------------------------
 */
-void ENTER_CRITICAL_SECTION( void )	{_SREG = SREG; __asm__ volatile("cli");}
-void EXIT_CRITICAL_SECTION( void )	{SREG = _SREG;}	
 
 
 #if _MB_FUNC_READ_INPUT_ENABLED > 0	
@@ -201,4 +200,7 @@ eMBErrorCode    eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT
 
 //DEMO undefined 
 //For mbfuncdiag.c callback fun
-//For mbfuncother.c callback fun
+//For mbfuncother.c callback fu
+
+#endif
+

@@ -2,7 +2,7 @@
 
 ## Source File
 
-The source code is come from FreeModbus, On this basis, some changes has been made and became the Host-side program 
+The source code is refer to FreeModbus, On this basis, some changes has been made and became the Host-side program 
 
 ## Feature
 
@@ -12,3 +12,6 @@ Comm : EIA/TIA-232 or EIA/TIA-485 / Internet
 ## Next
 
 TCP Mode
+
+## Note
+

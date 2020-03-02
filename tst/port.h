@@ -110,8 +110,8 @@ typedef long									LONG;
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-void ENTER_CRITICAL_SECTION( void );
-void EXIT_CRITICAL_SECTION( void ) ;
+void ENTER_CRITICAL( void );
+void EXIT_CRITICAL( void ) ;
 
 
 #endif //_PORT_H__
