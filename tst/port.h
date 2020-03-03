@@ -22,6 +22,10 @@
 #include <avr/pgmspace.h>
 
 
+#define			MB_PORT_TIMERT35_DISABLE()
+#define			MB_PORT_TIMERT35_ENABLE()
+
+
 /*------------------------------------------------------------------------------------------------------------------
  * 
  *											   PORT SHORT ALIAS	

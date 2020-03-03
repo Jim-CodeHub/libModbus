@@ -25,6 +25,7 @@ OBJS		= main.o
 OBJS	   += ../modbcd/modbcd.o					\
 			  ../modbcd/util/mbcrc.o				\
 			  ../modbcd/util/mbox.o					\
+			  ../modbcd/rtu/mbrtu.o					\
 			  ./port.o
 
 CFLAGS 		= -mmcu=$(MCU) -Werror -Os -std=c99 -D F_CPU=$(F_CPU)
