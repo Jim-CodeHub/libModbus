@@ -33,7 +33,7 @@
     @param[out] None
     @return     None
 */
-eMBErrorCode eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler )
+eMBErrorCode eMBRegisterCB( uint8_t ucFunctionCode, pxMBFunctionHandler pxHandler )
 {
     int             i;
     eMBErrorCode    eStatus;

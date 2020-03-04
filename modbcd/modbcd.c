@@ -8,12 +8,14 @@
  *  |	1Byte   |	 1Byte      |          0~252 Byte        |    2Byte	   |
  *  +-----------+---------------+----------------------------+-------------+
  *
- * @note	RAM used : 0Bytes
+ * @note	RAM used : 269Bytes
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 #include "modbcd.h"
+#include "mbox.h"
+#include "mbcrc.h"
 
 
 /*
@@ -26,21 +28,19 @@
 static			_OS_EVENT				sMBMsgID;								/**< Modbcd message box identity  */
 static			eMBEventType			eMBEvent;								/**< Modbcd Event type			  */	
 
-static volatile	BOOL					xSendFlg;								/**< Modbcd data send flag        */
-static volatile	BOOL					xRecvFlg;								/**< Modbcd data load flag		  */
+static volatile	bool					xSendFlg;								/**< Modbcd data send flag        */
+static volatile	bool					xRecvFlg;								/**< Modbcd data load flag		  */
 
 static volatile eMBRcvState				eRcvState;								/**< Modbcd recv state			  */
 static volatile eMBSndState				eSndState;								/**< Modbcd send state			  */
 
-static  volatile UCHAR					ucFrameBuff[MB_SIZE_FRAME_MAX];			/**< Modbcd frame buffer          */
-static  volatile USHORT					usFrameIndx;							/**< Modbcd frame buffer Index	  */
-static  volatile USHORT					usFrameLeng;							/**< Mddbcd frame buffer length   */
+static volatile uint8_t					ucFrameBuff[MB_FRAME_SIZE_MAX];			/**< Modbcd frame buffer          */
+static volatile uint16_t				usFrameIndx;							/**< Modbcd frame buffer Index	  */
+static volatile uint16_t				usFrameLeng;							/**< Mddbcd frame buffer length   */
 
-static volatile UCHAR					ucMBSwitch;								/**< Modbcd enable or disable     */
+static volatile uint8_t					ucMBSwitch;								/**< Modbcd enable or disable     */
 
-static			xMBFunctionHandler		xFuncHandlers[MB_FUNC_HANDLERS_MAX];  	/**< Modbcd functions handlers    */
-
-static volatile UCHAR					ucMBSlaveAddr;							/**< Modbcd Address field value   */
+static volatile uint8_t					ucMBSlaveAddr;							/**< Modbcd Address field value   */
 
 
 /*
@@ -62,15 +62,15 @@ static volatile UCHAR					ucMBSlaveAddr;							/**< Modbcd Address field value  
 				1. MB_ENOERR	-	if there is no error occur
 				2. MB_EPORTERR  -	if serial or timer port init error
 */
-eMBErrorCode eMBCDInit( UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity, USHORT usTimeOut ) 
+eMBErrorCode eMBCDInit( uint8_t ucPort, uint32_t ulBaudRate, eMBParity eParity, uint16_t usTimeOut ) 
 {
     eMBErrorCode    eStatus = MB_ENOERR;
-    ULONG           usTimerT35_50us;
+    uint32_t        usTimerT35_50us;
 
-    ENTER_CRITICAL(  );
+    vMBEnterCritical(  );
 
     /* Modbus RTU uses 8 Databits. */
-    if( xMBPortSerialInit( ucPort, ulBaudRate, 8, eParity ) != TRUE )
+    if( xMBPortSerialInit( ucPort, ulBaudRate, 8, eParity ) != true )
     {
         eStatus = MB_EPORTERR;
     }
@@ -95,46 +95,15 @@ eMBErrorCode eMBCDInit( UCHAR ucPort, ULONG ulBaudRate, eMBParity eParity, USHOR
              */
             usTimerT35_50us = ( 7UL * 220000UL ) / ( 2UL * ulBaudRate );
         }
-        if( xMBPortTimersInit( ( USHORT ) usTimerT35_50us ) != TRUE )
+        if( xMBPortTimersInit( ( uint16_t ) usTimerT35_50us ) != true )
         {
             eStatus = MB_EPORTERR;
         }
     }
 
-    EXIT_CRITICAL_SECTION(  );
+    vMBExit_Critical(  );
 
-#if MB_FUNC_DIAG_REP_SLAVEID_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_OTHER_REPORT_SLAVEID , eMBFuncReportSlaveID );
-#endif
-#if MB_FUNC_READ_INPUT_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_READ_INPUT_REGISTER, eMBFuncReadInputRegister );
-#endif
-#if MB_FUNC_READ_HOLDING_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_READ_HOLDING_REGISTER, eMBFuncReadHoldingRegister );
-#endif
-#if MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_WRITE_MULTIPLE_REGISTERS, eMBFuncWriteMultipleHoldingRegister );
-#endif
-#if MB_FUNC_WRITE_HOLDING_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_WRITE_REGISTER, eMBFuncWriteHoldingRegister );
-#endif
-#if MB_FUNC_READWRITE_HOLDING_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_READWRITE_MULTIPLE_REGISTERS, eMBFuncReadWriteMultipleHoldingRegister );
-#endif
-#if MB_FUNC_READ_COILS_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_READ_COILS, eMBFuncReadCoils );
-#endif
-#if MB_FUNC_WRITE_COIL_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_WRITE_SINGLE_COIL, eMBFuncWriteCoil );
-#endif
-#if MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_WRITE_MULTIPLE_COILS, eMBFuncWriteMultipleCoils );
-#endif
-#if MB_FUNC_READ_DISCRETE_INPUTS_ENABLED > 0
-	( eMBErrorCode ) eMBRegisterCB( MB_FUNC_READ_DISCRETE_INPUTS, eMBFuncReadDiscreteInputs );
-#endif
-
-	ucMBSwitch = FALSE; /**< Disable modbcd */
+	ucMBSwitch = false; /**< Disable modbcd */
 
     return eStatus;
 }
@@ -151,23 +120,23 @@ eMBErrorCode eMBCDEnable( void )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
 
-	if ( FALSE == ucMBSwitch )
+	if ( false == ucMBSwitch )
 	{
 		/**< Active the protocol stack */
 
-		ENTER_CRITICAL(  );
+		vMBEnterCritical(  );
 		/* Initially the receiver is in the state STATE_RX_INIT. we start
 		 * the timer and if no character is received within t3.5 we change
 		 * to STATE_RX_IDLE. This makes sure that we delay startup of the
 		 * modbus protocol stack until the bus is free.
 		 */
-		eRcvState = STATE_RX_INIT;
-		vMBPortSerialEnable( TRUE, FALSE );
+		eRcvState = RX_STATE_INIT;
+		vMBPortSerialEnable( true, false );
 		vMBPortTimersEnable(  );
 
-		EXIT_CRITICAL(  );
+		vMBExit_Critical(  );
 
-		ucMBSwitch = TRUE;	
+		ucMBSwitch = true;	
 	}
 	else
 	{
@@ -188,14 +157,14 @@ eMBErrorCode eMBCDDisable( void )
 {
     eMBErrorCode    eStatus = MB_ENOERR;
 
-	if ( TRUE == ucMBSwitch )
+	if ( true == ucMBSwitch )
 	{
-		ENTER_CRITICAL_SECTION(  );
-		vMBPortSerialEnable( FALSE, FALSE );
+		vMBEnterCritical(  );
+		vMBPortSerialEnable( false, false );
 		vMBPortTimersDisable(  );
-		EXIT_CRITICAL_SECTION(  );
+		vMBExit_Critical(  );
 
-		ucMBSwitch = FALSE;
+		ucMBSwitch = false;
 	}
 	else
 	{
@@ -212,56 +181,39 @@ eMBErrorCode eMBCDDisable( void )
     @return     eMBErrorCode 
 				1. MB_ENOERR	-	if there is no error occur
 				2. MB_EILLSTATE -	if modbcd has not been enabled yet
-				3. MB_ENORES	-	if received frame error
 */
-eMBErrorCode eMBPoll( void )
+eMBErrorCode eMBCDPoll( void )
 {
-    int             i;
     eMBErrorCode    eStatus = MB_ENOERR;
     eMBEventType    *eEvent;
 
-	if( TRUE == ucMBSwitch ) /**< Check if the protocol stack is ready. */
+	if( true == ucMBSwitch ) /**< Check if the protocol stack is ready. */
 	{
 		/* Check if there is a event available. If not return control to caller.
 		 * Otherwise we will handle the event. */
-		if( (void *)0 != (eEvent = (eMBEventType *)OSMboxAccept( &sMBMsgPoll)) )
+		if( (void *)0 != (eEvent = (eMBEventType *)_OSMboxAccept( &sMBMsgID )) )
 		{
 			switch ( *eEvent )
 			{
 				case EV_READY:
-					xSendFlg = TRUE; /**< Enable 'eMBSend()' function */
+					xSendFlg = true; /**< Enable 'eMBSend()' function */
 					break;
 
 				case EV_FRAME_RECEIVED:
-					ENTER_CRITICAL();
-					/**< Length , Address and CRC check */
-					if ( ( usFrameIndx >= MB_FRAME_SIZE_MIN ) && ( usMBCRC16( ( UCHAR * ) ucFrameBuff, usFrameIndx ) == 0 )  && ( ucFrameBuff[MB_FRAME_OFFS_ADDR] == ucMBSlaveAddr ) ) 
-					{
-						EXIT_CRITICAL();
+					vMBEnterCritical();
 
-						for( i = 0; i < MB_FUNC_HANDLERS_MAX; i++ )
-						{
-							/* No more function handlers registered. Abort. */
-							if( xFuncHandlers[i].ucFunctionCode == 0 )
-							{
-								break;
-							}
-							else if( xFuncHandlers[i].ucFunctionCode == ucFunctionCode )
-							{
-								if ( MB_ENOERR == (eStatus = xFuncHandlers[i].pxHandler( (UCHAR *)&ucFrameBuff[MB_FRAME_OFFS_DATA], &usFrameLeng)) )
-								{
-									xRecvFlg = TRUE; /**< Enable receive  for function 'eMBCDLoad()' */
-									xSendFlg = TRUE; /**< Enable transmit for function 'eMBCDSend()' */
-								}
-								break;
-							}
-						}
+					/**< Length , Address and CRC check */
+					if ( ( usFrameIndx >= MB_FRAME_SIZE_MIN + 1 ) && ( usMBCRC16( ( uint8_t * ) ucFrameBuff, usFrameIndx ) == 0 )  && ( ucFrameBuff[MB_FRAME_OFFS_ADDR] == ucMBSlaveAddr ) ) 
+					{
+						xRecvFlg = true; /**< Enable receive  for function 'eMBCDLoad()' */
+						xSendFlg = true; /**< Enable transmit for function 'eMBCDSend()' */
 					}
 					else
 					{
-						EXIT_CRITICAL();
 						eStatus = MB_ENORES;
 					}
+
+					vMBExit_Critical();
 					break;
 
 				case EV_EXECUTE:
@@ -270,7 +222,7 @@ eMBErrorCode eMBPoll( void )
 				case EV_FRAME_SENT:
 					if ( MB_ADDR_BROADCAST != ucFrameBuff[MB_FRAME_OFFS_ADDR] )
 					{
-						vMBPortSerialEnable( TRUE, FALSE );
+						vMBPortSerialEnable( true, false );
 						//+开启超时
 					}
 					break;
@@ -295,15 +247,15 @@ eMBErrorCode eMBPoll( void )
 				1. MB_ENOERR	-	if there is no error occur
 				2. MB_EILLSTATE -	if modbus frame has not received and processed 
 */
-eMBErrorCode eMBCDLoad( UCHAR **pucData, USHORT *pusLeng )
+eMBErrorCode eMBCDLoad( uint8_t **pucData, uint16_t *pusLeng )
 {
     eMBErrorCode    eStatus = MB_EILLSTATE;
 
-	if ( TRUE == xRecvFlg ) 
+	if ( true == xRecvFlg ) 
 	{
-		xRecvFlg = FALSE;
+		xRecvFlg = false;
 
-		*pucData = ucFrameBuff[MB_FRAME_OFFS_DATA];
+		*pucData = (uint8_t *)&ucFrameBuff[MB_FRAME_OFFS_DATA];
 		*pusLeng = usFrameLeng;
 
 		eStatus = MB_ENOERR;
@@ -324,14 +276,14 @@ eMBErrorCode eMBCDLoad( UCHAR **pucData, USHORT *pusLeng )
 
 	@note		The function DO NOT CHECK user's data field which refer to param 'pucData'
 */
-eMBErrorCode eMBCDSend( UCHAR ucSlaveAddress, UCHAR ucFunctionCode, const UCHAR *pucData, USHORT usLength )
+eMBErrorCode eMBCDSend( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength )
 {
     eMBErrorCode    eStatus = MB_EINVAL;
-    USHORT          usCRC16;
+    uint16_t        usCRC16;
 
-	if ( TRUE == xSendFlg )
+	if ( true == xSendFlg )
 	{
-		xSendFlg = FALSE;
+		xSendFlg = false;
 
 		/**< Check preconditions and packetize frame */	
 		if ( ( ucSlaveAddress >= MB_ADDR_BROADCAST ) && ( ucSlaveAddress <= MB_ADDR_SLAVE_MAX ) )
@@ -340,28 +292,28 @@ eMBErrorCode eMBCDSend( UCHAR ucSlaveAddress, UCHAR ucFunctionCode, const UCHAR 
 			{
 				if ( ( usLength >= MB_FRAME_SIZE_MIN ) && ( usLength <= MB_FRAME_SIZE_MAX ) )
 				{
-					ENTER_CRITICAL(  );
+					vMBEnterCritical(  );
 
 					ucMBSlaveAddr = ucSlaveAddress;  /**< Save transmit slave address */
 
 					ucFrameBuff[MB_FRAME_OFFS_ADDR] = ucSlaveAddress;
 					ucFrameBuff[MB_FRAME_OFFS_CODE] = ucFunctionCode;
 
-					memmove( ucFrameBuff + 2, pucData, usLength );
+					memmove( (void *)(ucFrameBuff + 2), pucData, usLength );
 
 					/* Calculate CRC16 checksum for Modbus-Serial-Line-PDU. */
-					usCRC16 = usMBCRC16( ( UCHAR * ) ucFrameBuff, usLength + 2);
+					usCRC16 = usMBCRC16( ( uint8_t * ) ucFrameBuff, usLength + 2);
 
-					ucFrameBuff[usLength + 2] = ( UCHAR )( usCRC16 & 0xFF );
-					ucFrameBuff[usLength + 3] = ( UCHAR )( usCRC16 >> 8 );
+					ucFrameBuff[usLength + 2] = ( uint8_t )( usCRC16 & 0xFF );
+					ucFrameBuff[usLength + 3] = ( uint8_t )( usCRC16 >> 8 );
 
 					usFrameIndx = 0;
 					usFrameLeng = usLength + 4;
 					eSndState	= TX_STATE_SNDC; /**< Enable transmit FSM */
 
-					EXIT_CRITICAL(  );
+					vMBExit_Critical(  );
 
-					vMBPortSerialEnable( FLASE, TRUE );
+					vMBPortSerialEnable( false, true );
 
 					eStatus = MB_ENOERR; 
 				}
@@ -403,8 +355,8 @@ void vMBCDTransmitFSM( void )
 
             /* Disable transmitter. This prevents another transmit buffer
              * empty interrupt. */
-            vMBPortSerialEnable( FALSE, FALSE );
-            eSndState = STATE_TX_IDLE;
+            vMBPortSerialEnable( false, false );
+            eSndState = TX_STATE_IDLE;
         }
         break;
     }
@@ -419,12 +371,12 @@ void vMBCDTransmitFSM( void )
 */
 void vMBCDReceiveFSM( void )
 {
-	UCHAR           ucByte;
+	uint8_t           ucByte;
 
 	assert( eSndState == TX_STATE_IDLE ); /**< To be sure Tx is in IDLE state. */
 
 	/* Always read the character. */
-	( void )xMBPortSerialGetByte( ( CHAR * ) & ucByte );
+	( void )xMBPortSerialGetByte( ( int8_t * ) & ucByte );
 
 	switch ( eRcvState )
 	{
@@ -489,7 +441,7 @@ void vMBCDTimerT35Expired( void )
 		/**< Timer T35 expired. Startup phase is finished. */
 		case RX_STATE_INIT:	
 			_OSMboxPost(&sMBMsgID, (eMBEvent = EV_READY, &eMBEvent));
-			vMBPortSerialEnable(FALSE, TRUE);
+			vMBPortSerialEnable(false, true);
 			break;
 
         /* A frame was received and t35 expired. Notify the listener that a new frame was received. */

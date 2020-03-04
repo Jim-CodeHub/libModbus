@@ -4,108 +4,123 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-BOOL	tst/port.h	/^typedef char									BOOL;										$/;"	t
-CC	tst/Makefile	/^CC 		    = avr-gcc$/;"	m
-CFLAGS	tst/Makefile	/^CFLAGS 		= -mmcu=$(MCU) -Werror -Os -std=c99 -D F_CPU=$(F_CPU)$/;"	m
-CHAR	tst/port.h	/^typedef char									CHAR;$/;"	t
-ENTER_CRITICAL	tst/port.c	/^void ENTER_CRITICAL( void )	{_SREG = SREG; __asm__ volatile("cli");}$/;"	f
-EXIT_CRITICAL	tst/port.c	/^void EXIT_CRITICAL( void )	{SREG = _SREG;}	$/;"	f
-E_FUSE_BIT	tst/Makefile	/^E_FUSE_BIT 	= 0XFF #0XD4$/;"	m
-FALSE	tst/port.h	55;"	d
-F_CPU	tst/Makefile	/^F_CPU 		= 16000000UL$/;"	m
-H_FUSE_BIT	tst/Makefile	/^H_FUSE_BIT 	= 0XC9 #0XC1$/;"	m
-INLINE	tst/port.h	38;"	d
-ISR	tst/serial.c	/^ISR(USART1_RX_vect)$/;"	f
-ISR	tst/serial.c	/^ISR(USART1_UDRE_vect) \/**< Use UDRE IE instead of TX IE (USART1_TX_vect) to speed up trans *\/$/;"	f
-ISR	tst/timer.c	/^ISR(TIMER3_OVF_vect)$/;"	f
-LDFLAGS	tst/Makefile	/^LDFLAGS 	= -mmcu=$(MCU) -Wl,-Map=$(TARGET).map$/;"	m
-LONG	tst/port.h	/^typedef long									LONG;$/;"	t
-L_FUSE_BIT	tst/Makefile	/^L_FUSE_BIT 	= 0X2E$/;"	m
-MB_PORT_TIMERT35_DISABLE	tst/port.h	25;"	d
-MB_PORT_TIMERT35_ENABLE	tst/port.h	26;"	d
-MCU	tst/Makefile	/^MCU 		= atmega128$/;"	m
-MJR_VER	tst/Makefile	/^MJR_VER		= V1.0$/;"	m
-OBJCOPY	tst/Makefile	/^OBJCOPY 	= avr-objcopy$/;"	m
-OBJDUMP	tst/Makefile	/^OBJDUMP 	= avr-objdump$/;"	m
-OBJS	tst/Makefile	/^OBJS		= main.o$/;"	m
+CC	demo/Makefile	/^CC 		    = avr-gcc$/;"	m
+CFLAGS	demo/Makefile	/^CFLAGS 		= -mmcu=$(MCU) -Werror -Wall -Os -std=c99 -D F_CPU=$(F_CPU)$/;"	m
+EV_EXECUTE	modbcd/modbcd.h	/^    EV_EXECUTE,             											    \/**< Execute function				  *\/$/;"	e	enum:__anon3
+EV_FRAME_EMIT	modbcd/modbcd.h	/^	EV_FRAME_EMIT,															\/**< Frame can be sent				  *\/$/;"	e	enum:__anon3
+EV_FRAME_RECEIVED	modbcd/modbcd.h	/^    EV_FRAME_RECEIVED,      											    \/**< Frame received					  *\/$/;"	e	enum:__anon3
+EV_FRAME_SENT	modbcd/modbcd.h	/^    EV_FRAME_SENT,          											    \/**< Frame has been sent			  *\/$/;"	e	enum:__anon3
+EV_READY	modbcd/modbcd.h	/^    EV_READY,															    \/**< Startup finished				  *\/$/;"	e	enum:__anon3
+E_FUSE_BIT	demo/Makefile	/^E_FUSE_BIT 	= 0XFF #0XD4$/;"	m
+F_CPU	demo/Makefile	/^F_CPU 		= 16000000UL$/;"	m
+H_FUSE_BIT	demo/Makefile	/^H_FUSE_BIT 	= 0XC9 #0XC1$/;"	m
+ISR	demo/port.c	/^ISR(TIMER3_OVF_vect)$/;"	f
+ISR	demo/port.c	/^ISR(USART1_RX_vect)$/;"	f
+ISR	demo/port.c	/^ISR(USART1_UDRE_vect) \/**< Use UDRE IE instead of TX IE (USART1_TX_vect) to speed up trans *\/$/;"	f
+LDFLAGS	demo/Makefile	/^LDFLAGS 	= -mmcu=$(MCU) -Wl,-Map=$(TARGET).map$/;"	m
+L_FUSE_BIT	demo/Makefile	/^L_FUSE_BIT 	= 0X2E$/;"	m
+MB_ADDR_BROADCAST	modbcd/modbcd.h	52;"	d
+MB_ADDR_SLAVE_MAX	modbcd/modbcd.h	54;"	d
+MB_ADDR_SLAVE_MIN	modbcd/modbcd.h	53;"	d
+MB_EILLSTATE	modbcd/modbcd.h	/^    MB_EILLSTATE,               											\/**< protocol stack in illegal state  *\/$/;"	e	enum:__anon5
+MB_EINVAL	modbcd/modbcd.h	/^    MB_EINVAL,                  											\/**< illegal argument				  *\/$/;"	e	enum:__anon5
+MB_EIO	modbcd/modbcd.h	/^    MB_EIO,                     											\/**< I\/O error						  *\/$/;"	e	enum:__anon5
+MB_ENOERR	modbcd/modbcd.h	/^    MB_ENOERR,																\/**< no error						  *\/$/;"	e	enum:__anon5
+MB_ENOREG	modbcd/modbcd.h	/^    MB_ENOREG,                  											\/**< illegal register address		  *\/$/;"	e	enum:__anon5
+MB_ENORES	modbcd/modbcd.h	/^    MB_ENORES,                  											\/**< insufficient resources			  *\/$/;"	e	enum:__anon5
+MB_EPORTERR	modbcd/modbcd.h	/^    MB_EPORTERR,                											\/**< porting layer error			  *\/$/;"	e	enum:__anon5
+MB_ETIMEDOUT	modbcd/modbcd.h	/^    MB_ETIMEDOUT                											\/**< timeout error occurred			  *\/$/;"	e	enum:__anon5
+MB_FRAME_OFFS_ADDR	modbcd/modbcd.h	46;"	d
+MB_FRAME_OFFS_CODE	modbcd/modbcd.h	47;"	d
+MB_FRAME_OFFS_DATA	modbcd/modbcd.h	48;"	d
+MB_FRAME_SIZE_CRC	modbcd/modbcd.h	45;"	d
+MB_FRAME_SIZE_MAX	modbcd/modbcd.h	43;"	d
+MB_FRAME_SIZE_MIN	modbcd/modbcd.h	44;"	d
+MB_FUNC_DIAG_DIAGNOSTIC	modbcd/modbcd.h	68;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_CNT	modbcd/modbcd.h	69;"	d
+MB_FUNC_DIAG_GET_COM_EVENT_LOG	modbcd/modbcd.h	70;"	d
+MB_FUNC_DIAG_READ_EXCEPTION	modbcd/modbcd.h	67;"	d
+MB_FUNC_DIAG_REPORT_SLAVEID	modbcd/modbcd.h	71;"	d
+MB_FUNC_ERROR	modbcd/modbcd.h	72;"	d
+MB_FUNC_NONE	modbcd/modbcd.h	57;"	d
+MB_FUNC_READWRITE_MULTIPLE_REGISTERS	modbcd/modbcd.h	66;"	d
+MB_FUNC_READ_COILS	modbcd/modbcd.h	58;"	d
+MB_FUNC_READ_DISCRETE_INPUTS	modbcd/modbcd.h	59;"	d
+MB_FUNC_READ_HOLDING_REGISTER	modbcd/modbcd.h	62;"	d
+MB_FUNC_READ_INPUT_REGISTER	modbcd/modbcd.h	63;"	d
+MB_FUNC_WRITE_MULTIPLE_COILS	modbcd/modbcd.h	61;"	d
+MB_FUNC_WRITE_MULTIPLE_REGISTERS	modbcd/modbcd.h	65;"	d
+MB_FUNC_WRITE_REGISTER	modbcd/modbcd.h	64;"	d
+MB_FUNC_WRITE_SINGLE_COIL	modbcd/modbcd.h	60;"	d
+MB_PAR_EVEN	modbcd/modbcd.h	/^    MB_PAR_EVEN																\/**< Even parity					  *\/$/;"	e	enum:__anon4
+MB_PAR_NONE	modbcd/modbcd.h	/^    MB_PAR_NONE,															\/**< No parity						  *\/$/;"	e	enum:__anon4
+MB_PAR_ODD	modbcd/modbcd.h	/^    MB_PAR_ODD,																\/**< Odd parity						  *\/$/;"	e	enum:__anon4
+MCU	demo/Makefile	/^MCU 		= atmega128$/;"	m
+MJR_VER	demo/Makefile	/^MJR_VER		= ATmega128$/;"	m
+OBJCOPY	demo/Makefile	/^OBJCOPY 	= avr-objcopy$/;"	m
+OBJDUMP	demo/Makefile	/^OBJDUMP 	= avr-objdump$/;"	m
+OBJS	demo/Makefile	/^OBJS		= main.o port.o mbcrc.o$/;"	m
 OS_ATOMIC_OPERATION	modbcd/util/mbox.h	33;"	d
-PROGRAMMER	tst/Makefile	/^PROGRAMMER 	= usbasp$/;"	m
-PROJECT	tst/Makefile	/^PROJECT		= modbcd_tst$/;"	m
-PR_BEGIN_EXTERN_C	tst/port.h	35;"	d
-PR_END_EXTERN_C	tst/port.h	36;"	d
-RX_STATE_ERROR	modbcd/rtu/mbrtu.h	/^	RX_STATE_ERROR,$/;"	e	enum:__anon1
-RX_STATE_IDLE	modbcd/rtu/mbrtu.h	/^	RX_STATE_IDLE,$/;"	e	enum:__anon1
-RX_STATE_INIT	modbcd/rtu/mbrtu.h	/^	RX_STATE_INIT,$/;"	e	enum:__anon1
-RX_STATE_RCV	modbcd/rtu/mbrtu.h	/^	RX_STATE_RCV,$/;"	e	enum:__anon1
-SHORT	tst/port.h	/^typedef short									SHORT;$/;"	t
-TARGET	tst/Makefile	/^TARGET 		= $(PROJECT)_$(MJR_VER)$/;"	m
-TIMEOUT	modbcd/rtu/mbrtu.c	/^static UCHAR TIMEOUT;$/;"	v	file:
-TRUE	tst/port.h	51;"	d
-UCHAR	tst/port.h	/^typedef unsigned char							UCHAR;$/;"	t
-ULONG	tst/port.h	/^typedef unsigned long							ULONG;$/;"	t
-USHORT	tst/port.h	/^typedef unsigned short							USHORT;$/;"	t
+PROGRAMMER	demo/Makefile	/^PROGRAMMER 	= usbasp$/;"	m
+PROJECT	demo/Makefile	/^PROJECT		= AVR$/;"	m
+RX_STATE_ERRS	modbcd/modbcd.h	/^	RX_STATE_ERRS,															\/**< Receive state errors occur		  *\/$/;"	e	enum:__anon1
+RX_STATE_IDLE	modbcd/modbcd.h	/^	RX_STATE_IDLE,															\/**< Receive state idle				  *\/$/;"	e	enum:__anon1
+RX_STATE_INIT	modbcd/modbcd.h	/^	RX_STATE_INIT,															\/**< Receive state init				  *\/	$/;"	e	enum:__anon1
+RX_STATE_RCVC	modbcd/modbcd.h	/^	RX_STATE_RCVC,															\/**< Receive state receiving character*\/$/;"	e	enum:__anon1
+TARGET	demo/Makefile	/^TARGET 		= $(PROJECT)_$(MJR_VER)$/;"	m
+TX_STATE_IDLE	modbcd/modbcd.h	/^	TX_STATE_IDLE,															\/**< Transmit state idle			  *\/$/;"	e	enum:__anon2
+TX_STATE_SNDC	modbcd/modbcd.h	/^	TX_STATE_SNDC,															\/**< Transmit state sending character *\/$/;"	e	enum:__anon2
 _MBCRC_H__	modbcd/util/mbcrc.h	11;"	d
 _MBOX_H__	modbcd/util/mbox.h	10;"	d
-_MBRTU_H__	modbcd/rtu/mbrtu.h	9;"	d
-_MB_ASCII_ENABLED	tst/port.h	66;"	d
-_MB_ASCII_TIMEOUT_SEC	tst/port.h	71;"	d
-_MB_ASCII_TIMEOUT_WAIT_BEFORE_SEND_MS	tst/port.h	72;"	d
-_MB_COILS_RD_ADDR_START	tst/port.h	99;"	d
-_MB_COILS_RD_QUANTITY	tst/port.h	100;"	d
-_MB_COILS_WR_ADDR_START	tst/port.h	101;"	d
-_MB_COILS_WR_QUANTITY	tst/port.h	102;"	d
-_MB_DISC_RD_ADDR_START	tst/port.h	103;"	d
-_MB_DISC_RD_QUANTITY	tst/port.h	104;"	d
-_MB_FUNC_HANDLERS_MAX	tst/port.h	75;"	d
-_MB_FUNC_OTHER_REP_SLAVEID_BUF	tst/port.h	76;"	d
-_MB_FUNC_OTHER_REP_SLAVEID_ENABLED	tst/port.h	79;"	d
-_MB_FUNC_READWRITE_HOLDING_ENABLED	tst/port.h	88;"	d
-_MB_FUNC_READ_COILS_ENABLED	tst/port.h	84;"	d
-_MB_FUNC_READ_DISCRETE_INPUTS_ENABLED	tst/port.h	87;"	d
-_MB_FUNC_READ_HOLDING_ENABLED	tst/port.h	81;"	d
-_MB_FUNC_READ_INPUT_ENABLED	tst/port.h	80;"	d
-_MB_FUNC_WRITE_COIL_ENABLED	tst/port.h	85;"	d
-_MB_FUNC_WRITE_HOLDING_ENABLED	tst/port.h	82;"	d
-_MB_FUNC_WRITE_MULTIPLE_COILS_ENABLED	tst/port.h	86;"	d
-_MB_FUNC_WRITE_MULTIPLE_HOLDING_ENABLED	tst/port.h	83;"	d
-_MB_HOLD_RD_ADDR_START	tst/port.h	105;"	d
-_MB_HOLD_RD_QUANTITY	tst/port.h	106;"	d
-_MB_HOLD_WR_ADDR_START	tst/port.h	107;"	d
-_MB_HOLD_WR_QUANTITY	tst/port.h	108;"	d
-_MB_REG_INPUT_ADDR_START	tst/port.h	97;"	d
-_MB_REG_INPUT_QUANTITY	tst/port.h	98;"	d
-_MB_RTU_ENABLED	tst/port.h	67;"	d
-_MB_TCP_ENABLED	tst/port.h	68;"	d
-_MODBCD_H__	modbcd/modbcd.h	10;"	d
+_MBREG_H__	modbcd/util/mbreg.h	10;"	d
+_MODBCD_H__	modbcd/modbcd.h	16;"	d
 _OSMboxAccept	modbcd/util/mbox.c	/^void *_OSMboxAccept(struct _os_mbox *mbox)$/;"	f
 _OSMboxPost	modbcd/util/mbox.c	/^void _OSMboxPost(struct _os_mbox *mbox, void *msg) $/;"	f
 _OS_EVENT	modbcd/util/mbox.h	/^typedef struct _os_mbox _OS_EVENT;$/;"	t	typeref:struct:_os_mbox
-_PORT_H__	tst/port.h	11;"	d
-_SREG	tst/port.c	/^static UCHAR	_SREG;	\/**< For Enter & Exit critical *\/$/;"	v	file:
+_SREG	demo/port.c	/^static uint8_t	_SREG;	\/**< For Enter & Exit critical *\/$/;"	v	file:
 _os_mbox	modbcd/util/mbox.h	/^struct _os_mbox {$/;"	s
-assert	tst/port.h	40;"	d
-aucCRCHi	modbcd/util/mbcrc.c	/^static const UCHAR aucCRCHi[] = {$/;"	v	file:
-aucCRCHi	tst/mbcrc.c	/^static const PROGMEM UCHAR aucCRCHi[] = {$/;"	v	file:
-aucCRCLo	modbcd/util/mbcrc.c	/^static const UCHAR aucCRCLo[] = {$/;"	v	file:
-aucCRCLo	tst/mbcrc.c	/^static const PROGMEM UCHAR aucCRCLo[] = {$/;"	v	file:
-bMBRTUTimerT35Expired	modbcd/rtu/mbrtu.c	/^void bMBRTUTimerT35Expired( void )$/;"	f
-eMBRcvState	modbcd/rtu/mbrtu.h	/^} eMBRcvState;$/;"	t	typeref:enum:__anon1
-eMBSndState	modbcd/rtu/mbrtu.h	/^} eMBSndState;$/;"	t	typeref:enum:__anon2
-eQueuedEvent	tst/event.c	/^static eMBEventType eQueuedEvent;$/;"	v	file:
-main	tst/main.c	/^int main(void)$/;"	f
+aucCRCHi	demo/mbcrc.c	/^static const PROGMEM uint8_t aucCRCHi[] = {$/;"	v	file:
+aucCRCHi	modbcd/util/mbcrc.c	/^static const uint8_t aucCRCHi[] = {$/;"	v	file:
+aucCRCLo	demo/mbcrc.c	/^static const PROGMEM uint8_t aucCRCLo[] = {$/;"	v	file:
+aucCRCLo	modbcd/util/mbcrc.c	/^static const uint8_t aucCRCLo[] = {$/;"	v	file:
+eMBCDDisable	modbcd/modbcd.c	/^eMBErrorCode eMBCDDisable( void )$/;"	f
+eMBCDEnable	modbcd/modbcd.c	/^eMBErrorCode eMBCDEnable( void )$/;"	f
+eMBCDInit	modbcd/modbcd.c	/^eMBErrorCode eMBCDInit( uint8_t ucPort, uint32_t ulBaudRate, eMBParity eParity, uint16_t usTimeOut ) $/;"	f
+eMBCDLoad	modbcd/modbcd.c	/^eMBErrorCode eMBCDLoad( uint8_t **pucData, uint16_t *pusLeng )$/;"	f
+eMBCDPoll	modbcd/modbcd.c	/^eMBErrorCode eMBCDPoll( void )$/;"	f
+eMBCDSend	modbcd/modbcd.c	/^eMBErrorCode eMBCDSend( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength )$/;"	f
+eMBErrorCode	modbcd/modbcd.h	/^} eMBErrorCode;$/;"	t	typeref:enum:__anon5
+eMBEvent	modbcd/modbcd.c	/^static			eMBEventType			eMBEvent;								\/**< Modbcd Event type			  *\/	$/;"	v	file:
+eMBEventType	modbcd/modbcd.h	/^} eMBEventType;$/;"	t	typeref:enum:__anon3
+eMBParity	modbcd/modbcd.h	/^} eMBParity;$/;"	t	typeref:enum:__anon4
+eMBRcvState	modbcd/modbcd.h	/^} eMBRcvState;$/;"	t	typeref:enum:__anon1
+eMBRegisterCB	modbcd/util/mbreg.c	/^eMBErrorCode eMBRegisterCB( uint8_t ucFunctionCode, pxMBFunctionHandler pxHandler )$/;"	f
+eMBSndState	modbcd/modbcd.h	/^} eMBSndState;$/;"	t	typeref:enum:__anon2
+eRcvState	modbcd/modbcd.c	/^static volatile eMBRcvState				eRcvState;								\/**< Modbcd recv state			  *\/$/;"	v	file:
+eSndState	modbcd/modbcd.c	/^static volatile eMBSndState				eSndState;								\/**< Modbcd send state			  *\/$/;"	v	file:
+main	demo/main.c	/^int main(void)$/;"	f
 msg	modbcd/util/mbox.h	/^	void *msg;$/;"	m	struct:_os_mbox
-sMBMsgBox	modbcd/rtu/mbrtu.c	/^struct _os_mbox sMBMsgBox;$/;"	v	typeref:struct:_os_mbox
-usMBCRC16	modbcd/util/mbcrc.c	/^usMBCRC16( UCHAR * pucFrame, USHORT usLen )$/;"	f
-usMBCRC16	tst/mbcrc.c	/^usMBCRC16( UCHAR * pucFrame, USHORT usLen )$/;"	f
-usTimer3TCNTDelta	tst/timer.c	/^static USHORT   usTimer3TCNTDelta;$/;"	v	file:
-vMBPortSerialEnable	tst/serial.c	/^void vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )$/;"	f
-vMBPortTimersDisable	tst/timer.c	/^inline void vMBPortTimersDisable(  )$/;"	f
-vMBPortTimersEnable	tst/timer.c	/^inline void vMBPortTimersEnable(  )$/;"	f
-xEventInQueue	tst/event.c	/^static BOOL        xEventInQueue;$/;"	v	file:
-xMBPortEventGet	tst/event.c	/^BOOL xMBPortEventGet( eMBEventType * eEvent )$/;"	f
-xMBPortEventInit	tst/event.c	/^BOOL xMBPortEventInit( void )$/;"	f
-xMBPortEventPost	tst/event.c	/^BOOL xMBPortEventPost( eMBEventType eEvent )$/;"	f
-xMBPortSerialGetByte	tst/serial.c	/^BOOL xMBPortSerialGetByte( CHAR * pucByte )$/;"	f
-xMBPortSerialInit	tst/serial.c	/^BOOL xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )$/;"	f
-xMBPortSerialPutByte	tst/serial.c	/^BOOL xMBPortSerialPutByte( CHAR ucByte )$/;"	f
-xMBPortTimersInit	tst/timer.c	/^BOOL xMBPortTimersInit( USHORT usTim1Timerout50us )$/;"	f
+pxMBFunctionHandler	modbcd/util/mbreg.h	/^typedef			eMBErrorCode( *pxMBFunctionHandler ) ( uint8_t * pucFrame, uint16_t * pusLength );$/;"	t
+sMBMsgID	modbcd/modbcd.c	/^static			_OS_EVENT				sMBMsgID;								\/**< Modbcd message box identity  *\/$/;"	v	file:
+ucFrameBuff	modbcd/modbcd.c	/^static volatile uint8_t					ucFrameBuff[MB_FRAME_SIZE_MAX];			\/**< Modbcd frame buffer          *\/$/;"	v	file:
+ucMBSlaveAddr	modbcd/modbcd.c	/^static volatile uint8_t					ucMBSlaveAddr;							\/**< Modbcd Address field value   *\/$/;"	v	file:
+ucMBSwitch	modbcd/modbcd.c	/^static volatile uint8_t					ucMBSwitch;								\/**< Modbcd enable or disable     *\/$/;"	v	file:
+usFrameIndx	modbcd/modbcd.c	/^static volatile uint16_t				usFrameIndx;							\/**< Modbcd frame buffer Index	  *\/$/;"	v	file:
+usFrameLeng	modbcd/modbcd.c	/^static volatile uint16_t				usFrameLeng;							\/**< Mddbcd frame buffer length   *\/$/;"	v	file:
+usMBCRC16	demo/mbcrc.c	/^usMBCRC16( uint8_t * pucFrame, uint16_t usLen )$/;"	f
+usMBCRC16	modbcd/util/mbcrc.c	/^usMBCRC16( uint8_t * pucFrame, uint16_t usLen )$/;"	f
+usTimer3TCNTDelta	demo/port.c	/^static uint16_t   usTimer3TCNTDelta;$/;"	v	file:
+vMBCDReceiveFSM	modbcd/modbcd.c	/^void vMBCDReceiveFSM( void )$/;"	f
+vMBCDTimerT35Expired	modbcd/modbcd.c	/^void vMBCDTimerT35Expired( void )$/;"	f
+vMBCDTransmitFSM	modbcd/modbcd.c	/^void vMBCDTransmitFSM( void )$/;"	f
+vMBEnterCritical	demo/port.c	/^void vMBEnterCritical( void )	{_SREG = SREG; __asm__ volatile("cli");}$/;"	f
+vMBExit_Critical	demo/port.c	/^void vMBExit_Critical( void )	{SREG = _SREG;}	$/;"	f
+vMBPortSerialEnable	demo/port.c	/^void vMBPortSerialEnable( bool xRxEnable, bool xTxEnable )$/;"	f
+vMBPortTimersDisable	demo/port.c	/^inline void vMBPortTimersDisable(  )$/;"	f
+vMBPortTimersEnable	demo/port.c	/^inline void vMBPortTimersEnable(  )$/;"	f
+xMBPortSerialGetByte	demo/port.c	/^bool xMBPortSerialGetByte( int8_t * pucByte )$/;"	f
+xMBPortSerialInit	demo/port.c	/^bool xMBPortSerialInit( uint8_t ucPORT, uint32_t ulBaudRate, uint8_t ucDataBits, eMBParity eParity )$/;"	f
+xMBPortSerialPutByte	demo/port.c	/^bool xMBPortSerialPutByte( int8_t ucByte )$/;"	f
+xMBPortTimersInit	demo/port.c	/^bool xMBPortTimersInit( uint16_t usTim1Timerout50us )$/;"	f
+xRecvFlg	modbcd/modbcd.c	/^static volatile	bool					xRecvFlg;								\/**< Modbcd data load flag		  *\/$/;"	v	file:
+xSendFlg	modbcd/modbcd.c	/^static volatile	bool					xSendFlg;								\/**< Modbcd data send flag        *\/$/;"	v	file:

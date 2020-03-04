@@ -4,8 +4,8 @@
 #																									   #
 #-------------------------------------------------------------------------------------------------------
 
-PROJECT		= modbcd_tst
-MJR_VER		= V1.0
+PROJECT		= AVR
+MJR_VER		= ATmega128
 
 TARGET 		= $(PROJECT)_$(MJR_VER)
 
@@ -21,24 +21,16 @@ E_FUSE_BIT 	= 0XFF #0XD4
 MCU 		= atmega128
 F_CPU 		= 16000000UL
 
-OBJS		= main.o
+OBJS		= main.o port.o mbcrc.o
 OBJS	   += ../modbcd/modbcd.o					\
-			  ../modbcd/util/mbcrc.o				\
-			  ../modbcd/util/mbox.o					\
-			  ../modbcd/rtu/mbrtu.o					\
-			  ./port.o
+			  ../modbcd/util/mbox.o				
+#../modbcd/util/mbcrc.o				
 
-CFLAGS 		= -mmcu=$(MCU) -Werror -Os -std=c99 -D F_CPU=$(F_CPU)
+CFLAGS 		= -mmcu=$(MCU) -Werror -Wall -Os -std=c99 -D F_CPU=$(F_CPU)
 CFLAGS     += -g
 CFLAGS	   += -I.
-CFLAGS	   += -I../modbcd
-CFLAGS	   += -I../modbcd/util
-#CFLAGS	   += -I. 									\
-			  -I../ascii							\
-			  -I../rtu								\
-			  -I../tcp								\
-			  -I../functions						\
-			  -I../include							\
+CFLAGS	   += -I../modbcd							\
+			  -I../modbcd/util						
 
 LDFLAGS 	= -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
  

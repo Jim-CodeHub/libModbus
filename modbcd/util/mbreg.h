@@ -21,6 +21,7 @@
  *
  *------------------------------------------------------------------------------------------------------------------
 */
+#include <stdint.h>
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -29,7 +30,7 @@
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-typedef         eMBErrorCode( *pxMBFunctionHandler ) ( UCHAR * pucFrame, USHORT * pusLength );
+typedef			eMBErrorCode( *pxMBFunctionHandler ) ( uint8_t * pucFrame, uint16_t * pusLength );
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -38,7 +39,7 @@ typedef         eMBErrorCode( *pxMBFunctionHandler ) ( UCHAR * pucFrame, USHORT 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-eMBErrorCode eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler );
+eMBErrorCode	eMBRegisterCB( uint8_t ucFunctionCode, pxMBFunctionHandler pxHandler );
 
 
 #ifdef __cplusplus
