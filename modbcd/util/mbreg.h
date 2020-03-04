@@ -1,13 +1,13 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbox.h
- * @brief   system message box 
+ * @file	mbreg.h
+ * @brief   modbcd function code register 
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
-#ifndef _MBOX_H__
-#define _MBOX_H__
+#ifndef _MBREG_H__
+#define _MBREG_H__
 
 
 #ifdef __cplusplus
@@ -17,48 +17,28 @@
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBOX INCLUDES 
+ *												MBREG INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include "port.h"
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											   MBOX SHORT ALIAS	
+ *											   MBREG DATA BLOCKS 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  OS_ATOMIC_OPERATION(__INS__)	 {   \
-	ENTER_CRITICAL();						 \
-                                             \
-	__INS__							  	     \
-                                             \
-	EXIT_CRITICAL();						 \
-}
+typedef         eMBErrorCode( *pxMBFunctionHandler ) ( UCHAR * pucFrame, USHORT * pusLength );
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											   MBOX DATA BLOCKS 
+ *											MBREG FUN DECLARATION
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-typedef struct _os_mbox _OS_EVENT;
-
-struct _os_mbox {
-	void *msg;
-};
-
-/*------------------------------------------------------------------------------------------------------------------
- * 
- *											MBOX FUN DECLARATION
- *
- *------------------------------------------------------------------------------------------------------------------
-*/
-void	 _OSMboxPost(struct _os_mbox *mbox, void *msg);
-void	*_OSMboxAccept(struct _os_mbox *mbox);
+eMBErrorCode eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler );
 
 
 #ifdef __cplusplus
@@ -66,5 +46,5 @@ void	*_OSMboxAccept(struct _os_mbox *mbox);
 #endif
 
 
-#endif //_MBOX_H__
+#endif //_MBREG_H__
 
