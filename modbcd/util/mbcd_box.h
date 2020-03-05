@@ -1,13 +1,13 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbreg.h
- * @brief   modbcd function code register 
+ * @file	mbcd_box.h
+ * @brief   modbcd system message box 
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
-#ifndef _MBREG_H__
-#define _MBREG_H__
+#ifndef _MBCD_BOX_H__
+#define _MBCD_BOX_H__
 
 
 #ifdef __cplusplus
@@ -17,29 +17,46 @@
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MBREG INCLUDES 
+ *												MODBCD BOX INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <stdint.h>
+#include "modbcd.h"
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											   MBREG DATA BLOCKS 
+ *											   MBCD_BOX SHORT ALIAS	
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-typedef			eMBErrorCode( *pxMBFunctionHandler ) ( uint8_t * pucFrame, uint16_t * pusLength );
+#define  OS_ATOMIC_OPERATION(__INS__)	 {   \
+	vMBCD_EnterCritical();					 \
+                                             \
+	__INS__							  	     \
+                                             \
+	vMBCD_Exit_Critical();					 \
+}
 
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											MBREG FUN DECLARATION
+ *											   MBCD_BOX DATA BLOCKS 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-eMBErrorCode	eMBRegisterCB( uint8_t ucFunctionCode, pxMBFunctionHandler pxHandler );
+typedef struct { void *msg; } tMBCD_Event;
+
+
+/*------------------------------------------------------------------------------------------------------------------
+ * 
+ *											MBCD_BOX FUN DECLARATION
+ *
+ *------------------------------------------------------------------------------------------------------------------
+*/
+
+void	vMBCD_BoxPost(tMBCD_Event *boxID, void *msg);
+void	*pvMBCD_BoxAccept(tMBCD_Event *boxID);
 
 
 #ifdef __cplusplus
@@ -47,5 +64,5 @@ eMBErrorCode	eMBRegisterCB( uint8_t ucFunctionCode, pxMBFunctionHandler pxHandle
 #endif
 
 
-#endif //_MBREG_H__
+#endif //_MBCD_BOX_H__
 

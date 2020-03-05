@@ -1,5 +1,5 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbcrc.c
+ * @file	mbcd_crc.c
  * @brief   modbucd CRC calculate util 
  *
  * @note	RAM used : NBytes, some SHOULD BE changed to work in FLASH
@@ -7,7 +7,7 @@
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
-#include "mbcrc.h"
+#include "mbcd_crc.h"
 
 
 /*
@@ -78,7 +78,7 @@ static const uint8_t aucCRCLo[] = {
 */
 
 uint16_t
-usMBCRC16( uint8_t * pucFrame, uint16_t usLen )
+usMBCD_CRC16( uint8_t * pucFrame, uint16_t usLen )
 {
     uint8_t           ucCRCHi = 0xFF;
     uint8_t           ucCRCLo = 0xFF;

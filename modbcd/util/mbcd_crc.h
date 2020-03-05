@@ -1,14 +1,14 @@
 /**-----------------------------------------------------------------------------------------------------------------
- * @file	mbcrc.h
- * @brief   modbucd CRC calculate util 
+ * @file	mbcd_crc.h
+ * @brief   modbcd CRC calculate util 
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 
 
-#ifndef _MBCRC_H__
-#define _MBCRC_H__
+#ifndef _MBCD_CRC_H__
+#define _MBCD_CRC_H__
 
 
 #ifdef __cplusplus
@@ -18,7 +18,7 @@
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *												MODBCD INCLUDES 
+ *											  MODBCD CRC INCLUDES 
  *
  *------------------------------------------------------------------------------------------------------------------
 */
@@ -27,11 +27,11 @@
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
- *											MODBCD FUN DECLARATION
+ *											MODBCD CRC FUN DECLARATION
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-uint16_t          usMBCRC16( uint8_t * pucFrame, uint16_t usLen );
+uint16_t          usMBCD_CRC16( uint8_t * pucFrame, uint16_t usLen );
 
 
 #ifdef __cplusplus
@@ -39,5 +39,5 @@ uint16_t          usMBCRC16( uint8_t * pucFrame, uint16_t usLen );
 #endif
 
 
-#endif //_MBCRC_H__
+#endif //_MBCD_CRC_H__
 

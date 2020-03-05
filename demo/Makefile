@@ -23,7 +23,7 @@ F_CPU 		= 16000000UL
 
 OBJS		= main.o port.o mbcrc.o
 OBJS	   += ../modbcd/modbcd.o					\
-			  ../modbcd/util/mbox.o				
+			  ../modbcd/util/mbcd_box.o				
 #../modbcd/util/mbcrc.o				
 
 CFLAGS 		= -mmcu=$(MCU) -Werror -Wall -Os -std=c99 -D F_CPU=$(F_CPU)

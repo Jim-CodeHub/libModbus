@@ -30,8 +30,8 @@ int main(void)
 	uint8_t		*rsps_data; /**< Response data field pointer */
 	uint16_t	 rsps_leng; /**< Response data field length  */
 
-	( eMBErrorCode )eMBCDInit(0, 9600, MB_PAR_EVEN, 20);
-	( eMBErrorCode )eMBCDEnable( );
+	( eMBCD_ErrorCode )eMBCD_Init(0, 9600, PARITY_EVEN, 20);
+	( eMBCD_ErrorCode )eMBCD_Enable( );
 
 	//Set other init here
 
@@ -39,13 +39,13 @@ int main(void)
 
 	while ( 1 )
 	{
-		( eMBErrorCode )eMBCDPoll( );
+		( eMBCD_ErrorCode )eMBCD_Poll( );
 
 		uint8_t rqst_data[] = { 0x00, 0x00, 0x00, 0x13 }; //Request PDU = starting Address : 0x0000, Quantity of coils : 0x13
 
-		if ( MB_ENOERR == eMBCDSend(0X0A, 0X01, rqst_data, sizeof(rqst_data)) )
+		if ( ERR_NOERR == eMBCD_Send(0X0A, 0X01, rqst_data, sizeof(rqst_data)) )
 		{
-			eMBCDLoad( &rsps_data, &rsps_leng );
+			eMBCD_Load( &rsps_data, &rsps_leng );
 
 			//uint8_t byteCnt = rsps_data[0];
 
