@@ -63,7 +63,7 @@ static volatile uint8_t					ucMBSlaveAddr;							/**< Modbcd Address field value
 
 	@note		If param 'usTimeOut' set to 0, then Host SHALL NOT timeout
 */
-eMBCD_ErrorCode eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eParity, uint16_t usTimeOut ) 
+eMBCD_ErrorCode eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eParity, uint16_t usTimerRsp_1Ms ) 
 {
     eMBCD_ErrorCode    eStatus = ERR_NOERR;
     uint32_t		   usTimerT35_50us;
@@ -96,7 +96,7 @@ eMBCD_ErrorCode eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eP
              */
             usTimerT35_50us = ( 7UL * 220000UL ) / ( 2UL * ulBaudRate );
         }
-        if( xMBCD_PortTimersInit( ( uint16_t ) usTimerT35_50us ) != true )
+        if( xMBCD_PortTimersInit( ( uint16_t ) usTimerT35_50us, usTimerRsp_1Ms ) != true )
         {
             eStatus = ERR_PORTERR;
         }
@@ -117,7 +117,7 @@ eMBCD_ErrorCode eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eP
 */
 eMBCD_ErrorCode eMBCD_Enable( void )
 {
-    eMBCD_ErrorCode    eStatus = ERR_NOERR;
+    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
 
 	if ( false == ucMBSwitch )
 	{
@@ -131,15 +131,13 @@ eMBCD_ErrorCode eMBCD_Enable( void )
 		 */
 		eRcvState = RX_STATE_INIT;
 		vMBCD_PortSerialEnable( true, false );
-		vMBCD_PortTimersEnable(  );
+		vMBCD_PortTimersEnable( TIMER_T35 );
+
+		ucMBSwitch = true;	
 
 		vMBCD_Exit_Critical(  );
 
-		ucMBSwitch = true;	
-	}
-	else
-	{
-		eStatus = ERR_ILLSTATE;
+		eStatus = ERR_NOERR;
 	}
     return eStatus;
 }
@@ -154,27 +152,27 @@ eMBCD_ErrorCode eMBCD_Enable( void )
 */
 eMBCD_ErrorCode eMBCD_Disable( void )
 {
-    eMBCD_ErrorCode    eStatus = ERR_NOERR;
+    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
 
 	if ( true == ucMBSwitch )
 	{
 		vMBCD_EnterCritical(  );
+
 		vMBCD_PortSerialEnable( false, false );
-		vMBCD_PortTimersDisable(  );
-		vMBCD_Exit_Critical(  );
+		vMBCD_PortTimersDisable( TIMER_T35 );
+		vMBCD_PortTimersDisable( TIMER_RSP );
 
 		ucMBSwitch = false;
-	}
-	else
-	{
-		eStatus = ERR_ILLSTATE;
-	}
 
+		vMBCD_Exit_Critical(  );
+
+		eStatus = ERR_NOERR;
+	}
     return eStatus;
 }
 
 /**
-    @breif      Modbcd data field load 
+    @breif      Modbcd frame PDU load 
     @param[in]  None
     @param[out] pucPDU		-   modbus PDU (FunCode + Data Feild) buffer pointer 
     @param[out] pusLeng		-   modbus PDU length 
@@ -199,6 +197,8 @@ eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
 			{
 				case EV_TIME_OUT:
 					eStatus = ERR_TIMEDOUT;
+					/**< Active modbcd send side */
+					vMBCD_BoxPost( &pMBMsgTx, (eMBEvnTx = EV_READY, &eMBEvnTx) );
 					break;
 				case EV_FRAME_RECEIVED:
 					vMBCD_EnterCritical();
@@ -239,13 +239,14 @@ eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
     @param[in]  usLength			-   data field buffer length 
     @return     eMBCD_ErrorCode  
 				1. ERR_NOERR	-	if there is no error occur
-				2. ERR_INVAL	-	if param 'ucSlaveAddress' or 'ucFunctionCode' or 'usLength' error 
+				2. ERR_ILLSTATE -	if modbus transmit has not been enabled or modbcd disabled already yet
+				3. ERR_INVAL	-	if param 'ucSlaveAddress' or 'ucFunctionCode' or 'usLength' error 
 
 	@note		The function DO NOT CHECK user's data field which refer to param 'pucData'
 */
-eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength )
+eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const void *pucData, uint16_t usLength )
 {
-	eMBCD_ErrorCode    eStatus = ERR_INVAL;
+	eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
 	eMBCD_EventType	  *eEvent;
 	uint16_t		   usCRC16;
 
@@ -255,6 +256,8 @@ eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, cons
 		 * Otherwise we will handle the event. */
 		if( (void *)0 != (eEvent = (eMBCD_EventType *)pvMBCD_BoxAccept( &pMBMsgTx )) )
 		{
+			eSndState = ERR_INVAL;
+
 			/**< Check preconditions and packetize frame */	
 			if ( ( ucSlaveAddress >= MBCD_ADDR_BROADCAST ) && ( ucSlaveAddress <= MBCD_ADDR_SLAVE_MAX ) )
 			{
@@ -265,6 +268,8 @@ eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, cons
 						vMBCD_EnterCritical(  );
 
 						ucMBSlaveAddr = ucSlaveAddress;  /**< Save transmit slave address */
+
+						memset( (void *)ucFrameBuff, 0, sizeof(ucFrameBuff) );
 
 						ucFrameBuff[MBCD_FRAME_OFFS_ADDR] = ucSlaveAddress;
 						ucFrameBuff[MBCD_FRAME_OFFS_CODE] = ucFunctionCode;
@@ -278,12 +283,12 @@ eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, cons
 						ucFrameBuff[usLength + 3] = ( uint8_t )( usCRC16 >> 8 );
 
 						usFrameIndx = 0;
-						usFrameLeng = usLength + 4;
+						usFrameLeng = usLength + 4U;
 						eSndState	= TX_STATE_SNDC; /**< Enable transmit FSM */
 
-						vMBCD_Exit_Critical(  );
-
 						vMBCD_PortSerialEnable( false, true );
+
+						vMBCD_Exit_Critical(  );
 
 						eStatus = ERR_NOERR; 
 					}
@@ -291,6 +296,7 @@ eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, cons
 			}
 		}
 	}
+
 	return eStatus;
 }
 
@@ -321,9 +327,19 @@ void vMBCD_TransmitFSM( void )
         }
         else
         {
-            /* Disable transmitter and receiver (if the Host sent broadcast, otherwise
-			 * , enable Rx.) */
-			vMBCD_PortSerialEnable( (MBCD_ADDR_BROADCAST != ucFrameBuff[MBCD_FRAME_OFFS_ADDR])?true:false, false );
+			if ( MBCD_ADDR_BROADCAST != ucFrameBuff[MBCD_FRAME_OFFS_ADDR] )
+			{
+				/* Disable transmitter and Enable receiver 
+				 * & start response Expired. */
+				vMBCD_EnterCritical();
+				vMBCD_PortSerialEnable( true, false );
+				vMBCD_PortTimersEnable( TIMER_RSP );
+				vMBCD_Exit_Critical();
+			}
+			else /**< The Host sent broadcast. */
+			{
+				vMBCD_PortSerialEnable( false , false );
+			}
 
             eSndState = TX_STATE_IDLE;
         }
@@ -353,14 +369,14 @@ void vMBCD_ReceiveFSM( void )
 		 * wait until the frame is finished.
 		 */
 		case RX_STATE_INIT:
-			vMBCD_PortTimersEnable(  );
+			vMBCD_PortTimersEnable( TIMER_T35 );
 			break;
 
 			/* In the error state we wait until all characters in the
 			 * damaged frame are transmitted.
 			 */
 		case RX_STATE_ERRS:
-			vMBCD_PortTimersEnable(  );
+			vMBCD_PortTimersEnable( TIMER_T35 );
 			break;
 
 			/* In the idle state we wait for a new character. If a character
@@ -373,7 +389,9 @@ void vMBCD_ReceiveFSM( void )
 			eRcvState = RX_STATE_RCVC;
 
 			/* Enable t3.5 timers. */
-			vMBCD_PortTimersEnable(  );
+			vMBCD_PortTimersEnable( TIMER_T35 );
+			/* Disable response timers. */
+			vMBCD_PortTimersDisable( TIMER_RSP );
 			break;
 
 			/* We are currently receiving a frame. Reset the timer after
@@ -390,7 +408,7 @@ void vMBCD_ReceiveFSM( void )
 			{
 				eRcvState = RX_STATE_ERRS;
 			}
-			vMBCD_PortTimersEnable(  );
+			vMBCD_PortTimersEnable( TIMER_T35 );
 			break;
 		default: ;
 	}
@@ -429,7 +447,31 @@ void vMBCD_TimerT35Expired( void )
 					( eRcvState == RX_STATE_RCVC ) || ( eRcvState == RX_STATE_ERRS ) );
 	}
 
-	vMBCD_PortTimersDisable( );
+	vMBCD_PortTimersDisable( TIMER_T35 );
 	eRcvState = RX_STATE_IDLE;
+}
+
+/**
+    @breif      Timer Repsone expired FSM 
+    @param[in]  None 
+    @param[out] None
+    @return     None 
+	@note	    The function MAY NOT use an individual timer. MAY some flag used
+*/
+void vMBCD_TimerRspExpired( void )
+{
+	switch ( eRcvState )
+	{
+		/**< Rx is listen to the port. */
+		case RX_STATE_IDLE:	
+			vMBCD_BoxPost(&pMBMsgRx, (eMBEvnRx = EV_TIME_OUT, &eMBEvnRx));
+			break;
+
+        /**< Function called in an illegal state. */
+		default:
+			assert( eRcvState == RX_STATE_IDLE );
+	}
+
+	vMBCD_PortTimersDisable( TIMER_RSP );
 }
 

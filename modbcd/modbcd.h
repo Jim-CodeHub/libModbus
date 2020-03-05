@@ -77,7 +77,6 @@ typedef enum {																/******** Send state enumeration ******/
 typedef enum {																/******** Internal Event enumeration **/
     EV_READY,															    /**< Startup finished				  */
     EV_FRAME_RECEIVED,      											    /**< Frame received					  */
-    EV_FRAME_SENT,          											    /**< Frame has been sent			  */
 	EV_TIME_OUT																/**< Response timeout				  */
 } eMBCD_EventType;
 
@@ -87,13 +86,16 @@ typedef enum {																/******** Parity enumeration **********/
     PARITY_EVEN																/**< Even parity					  */
 } eMBCD_Parity;
 
+typedef enum {																/******** Timer select enumeration ****/
+	TIMER_T35,																/**< T35 Timer						  */
+	TIMER_RSP																/**< Response Timer					  */
+} eMBCD_Timer;
+
 typedef enum {																/******** Custom error enumeration ****/
     ERR_NOERR,																/**< no error						  */
-    ERR_NOREG,                  											/**< illegal register address		  */
     ERR_INVAL,                  											/**< illegal argument				  */
     ERR_PORTERR,                											/**< porting layer error			  */
     ERR_NORES,                  											/**< insufficient resources			  */
-    ERR_IO,                     											/**< I/O error						  */
     ERR_ILLSTATE,               											/**< protocol stack in illegal state  */
     ERR_TIMEDOUT                											/**< timeout error occurred			  */
 } eMBCD_ErrorCode;
@@ -105,14 +107,15 @@ typedef enum {																/******** Custom error enumeration ****/
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-eMBCD_ErrorCode	eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eParity, uint16_t usTimeOut );
+eMBCD_ErrorCode	eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eParity, uint16_t usTimerRsp_1Ms );
 eMBCD_ErrorCode	eMBCD_Enable( void );
 eMBCD_ErrorCode	eMBCD_Disable( void );
 eMBCD_ErrorCode	eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng );
-eMBCD_ErrorCode	eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength );
+eMBCD_ErrorCode	eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const void *pucData, uint16_t usLength );
 void			vMBCD_TransmitFSM( void );
 void			vMBCD_ReceiveFSM( void );
 void			vMBCD_TimerT35Expired( void );
+void			vMBCD_TimerRspExpired( void );
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -127,9 +130,9 @@ void            vMBCD_PortSerialEnable( bool xRxEnable, bool xTxEnable );
 bool            xMBCD_PortSerialGetByte( int8_t * pucByte );
 bool            xMBCD_PortSerialPutByte( int8_t ucByte );
 
-bool            xMBCD_PortTimersInit( uint16_t usTimeOut50us );
-void            vMBCD_PortTimersEnable( void );
-void            vMBCD_PortTimersDisable( void );
+bool            xMBCD_PortTimersInit( uint16_t usTimerT35_50us, uint16_t usTimerRsp_1Ms );
+void            vMBCD_PortTimersEnable( eMBCD_Timer eTimer );
+void            vMBCD_PortTimersDisable( eMBCD_Timer eTimer );
 
 void			vMBCD_EnterCritical( void );
 void			vMBCD_Exit_Critical( void );

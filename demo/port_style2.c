@@ -1,6 +1,6 @@
 /**-----------------------------------------------------------------------------------------------------------------
  * @file	port.c
- * @brief   modbcd port protable functions	
+ * @brief   modbcd port protable functions ( style2 for timer port )
  *
  * @note	RAM used : 5Bytes
  *
@@ -28,24 +28,28 @@ void vMBCD_Exit_Critical( void )	{SREG = _SREG;}
 *												TIMER PORT 
 --------------------------------------------------------------------------------------------------------------------
 */
-static uint16_t   usTimer3TCNTDelta;
-static uint16_t   usTimer1TCNTDelta;
+static uint16_t   usTimerT35Cnt = 0;
+static uint16_t   usTimerRspCnt = 0;
+
+static uint16_t   usTimerT35Val = 0;
+static uint16_t   usTimerRspVal = 0;
+
+static bool		  bTimerT35Switch = false;
+static bool		  bTimerRspSwitch = false;
 
 bool xMBCD_PortTimersInit( uint16_t usTimerT35_50us, uint16_t usTimerRsp_1Ms )
 {
-	usTimer3TCNTDelta = (usTimerT35_50us * 50) / 16;  /**< Formula : (usTimerT35_50us * 50) / 1_T_Per_Cnt */
-
-    TCCR3A = 0x00; TCCR3B = 0x00; TCCR3C = 0x00;
-
     vMBCD_PortTimersDisable( TIMER_T35 );
-
-	//----------
-	
-	usTimer1TCNTDelta = ( usTimerRsp_1Ms * 1000UL) / 64; /**< Formula : ( usTimerRsp_1Ms * 10000UL ) / 1_T_Per_Cnt */
-
-    TCCR1A = 0x00; TCCR1B = 0x00; TCCR1C = 0x00;
-
     vMBCD_PortTimersDisable( TIMER_RSP );
+
+	ETIMSK |= _BV( TOIE3 ); /**< Enable timer3 IE */
+
+	TCCR3B |= _BV( CS32 ); /**< Set 256 prescaler (16us per count) */
+
+	TCNT3 = 65536UL - 16*3; /**< Reload timer, 16*3 about 50us  */ 
+
+	usTimerT35Val = usTimerT35_50us * 50 / 16*3;
+	usTimerRspVal = usTimerRsp_1Ms * 1000UL / 16*3;
 
     return true;
 }
@@ -54,19 +58,13 @@ inline void vMBCD_PortTimersEnable( eMBCD_Timer eTimer )
 {
 	if ( TIMER_T35 == eTimer )
 	{
-		ETIMSK |= _BV( TOIE3 ); /**< Enable timer3 IE */
-
-		TCNT3 = 65536UL - usTimer3TCNTDelta; /**< Reload timer3 counter */
-
-		TCCR3B |= _BV( CS32 ); /**< Set 256 prescaler (16us per count) */
+		usTimerT35Cnt = 0;
+		bTimerT35Switch = true;
 	}
 	else
 	{
-		TIMSK |= _BV( TOIE1 ); /**< Enable timer1 IE */
-
-		TCNT1 = 65536UL - usTimer1TCNTDelta; /**< Reload timer1 counter */
-
-		TCCR1B |= _BV( CS12) | _BV( CS10 ); /**< Set 1024 prescaler (64us per count) */
+		usTimerRspCnt = 0;
+		bTimerRspSwitch = true;
 	}
 }
 
@@ -74,26 +72,27 @@ inline void vMBCD_PortTimersDisable( eMBCD_Timer eTimer )
 {
 	if ( TIMER_T35 == eTimer )
 	{
-		TCCR3B &= ~( _BV( CS32 ) );	/**< Disable timer3 */
-
-		ETIMSK &= ~( _BV( TOIE3 ) ); /**< Disable timer3 IE */
+		bTimerT35Switch = false;
 	}
 	else
 	{
-		TCCR1B &= ~( _BV( CS12) | _BV( CS10 ) ); /**< Disable timer1 */ 
-
-		TIMSK &= ~( _BV( TOIE1 ) ); /**< Disable timer1 IE */
+		bTimerRspSwitch = false;
 	}
 }
 
-ISR(TIMER3_OVF_vect)
+ISR(TIMER3_OVF_vect) //Common timer
 {
-	(void )vMBCD_TimerT35Expired();
-}
+	TCNT3 = 65536UL - 16*3; /**< Reload timer, 16*3 about 50us per IE */ 
 
-ISR( TIMER1_OVF_vect )
-{
-	(void )vMBCD_TimerRspExpired();
+	if (( true == bTimerT35Switch ) && ( usTimerT35Cnt++ == usTimerT35Val ))
+	{
+		(void )vMBCD_TimerT35Expired();
+	}
+	
+	if (( true == bTimerRspSwitch ) && ( usTimerRspCnt++ == usTimerRspVal )) 
+	{
+		(void )vMBCD_TimerRspExpired();
+	}
 }
 
 
@@ -185,6 +184,7 @@ ISR(USART1_UDRE_vect) /**< Use UDRE IE instead of TX IE (USART1_TX_vect) to spee
 {
 	( void )vMBCD_TransmitFSM( );
 }
+
 ISR(USART1_RX_vect)
 {
 	( void )vMBCD_ReceiveFSM( );
