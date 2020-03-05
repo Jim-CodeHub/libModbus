@@ -108,7 +108,6 @@ typedef enum {																/******** Custom error enumeration ****/
 eMBCD_ErrorCode	eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eParity, uint16_t usTimeOut );
 eMBCD_ErrorCode	eMBCD_Enable( void );
 eMBCD_ErrorCode	eMBCD_Disable( void );
-eMBCD_ErrorCode	eMBCD_Poll( void );
 eMBCD_ErrorCode	eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng );
 eMBCD_ErrorCode	eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength );
 void			vMBCD_TransmitFSM( void );

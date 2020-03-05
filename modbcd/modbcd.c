@@ -8,7 +8,7 @@
  *  |	1Byte   |	 1Byte      |          0~252 Byte        |    2Byte	   |
  *  +-----------+---------------+----------------------------+-------------+
  *
- * @note	RAM used : 269Bytes
+ * @note	RAM used : MBCD_FRAME_SIZE_MAX + 14 Byte  
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
@@ -25,11 +25,10 @@
 *
 --------------------------------------------------------------------------------------------------------------------
 */
-static			tMBCD_Event				pMBMsgID;								/**< Modbcd message box identity  */
-static			eMBCD_EventType			eMBEvent;								/**< Modbcd Event type			  */	
-
-static volatile	bool					xSendFlg = false;						/**< Modbcd data send flag        */
-static volatile	bool					xRecvFlg = false;						/**< Modbcd data load flag		  */
+static			tMBCD_Event				pMBMsgTx;								/**< Modbcd Tx message identity  */
+static			tMBCD_Event				pMBMsgRx;								/**< Modbcd Rx message identity  */
+static			eMBCD_EventType			eMBEvnTx;								/**< Modbcd Tx Event type		 */
+static			eMBCD_EventType			eMBEvnRx;								/**< Modbcd Rx Event type		 */	
 
 static volatile eMBCD_RcvState			eRcvState;								/**< Modbcd recv state			  */
 static volatile eMBCD_SndState			eSndState = TX_STATE_IDLE;				/**< Modbcd send state			  */
@@ -175,30 +174,32 @@ eMBCD_ErrorCode eMBCD_Disable( void )
 }
 
 /**
-    @breif      Modbcd events loop 
-    @param[in]  None 
-    @param[out] None
+    @breif      Modbcd data field load 
+    @param[in]  None
+    @param[out] pucPDU		-   modbus PDU (FunCode + Data Feild) buffer pointer 
+    @param[out] pusLeng		-   modbus PDU length 
     @return     eMBCD_ErrorCode 
 				1. ERR_NOERR	-	if there is no error occur
-				2. ERR_ILLSTATE -	if modbcd has not been enabled yet
+				2. ERR_ILLSTATE -	if modbus frame has not been received
+				3. ERR_TIMEDOUT -   if slave response timeout
+				4. ERR_NORES	-	if modbus frame error
 */
-eMBCD_ErrorCode eMBCD_Poll( void )
+eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
 {
-    eMBCD_ErrorCode    eStatus = ERR_NOERR;
-    eMBCD_EventType	  *eEvent;
+    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
+	eMBCD_EventType	  *eEvent;
 
 	if( true == ucMBSwitch ) /**< Check if the protocol stack is ready. */
 	{
 		/* Check if there is a event available. If not return control to caller.
 		 * Otherwise we will handle the event. */
-		if( (void *)0 != (eEvent = (eMBCD_EventType *)pvMBCD_BoxAccept( &pMBMsgID )) )
+		if( (void *)0 != (eEvent = (eMBCD_EventType *)pvMBCD_BoxAccept( &pMBMsgRx )) )
 		{
 			switch ( *eEvent )
 			{
-				case EV_READY:
-					xSendFlg = true; /**< Enable 'eMBSend()' function */
+				case EV_TIME_OUT:
+					eStatus = ERR_TIMEDOUT;
 					break;
-
 				case EV_FRAME_RECEIVED:
 					vMBCD_EnterCritical();
 
@@ -207,58 +208,24 @@ eMBCD_ErrorCode eMBCD_Poll( void )
 							&& ( usMBCD_CRC16( ( uint8_t * ) ucFrameBuff, usFrameIndx ) == 0 ) 
 							&& ( ucFrameBuff[MBCD_FRAME_OFFS_ADDR] == ucMBSlaveAddr ) ) 
 					{
-						xRecvFlg = true; /**< Enable receive  for function 'eMBCDLoad()' */
+						*pucPDU  = (uint8_t *)&ucFrameBuff[MBCD_FRAME_OFFS_PDU];
+						*pusLeng = usFrameIndx - MBCD_FRAME_OFFS_PDU - MBCD_FRAME_SIZE_CRC;
+
+						eStatus = ERR_NOERR;
 					}
 					else
 					{
 						eStatus = ERR_NORES;
 					}
 
-					vMBCD_Exit_Critical();
-					break;
+					/**< Active modbcd send side */
+					vMBCD_BoxPost( &pMBMsgTx, (eMBEvnTx = EV_READY, &eMBEvnTx) );
 
-				case EV_FRAME_SENT:
-					if ( MBCD_ADDR_BROADCAST != ucFrameBuff[MBCD_FRAME_OFFS_ADDR] )
-					{
-						vMBCD_PortSerialEnable( true, false );
-					}
+					vMBCD_Exit_Critical();
 					break;
 				default: ;
 			}
 		}
-	}
-	else
-	{
-		eStatus = ERR_ILLSTATE;
-	}
-
-    return eStatus;
-}
-
-/**
-    @breif      Modbcd data field load 
-    @param[in]  None
-    @param[out] pucPDU		-   modbus PDU (FunCode + Data Feild) buffer pointer 
-    @param[out] pusLeng		-   modbus PDU length 
-    @return     eMBCD_ErrorCode 
-				1. ERR_NOERR	-	if there is no error occur
-				2. ERR_ILLSTATE -	if modbus frame has not received and processed 
-				3. ERR_TIMEDOUT -   if slave response timeout
-*/
-eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
-{
-    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
-
-	if ( true == xRecvFlg ) 
-	{
-		xRecvFlg = false;
-
-		*pucPDU  = (uint8_t *)&ucFrameBuff[MBCD_FRAME_OFFS_PDU];
-		*pusLeng = usFrameIndx - MBCD_FRAME_OFFS_PDU - MBCD_FRAME_SIZE_CRC;
-
-		eStatus = ERR_NOERR;
-
-		xSendFlg = true; /**< Enable transmit for function 'eMBCDSend()' */
 	}
 
     return eStatus;
@@ -278,50 +245,53 @@ eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
 */
 eMBCD_ErrorCode eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength )
 {
-    eMBCD_ErrorCode    eStatus = ERR_INVAL;
-    uint16_t		   usCRC16;
+	eMBCD_ErrorCode    eStatus = ERR_INVAL;
+	eMBCD_EventType	  *eEvent;
+	uint16_t		   usCRC16;
 
-	if ( true == xSendFlg )
+	if( true == ucMBSwitch ) /**< Check if the protocol stack is ready. */
 	{
-		xSendFlg = false;
-
-		/**< Check preconditions and packetize frame */	
-		if ( ( ucSlaveAddress >= MBCD_ADDR_BROADCAST ) && ( ucSlaveAddress <= MBCD_ADDR_SLAVE_MAX ) )
+		/* Check if there is a event available. If not return control to caller.
+		 * Otherwise we will handle the event. */
+		if( (void *)0 != (eEvent = (eMBCD_EventType *)pvMBCD_BoxAccept( &pMBMsgTx )) )
 		{
-			if ( ( 0 <= ucFunctionCode ) && ( ucFunctionCode <= 127 ) )
+			/**< Check preconditions and packetize frame */	
+			if ( ( ucSlaveAddress >= MBCD_ADDR_BROADCAST ) && ( ucSlaveAddress <= MBCD_ADDR_SLAVE_MAX ) )
 			{
-				if ( ( usLength >= MBCD_FRAME_SIZE_MIN ) && ( usLength <= MBCD_FRAME_SIZE_MAX ) )
+				if ( ( 0 <= ucFunctionCode ) && ( ucFunctionCode <= 127 ) )
 				{
-					vMBCD_EnterCritical(  );
+					if ( ( usLength >= MBCD_FRAME_SIZE_MIN ) && ( usLength <= MBCD_FRAME_SIZE_MAX ) )
+					{
+						vMBCD_EnterCritical(  );
 
-					ucMBSlaveAddr = ucSlaveAddress;  /**< Save transmit slave address */
+						ucMBSlaveAddr = ucSlaveAddress;  /**< Save transmit slave address */
 
-					ucFrameBuff[MBCD_FRAME_OFFS_ADDR] = ucSlaveAddress;
-					ucFrameBuff[MBCD_FRAME_OFFS_CODE] = ucFunctionCode;
+						ucFrameBuff[MBCD_FRAME_OFFS_ADDR] = ucSlaveAddress;
+						ucFrameBuff[MBCD_FRAME_OFFS_CODE] = ucFunctionCode;
 
-					memmove( (void *)(ucFrameBuff + 2), pucData, usLength );
+						memmove( (void *)(ucFrameBuff + 2), pucData, usLength );
 
-					/* Calculate CRC16 checksum for Modbus-Serial-Line-PDU. */
-					usCRC16 = usMBCD_CRC16( ( uint8_t * ) ucFrameBuff, usLength + 2);
+						/* Calculate CRC16 checksum for Modbus-Serial-Line-PDU. */
+						usCRC16 = usMBCD_CRC16( ( uint8_t * ) ucFrameBuff, usLength + 2);
 
-					ucFrameBuff[usLength + 2] = ( uint8_t )( usCRC16 & 0xFF );
-					ucFrameBuff[usLength + 3] = ( uint8_t )( usCRC16 >> 8 );
+						ucFrameBuff[usLength + 2] = ( uint8_t )( usCRC16 & 0xFF );
+						ucFrameBuff[usLength + 3] = ( uint8_t )( usCRC16 >> 8 );
 
-					usFrameIndx = 0;
-					usFrameLeng = usLength + 4;
-					eSndState	= TX_STATE_SNDC; /**< Enable transmit FSM */
+						usFrameIndx = 0;
+						usFrameLeng = usLength + 4;
+						eSndState	= TX_STATE_SNDC; /**< Enable transmit FSM */
 
-					vMBCD_Exit_Critical(  );
+						vMBCD_Exit_Critical(  );
 
-					vMBCD_PortSerialEnable( false, true );
+						vMBCD_PortSerialEnable( false, true );
 
-					eStatus = ERR_NOERR; 
+						eStatus = ERR_NOERR; 
+					}
 				}
 			}
 		}
 	}
-
-    return eStatus;
+	return eStatus;
 }
 
 /**
@@ -351,11 +321,10 @@ void vMBCD_TransmitFSM( void )
         }
         else
         {
-			vMBCD_BoxPost(&pMBMsgID, (eMBEvent = EV_FRAME_SENT, &eMBEvent));
+            /* Disable transmitter and receiver (if the Host sent broadcast, otherwise
+			 * , enable Rx.) */
+			vMBCD_PortSerialEnable( (MBCD_ADDR_BROADCAST != ucFrameBuff[MBCD_FRAME_OFFS_ADDR])?true:false, false );
 
-            /* Disable transmitter. This prevents another transmit buffer
-             * empty interrupt. */
-            vMBCD_PortSerialEnable( false, false );
             eSndState = TX_STATE_IDLE;
         }
         break;
@@ -440,13 +409,13 @@ void vMBCD_TimerT35Expired( void )
 	{
 		/**< Timer T35 expired. Startup phase is finished. */
 		case RX_STATE_INIT:	
-			vMBCD_BoxPost(&pMBMsgID, (eMBEvent = EV_READY, &eMBEvent));
+			vMBCD_BoxPost( &pMBMsgTx, (eMBEvnTx = EV_READY, &eMBEvnTx) );
 			vMBCD_PortSerialEnable( false, false );
 			break;
 
         /* A frame was received and t35 expired. Notify the listener that a new frame was received. */
 		case RX_STATE_RCVC:	
-			vMBCD_BoxPost(&pMBMsgID, (eMBEvent = EV_FRAME_RECEIVED, &eMBEvent));
+			vMBCD_BoxPost( &pMBMsgRx, (eMBEvnRx = EV_FRAME_RECEIVED, &eMBEvnRx) );
 			vMBCD_PortSerialEnable( false, false );
 			break;
 
