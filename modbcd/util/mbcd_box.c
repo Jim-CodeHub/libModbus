@@ -18,6 +18,7 @@
 --------------------------------------------------------------------------------------------------------------------
 */
 
+
 /*
 --------------------------------------------------------------------------------------------------------------------
 *
@@ -52,7 +53,7 @@ void	*pvMBCD_BoxAccept( tMBCD_Event *boxID )
 
 	if ( (void *)0 != boxID->msg ) /**< To avoid read signal frequently */
 	{
-		OS_ATOMIC_OPERATION(
+		MBCD_ATOMIC_OPERATION(
 				msg = boxID->msg;
 				boxID->msg = (void *)0;
 				);
@@ -60,5 +61,4 @@ void	*pvMBCD_BoxAccept( tMBCD_Event *boxID )
 
 	return msg;
 }
-
 

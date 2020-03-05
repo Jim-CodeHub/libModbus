@@ -30,7 +30,10 @@
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#define  OS_ATOMIC_OPERATION(__INS__)	 {   \
+#define  MBCD_EVENT_MAX						 2
+
+
+#define  MBCD_ATOMIC_OPERATION(__INS__)	 {   \
 	vMBCD_EnterCritical();					 \
                                              \
 	__INS__							  	     \
@@ -54,9 +57,8 @@ typedef struct { void *msg; } tMBCD_Event;
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-
-void	vMBCD_BoxPost(tMBCD_Event *boxID, void *msg);
-void	*pvMBCD_BoxAccept(tMBCD_Event *boxID);
+void		 vMBCD_BoxPost(tMBCD_Event *boxID, void *msg);
+void		 *pvMBCD_BoxAccept(tMBCD_Event *boxID);
 
 
 #ifdef __cplusplus

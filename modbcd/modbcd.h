@@ -46,6 +46,7 @@
 #define  MBCD_FRAME_OFFS_ADDR						0						/**< Address field offset in frame	  */
 #define  MBCD_FRAME_OFFS_CODE						1						/**< FunCode field offset in frame	  */
 #define  MBCD_FRAME_OFFS_DATA						2						/**< Data    field offset in frame	  */
+#define  MBCD_FRAME_OFFS_PDU						1						/**< Data    field offset in frame	  */
 
 
 																			/******** Address defination **********/
@@ -76,9 +77,8 @@ typedef enum {																/******** Send state enumeration ******/
 typedef enum {																/******** Internal Event enumeration **/
     EV_READY,															    /**< Startup finished				  */
     EV_FRAME_RECEIVED,      											    /**< Frame received					  */
-    EV_EXECUTE,             											    /**< Execute function				  */
     EV_FRAME_SENT,          											    /**< Frame has been sent			  */
-	EV_FRAME_EMIT,															/**< Frame can be sent				  */
+	EV_TIME_OUT																/**< Response timeout				  */
 } eMBCD_EventType;
 
 typedef enum {																/******** Parity enumeration **********/
@@ -109,7 +109,7 @@ eMBCD_ErrorCode	eMBCD_Init( uint8_t ucPort, uint32_t ulBaudRate, eMBCD_Parity eP
 eMBCD_ErrorCode	eMBCD_Enable( void );
 eMBCD_ErrorCode	eMBCD_Disable( void );
 eMBCD_ErrorCode	eMBCD_Poll( void );
-eMBCD_ErrorCode	eMBCD_Load( uint8_t **pucData, uint16_t *pusLeng );
+eMBCD_ErrorCode	eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng );
 eMBCD_ErrorCode	eMBCD_Send( uint8_t ucSlaveAddress, uint8_t ucFunctionCode, const uint8_t *pucData, uint16_t usLength );
 void			vMBCD_TransmitFSM( void );
 void			vMBCD_ReceiveFSM( void );
