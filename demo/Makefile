@@ -21,7 +21,7 @@ E_FUSE_BIT 	= 0XFF #0XD4
 MCU 		= atmega128
 F_CPU 		= 16000000UL
 
-OBJS		= main.o port.o mbcrc.o
+OBJS		= main.o port_style2.o mbcrc.o
 OBJS	   += ../modbcd/modbcd.o					\
 			  ../modbcd/util/mbcd_box.o				
 #../modbcd/util/mbcrc.o				

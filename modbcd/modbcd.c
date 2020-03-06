@@ -465,6 +465,7 @@ void vMBCD_TimerRspExpired( void )
 		/**< Rx is listen to the port. */
 		case RX_STATE_IDLE:	
 			vMBCD_BoxPost(&pMBMsgRx, (eMBEvnRx = EV_TIME_OUT, &eMBEvnRx));
+			vMBCD_PortSerialEnable( false, false );
 			break;
 
         /**< Function called in an illegal state. */

@@ -2,7 +2,7 @@
  * @file	port.c
  * @brief   modbcd port protable functions ( style2 for timer port )
  *
- * @note	RAM used : 5Bytes
+ * @note	RAM used : 7Bytes
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
@@ -26,6 +26,8 @@ void vMBCD_Exit_Critical( void )	{SREG = _SREG;}
 /*
 --------------------------------------------------------------------------------------------------------------------
 *												TIMER PORT 
+*
+*						Note: The error of working in the way is T, T = timer interrupt cycle 
 --------------------------------------------------------------------------------------------------------------------
 */
 static uint16_t   usTimerT35Cnt = 0;
@@ -42,14 +44,12 @@ bool xMBCD_PortTimersInit( uint16_t usTimerT35_50us, uint16_t usTimerRsp_1Ms )
     vMBCD_PortTimersDisable( TIMER_T35 );
     vMBCD_PortTimersDisable( TIMER_RSP );
 
-	ETIMSK |= _BV( TOIE3 ); /**< Enable timer3 IE */
+	TCNT2 = 206;	/**< Init timer2 ( 200us per IE ) */ 
+	TCCR2 |= _BV( CS22 ); /**< 4us per count ( 64 preF ) */
+	TIMSK |= _BV( TOIE2 ); /**< Enable timer2 overflow interrupt */
 
-	TCCR3B |= _BV( CS32 ); /**< Set 256 prescaler (16us per count) */
-
-	TCNT3 = 65536UL - 16*3; /**< Reload timer, 16*3 about 50us  */ 
-
-	usTimerT35Val = usTimerT35_50us * 50 / 16*3;
-	usTimerRspVal = usTimerRsp_1Ms * 1000UL / 16*3;
+	usTimerT35Val = usTimerT35_50us * 50UL / 200UL; /**< Formula : N * 50UL per IE time  */
+	usTimerRspVal = usTimerRsp_1Ms * 1000UL / 200UL; /**< Formula : N * 1000UL per  IE time */
 
     return true;
 }
@@ -80,9 +80,9 @@ inline void vMBCD_PortTimersDisable( eMBCD_Timer eTimer )
 	}
 }
 
-ISR(TIMER3_OVF_vect) //Common timer
+ISR(TIMER2_OVF_vect) //Common timer
 {
-	TCNT3 = 65536UL - 16*3; /**< Reload timer, 16*3 about 50us per IE */ 
+	TCNT2 = 206; /**< Reload timer */
 
 	if (( true == bTimerT35Switch ) && ( usTimerT35Cnt++ == usTimerT35Val ))
 	{
