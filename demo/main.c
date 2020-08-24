@@ -43,24 +43,28 @@ int main(void)
 
 		if ( ERR_NOERR == eMBCD_Send(0X0A, 0X01, rqst_data, sizeof(rqst_data)) )
 		{
-			eMBCD_ErrorCode eErr = eMBCD_Load( &rsps_data, &rsps_leng );
-
-			switch ( eErr )
-			{
-				case ERR_NOERR:
-					//uint8_t FunCode = rsps_data[0];
-					//uint8_t byteCnt = rsps_data[1];
-
-					//uint8_t CoilsB1 = rsps_data[2]; //0x13 ~ 0x1A	 
-					//uint8_t CoilsB2 = rsps_data[3]; //0x1B ~ 0x22 
-					//uint8_t CoilsB3 = rsps_data[4]; //0X23 ~ 0X2A
 					//Do something
-					break;
-				case ERR_TIMEDOUT:
-					//Do something
-					break;
-				default: ;
-			}
+		}
+
+		eMBCD_ErrorCode eErr = eMBCD_Load( &rsps_data, &rsps_leng );
+
+		switch ( eErr )
+		{
+			case ERR_NOERR:
+				//uint8_t FunCode = rsps_data[0];
+				//uint8_t byteCnt = rsps_data[1];
+
+				//uint8_t CoilsB1 = rsps_data[2]; //0x13 ~ 0x1A	 
+				//uint8_t CoilsB2 = rsps_data[3]; //0x1B ~ 0x22 
+				//uint8_t CoilsB3 = rsps_data[4]; //0X23 ~ 0X2A
+				//Do something
+				break;
+			case ERR_TIMEDOUT:
+				//Do something
+				break;
+			default: 
+				//Do something
+				;
 		}
 
 		//Set other code
