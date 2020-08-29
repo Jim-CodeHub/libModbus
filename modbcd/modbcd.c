@@ -172,6 +172,26 @@ eMBCD_ErrorCode eMBCD_Disable( void )
 }
 
 /**
+    @breif      Modbcd Reset : re-active send-recive logic
+    @param[in]  None 
+    @param[out] None
+    @return     eMBCD_ErrorCode 
+				1. ERR_NOERR	-	if there is no error occur
+				2. ERR_ILLSTATE -	if modbcd has already been enabled/disabled 
+*/
+eMBCD_ErrorCode eMBCD_Reset( void )
+{
+    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
+
+	if ( ERR_ILLSTATE != (eStatus = eMBCD_Disable( void )) )
+	{
+		eStatus = eMBCD_Enable ( void );
+	}
+
+	return eStatus;
+}
+
+/**
     @breif      Modbcd frame PDU load 
     @param[in]  None
     @param[out] pucPDU		-   modbus PDU (FunCode + Data Feild) buffer pointer 

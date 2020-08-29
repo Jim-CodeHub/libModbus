@@ -1,7 +1,5 @@
 # Modbus Client(Master) library for MCU with C language 
 
-## Version v1.o
-
 ## Source File
 
 The source code is refer to FreeModbus, On this basis, some changes has been made and became the Host-side program 
@@ -15,5 +13,5 @@ Comm : EIA/TIA-232 or EIA/TIA-485
 
 ## Note
 
-C compiler version SHOULD BE LARGER THAN 'C99'
+C compiler version SHOULD BE LARGER THAN 'C98'
 
