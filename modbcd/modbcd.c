@@ -8,14 +8,12 @@
  *  |	1Byte   |	 1Byte      |          0~252 Byte        |    2Byte	   |
  *  +-----------+---------------+----------------------------+-------------+
  *
- * @note	RAM used : MBCD_FRAME_SIZE_MAX + 14 Byte  
+ * @note	RAM used : MBCD_FRAME_SIZE_MAX + 15 Byte  
  *
  * Copyright (c) 2020 Jim Zhang 303683086@qq.com
  *------------------------------------------------------------------------------------------------------------------
 */
 #include "modbcd.h"
-#include "mbcd_box.h"
-#include "mbcd_crc.h"
 
 
 /*
@@ -183,9 +181,9 @@ eMBCD_ErrorCode eMBCD_Reset( void )
 {
     eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
 
-	if ( ERR_ILLSTATE != (eStatus = eMBCD_Disable( void )) )
+	if ( ERR_ILLSTATE != (eStatus = eMBCD_Disable( )) )
 	{
-		eStatus = eMBCD_Enable ( void );
+		eStatus = eMBCD_Enable ( );
 	}
 
 	return eStatus;

@@ -27,11 +27,12 @@
  *
  *------------------------------------------------------------------------------------------------------------------
 */
-#include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
 
+#include "mbcd_box.h"
+#include "port.h"
 
 /*------------------------------------------------------------------------------------------------------------------
  * 
@@ -137,6 +138,8 @@ void            vMBCD_PortTimersDisable( eMBCD_Timer eTimer );
 
 void			vMBCD_EnterCritical( void );
 void			vMBCD_Exit_Critical( void );
+
+USHORT			usMBCD_CRC16( UCHAR * pucFrame, USHORT usLen );
 
 
 #ifdef __cplusplus
