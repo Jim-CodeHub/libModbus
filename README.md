@@ -11,7 +11,10 @@ Comm : EIA/TIA-232 or EIA/TIA-485
 
 ## Next
 
+Add functions
+
 ## Note
 
-C compiler version SHOULD BE LARGER THAN 'C98'
+1. C compiler version SHOULD BE LARGER THAN 'C98'
+2. ONCE `eMBCD_Send()` has been called, `eMBCD_Load()` Must be used after send 
 

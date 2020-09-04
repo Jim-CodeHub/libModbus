@@ -170,26 +170,6 @@ eMBCD_ErrorCode eMBCD_Disable( void )
 }
 
 /**
-    @breif      Modbcd Reset : re-active send-recive logic
-    @param[in]  None 
-    @param[out] None
-    @return     eMBCD_ErrorCode 
-				1. ERR_NOERR	-	if there is no error occur
-				2. ERR_ILLSTATE -	if modbcd has already been enabled/disabled 
-*/
-eMBCD_ErrorCode eMBCD_Reset( void )
-{
-    eMBCD_ErrorCode    eStatus = ERR_ILLSTATE;
-
-	if ( ERR_ILLSTATE != (eStatus = eMBCD_Disable( )) )
-	{
-		eStatus = eMBCD_Enable ( );
-	}
-
-	return eStatus;
-}
-
-/**
     @breif      Modbcd frame PDU load 
     @param[in]  None
     @param[out] pucPDU		-   modbus PDU (FunCode + Data Feild) buffer pointer 
@@ -226,8 +206,8 @@ eMBCD_ErrorCode eMBCD_Load( uint8_t **pucPDU, uint16_t *pusLeng )
 							&& ( usMBCD_CRC16( ( uint8_t * ) ucFrameBuff, usFrameIndx ) == 0 ) 
 							&& ( ucFrameBuff[MBCD_FRAME_OFFS_ADDR] == ucMBSlaveAddr ) ) 
 					{
-						*pucPDU  = (uint8_t *)&ucFrameBuff[MBCD_FRAME_OFFS_PDU];
-						*pusLeng = usFrameIndx - MBCD_FRAME_OFFS_PDU - MBCD_FRAME_SIZE_CRC;
+						if ( (void *)0 != pucPDU  ) { *pucPDU  = (uint8_t *)&ucFrameBuff[MBCD_FRAME_OFFS_PDU];			  }
+						if ( (void *)0 != pusLeng ) { *pusLeng = usFrameIndx - MBCD_FRAME_OFFS_PDU - MBCD_FRAME_SIZE_CRC; }
 
 						eStatus = ERR_NOERR;
 					}
@@ -482,7 +462,7 @@ void vMBCD_TimerRspExpired( void )
 	{
 		/**< Rx is listen to the port. */
 		case RX_STATE_IDLE:	
-			vMBCD_BoxPost(&pMBMsgRx, (eMBEvnRx = EV_TIME_OUT, &eMBEvnRx));
+			vMBCD_BoxPost( &pMBMsgRx, (eMBEvnRx = EV_TIME_OUT, &eMBEvnRx) );
 			vMBCD_PortSerialEnable( false, false );
 			break;
 

@@ -41,10 +41,8 @@ int main(void)
 	{
 		uint8_t rqst_data[] = { 0x00, 0x13, 0x00, 0x13 }; //Request PDU = starting Address : 0x0013, Quantity of coils : 0x13
 
-		if ( ERR_NOERR == eMBCD_Send(0X0A, 0X01, rqst_data, sizeof(rqst_data)) )
-		{
-					//Do something
-		}
+		while ( ERR_ILLSTATE != eMBCD_Send(0X0A, 0X01, rqst_data, sizeof(rqst_data)) )
+			;
 
 		eMBCD_ErrorCode eErr = eMBCD_Load( &rsps_data, &rsps_leng );
 
@@ -62,12 +60,16 @@ int main(void)
 			case ERR_TIMEDOUT:
 				//Do something
 				break;
+			case ERR_ILLSTATE: //MAY BE send-recv logic error or even not ready to load
+				//Do something
+				break;
 			default: 
 				//Do something
 				;
 		}
 
 		//Set other code
+		//Note : eMBCD_Reset() can be called, when send-recv logic is broken.
 	}
 }
 
